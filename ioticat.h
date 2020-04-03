@@ -9,7 +9,6 @@
 #ifndef IOTICAT_H
 #define IOTICAT_H
 
-#include <stdio.h>
 #include <string.h>
 
 #define MAX_REGISTERED_USERS    230
