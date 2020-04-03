@@ -1,35 +1,36 @@
-/* 
+/*
  * File:   ioticat.h
  * Author: xoselolo
  *
  * Created on 3 de abril de 2020, 11:10
  */
 
-#ifndef IOTICAT_H
-#define	IOTICAT_H
 
+#ifndef IOTICAT_H
+#define IOTICAT_H
 
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_REGISTERED_USERS    5
-#define MAX_WORKING_USERS       2
+#define MAX_REGISTERED_USERS    230
+#define MAX_WORKING_USERS       100
 
-//#define MAX_REGISTERED_USERS    230
-//#define MAX_WORKING_USERS       100
 
+
+/******************************** TAD STRUCTURE ********************************/
 typedef struct {
     unsigned char value[2]; // [2]
 }TimeInMinutes;
 
 /**
- * name                 : nombre del usuario
- * uid                  : uid
- * in_min_hour          : hora minima de entrada
- * in_max_hour          : hora maxima de entrada
- * min_permanence_time  : tiempo minimo que el usuario debe estar dentro del IoTiCAT
+ * name                 : user's name
+ * uid                  : user personal ID
+ * in_min_hour          : minimum hour to enter
+ * in_min_minute        : minimum minute to enter
+ * in_max_hour          : maximum hour to exit
+ * in_max_minute        : maximum minute to exit
+ * min_permanence_time  : minimum time
  */
-
 typedef struct{
     char name[11];
     char uid[6];
@@ -40,17 +41,6 @@ typedef struct{
     TimeInMinutes min_permanence_time;//in minutes
 }User;
 
-/*
-typedef struct{
-    char* name; // [10]
-    char* uid; // [2]
-    char in_min_hour;
-    char in_min_minute;
-    char in_max_hour;
-    char in_max_minute;
-    TimeInMinutes min_permanence_time; //in minutes // [2]
-}User;
-*/
 /**
  * users                : usuarios que tienen permisos en el sistema
  * times                : timepo que lleva trabajando cada uno de los usuarios que estan trabajando
@@ -65,7 +55,8 @@ typedef struct{
 }IoticatDatabase;
 
 
-/**************************** TAD METHODS ***************************/
+
+/*********************************** TAD METHODS ********************************/
 /**
  * void IOTICAT_init()
  * @details: initializes the empty database
@@ -85,21 +76,30 @@ void IOTICAT_init();
 char IOTICAT_register(User user);
 
 /**
- * Makes a swap from two elements on the database
+ * Makes a IOTICAT_swap from two elements on the database
  * @param i : index of the first element
  * @param j : index of the second element
  */
-void swap(unsigned char i, unsigned char j);
+void IOTICAT_swap(unsigned char i, unsigned char j);
 
 /**
- * char IOTICAT_login(User user)
- * @details: user enters to work (if there's space in the institute)
- * @returns:
- *      @return 0 = NO_ERROR
- *      @return 1 = ERROR (MAX_WORKING_USERS reached)
- *      @return 2 = USER_NOT_RECOGNIZED
+ * User IOTICAT_getUser(unsigned char index)
+ * @param index : index from the user we want to extract
+ * @return the user in [index] position
  */
-char IOTICAT_login(const char uid[2]);
+User IOTICAT_getUser(unsigned char index);
+
+/**
+ * unsigned char IOTICAT_workingUsers()
+ * @returns the number of users actually working
+ */
+unsigned char IOTICAT_workingUsers();
+
+/**
+ * unsigned char IOTICAT_allUsers()
+ * @returns the number of all users in the system
+ */
+unsigned char IOTICAT_allUsers();
 
 /**
  * void IOTICAT_show()
@@ -107,17 +107,4 @@ char IOTICAT_login(const char uid[2]);
  */
 void IOTICAT_show();
 
-
-/**
- * char IOTICAT_exists(char uid[6])
- * @param uid : ID from the user we a re checking
- * @returns :
- *      @return 0 = not exists
- *      @return 1 = exists and is working
- *      @return 2 = exists and not working
- */
-char IOTICAT_exists(char uid[6]);
-
-
-#endif	/* IOTICAT_H */
-
+#endif //IOTICAT_H

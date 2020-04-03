@@ -4834,7 +4834,7 @@ void main(void) {
     IOTICAT_show();
 
     char state = IOTICAT_exists("38387\0");
-
+    printf("Estado: %c\n", state);
 
     return;
 }

@@ -3,7 +3,11 @@
 [d edition pro ]
 [d chip 18F4321 ]
 [d frameptr 4065 ]
-"546 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c
+"72 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c
+[v _pad pad `(i  1 s 2 pad ]
+"259
+[v _ctoa ctoa `(i  1 s 2 ctoa ]
+"546
 [v _stoa stoa `(i  1 s 2 stoa ]
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
@@ -67,31 +71,35 @@
 [v _flags flags `i  1 s 2 flags ]
 [v _prec prec `i  1 s 2 prec ]
 [v _width width `i  1 s 2 width ]
+"66
+[v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
 "69
 [v _nout nout `i  1 s 2 nout ]
 [s S28 . 2 `[2]uc 1 value 2 0 ]
 "11 C:\Users\Usuario\Google Drive\2019 2020 - COMPUS\S 2\Practica_FASE_B\proyecto\ioticat.c
 [s S30 . 23 `[11]uc 1 name 11 0 `[6]uc 1 uid 6 11 `uc 1 in_min_hour 1 17 `uc 1 in_min_minute 1 18 `uc 1 in_max_hour 1 19 `uc 1 in_max_minute 1 20 `S28 1 min_permanence_time 2 21 ]
-[s S100 . 121 `[5]S30 1 users 115 0 `[2]S28 1 times 4 115 `uc 1 cuantos 1 119 `uc 1 cuantos_in 1 120 ]
-[v _database database `S100  1 s 121 database ]
+[s S106 . 121 `[5]S30 1 users 115 0 `[2]S28 1 times 4 115 `uc 1 cuantos 1 119 `uc 1 cuantos_in 1 120 ]
+[v _database database `S106  1 s 121 database ]
 "12
 [v _swappy swappy `S30  1 s 23 swappy ]
 "12 C:\Users\Usuario\Google Drive\2019 2020 - COMPUS\S 2\Practica_FASE_B\proyecto\main.c
 [v _main main `(v  1 e 1 0 ]
 {
 "15
-[v main@user user `S30  1 a 23 69 ]
+[v main@user user `S30  1 a 23 71 ]
 "19
-[v main@permanencia permanencia `S28  1 a 2 67 ]
+[v main@permanencia permanencia `S28  1 a 2 69 ]
+"71
+[v main@state state `uc  1 a 1 68 ]
 "75
 } 0
 "118 C:\Users\Usuario\Google Drive\2019 2020 - COMPUS\S 2\Practica_FASE_B\proyecto\ioticat.c
 [v _IOTICAT_show IOTICAT_show `(v  1 e 1 0 ]
 {
 "125
-[v IOTICAT_show@i_167 i `i  1 a 2 64 ]
+[v IOTICAT_show@i_169 i `i  1 a 2 66 ]
 "120
-[v IOTICAT_show@i i `i  1 a 2 62 ]
+[v IOTICAT_show@i i `i  1 a 2 64 ]
 "128
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul16.c
@@ -116,9 +124,9 @@
 [v _IOTICAT_login IOTICAT_login `(uc  1 e 1 0 ]
 {
 "98
-[v IOTICAT_login@i i `uc  1 a 1 63 ]
+[v IOTICAT_login@i i `uc  1 a 1 65 ]
 "95
-[v IOTICAT_login@uid uid `*.25Cuc  1 p 2 61 ]
+[v IOTICAT_login@uid uid `*.25Cuc  1 p 2 63 ]
 "111
 } 0
 "46
@@ -126,8 +134,8 @@
 {
 [v swap@i i `uc  1 a 1 wreg ]
 [v swap@i i `uc  1 a 1 wreg ]
-[v swap@j j `uc  1 p 1 59 ]
-[v swap@i i `uc  1 a 1 60 ]
+[v swap@j j `uc  1 p 1 61 ]
+[v swap@i i `uc  1 a 1 62 ]
 "83
 } 0
 "3 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\strcpy.c
@@ -146,33 +154,34 @@
 [v _printf printf `(i  1 e 2 0 ]
 {
 "8
-[v printf@ap ap `[1]*.39v  1 a 2 57 ]
+[v printf@ap ap `[1]*.39v  1 a 2 59 ]
 "5
-[v printf@fmt fmt `*.25Cuc  1 p 2 49 ]
+[v printf@fmt fmt `*.25Cuc  1 p 2 51 ]
 "13
 } 0
 "1368 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
 "1371
-[v vfprintf@cfmt cfmt `*.25uc  1 a 2 47 ]
-[s S172 _IO_FILE 0 ]
+[v vfprintf@cfmt cfmt `*.25uc  1 a 2 49 ]
+[s S174 _IO_FILE 0 ]
 "1368
-[v vfprintf@fp fp `*.2S172  1 p 2 41 ]
-[v vfprintf@fmt fmt `*.25Cuc  1 p 2 43 ]
-[v vfprintf@ap ap `*.39*.39v  1 p 2 45 ]
+[v vfprintf@fp fp `*.2S174  1 p 2 43 ]
+[v vfprintf@fmt fmt `*.25Cuc  1 p 2 45 ]
+[v vfprintf@ap ap `*.39*.39v  1 p 2 47 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
 "672
-[v vfpfcnvrt@cp cp `*.35uc  1 a 2 39 ]
-[s S172 _IO_FILE 0 ]
+[v vfpfcnvrt@cp cp `*.35uc  1 a 2 40 ]
+[v vfpfcnvrt@c c `uc  1 a 1 42 ]
+[s S174 _IO_FILE 0 ]
 "670
-[v vfpfcnvrt@fp fp `*.2S172  1 p 2 31 ]
-[v vfpfcnvrt@fmt fmt `*.39*.25uc  1 p 2 33 ]
-[v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 35 ]
+[v vfpfcnvrt@fp fp `*.2S174  1 p 2 32 ]
+[v vfpfcnvrt@fmt fmt `*.39*.25uc  1 p 2 34 ]
+[v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 36 ]
 "1365
 } 0
 "546
@@ -188,13 +197,37 @@
 "549
 [v stoa@w w `i  1 a 2 23 ]
 [v stoa@i i `i  1 a 2 21 ]
-[s S172 _IO_FILE 0 ]
+[s S174 _IO_FILE 0 ]
 "546
-[v stoa@fp fp `*.2S172  1 p 2 9 ]
+[v stoa@fp fp `*.2S174  1 p 2 9 ]
 [v stoa@s s `*.35uc  1 p 2 11 ]
 "548
-[v stoa@F1131 F1131 `[7]uc  1 s 7 F1131 ]
+[v stoa@F1136 F1136 `[7]uc  1 s 7 F1136 ]
 "589
+} 0
+"259
+[v _ctoa ctoa `(i  1 s 2 ctoa ]
+{
+"261
+[v ctoa@w w `i  1 a 2 30 ]
+[s S174 _IO_FILE 0 ]
+"259
+[v ctoa@fp fp `*.2S174  1 p 2 27 ]
+[v ctoa@c c `uc  1 p 1 29 ]
+"270
+} 0
+"72
+[v _pad pad `(i  1 s 2 pad ]
+{
+"74
+[v pad@w w `i  1 a 2 25 ]
+[v pad@i i `i  1 a 2 23 ]
+[s S174 _IO_FILE 0 ]
+"72
+[v pad@fp fp `*.2S174  1 p 2 16 ]
+[v pad@buf buf `*.39uc  1 p 2 18 ]
+[v pad@p p `i  1 p 2 20 ]
+"95
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
@@ -205,12 +238,25 @@
 [v strlen@s s `*.35Cuc  1 p 2 0 ]
 "12
 } 0
+"8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+{
+"11
+[v fputs@i i `i  1 a 2 14 ]
+"10
+[v fputs@c c `uc  1 a 1 13 ]
+"8
+[v fputs@s s `*.39Cuc  1 p 2 9 ]
+[s S683 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
+[v fputs@fp fp `*.2S683  1 p 2 11 ]
+"19
+} 0
 "8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 0 ]
-[s S674 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
-[v fputc@fp fp `*.2S674  1 p 2 2 ]
+[s S683 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
+[v fputc@fp fp `*.2S683  1 p 2 2 ]
 "21
 } 0
 "7 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\putch.c

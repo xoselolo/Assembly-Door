@@ -26,6 +26,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "119
 [; ;./ioticat.h: 119: char IOTICAT_exists(char uid[6]);
 [v _IOTICAT_exists `(uc ~T0 @X0 0 ef1`*uc ]
+"111 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -589,6 +591,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 71:     char state = IOTICAT_exists("38387\0");
 [v _state `uc ~T0 @X0 1 a ]
 [e = _state ( _IOTICAT_exists (1 :s 10C ]
+"72
+[; ;main.c: 72:     printf("Estado: %c\n", state);
+[e ( _printf , (. :s 11C -> _state `i ]
 "74
 [; ;main.c: 74:     return;
 [e $UE 286  ]
@@ -596,6 +601,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 75: }
 [e :UE 286 ]
 }
+[p f _printf 8912896 ]
+[a 11C 69 115 116 97 100 111 58 32 37 99 10 0 ]
 [a 5C 88 111 115 101 0 0 ]
 [a 1C 76 117 97 0 0 ]
 [a 7C 80 97 117 108 97 0 0 ]
