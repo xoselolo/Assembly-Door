@@ -1,0 +1,3589 @@
+
+
+Microchip MPLAB XC8 Assembler V2.10 build 88905656 
+                                                                                               Fri Apr 03 11:32:28 2020
+
+Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
+     1                           	processor	18F4321
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	flic
+     5                           	psect	idataBANK0,global,class=CODE,delta=1,noexec
+     6                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+     7                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     8                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     9                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,lowdata,noexec
+    10                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,lowdata,noexec
+    11                           	psect	bssBANK1,global,class=BANK1,space=1,delta=1,lowdata,noexec
+    12                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+    13                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text2,global,reloc=2,class=CODE,delta=1,group=1
+    16                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text6,global,reloc=2,class=CODE,delta=1,group=2
+    20                           	psect	text7,global,reloc=2,class=CODE,delta=1,group=2
+    21                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    22                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    23                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    24                           	psect	text11,global,reloc=2,class=CODE,delta=1,group=2
+    25                           	psect	text12,global,reloc=2,class=CODE,delta=1,group=2
+    26                           	psect	text13,global,reloc=2,class=CODE,delta=1,group=2
+    27                           	psect	text14,global,reloc=2,class=CODE,delta=1
+    28                           	psect	text15,global,reloc=2,class=CODE,delta=1
+    29                           	psect	text16,global,reloc=2,class=CODE,delta=1,group=2
+    30                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    31                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    32  0000                     
+    33                           ; Version 2.10
+    34                           ; Generated 31/07/2019 GMT
+    35                           ; 
+    36                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    37                           ; All rights reserved.
+    38                           ; 
+    39                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    40                           ; 
+    41                           ; Redistribution and use in source and binary forms, with or without modification, are
+    42                           ; permitted provided that the following conditions are met:
+    43                           ; 
+    44                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    45                           ;        conditions and the following disclaimer.
+    46                           ; 
+    47                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    48                           ;        of conditions and the following disclaimer in the documentation and/or other
+    49                           ;        materials provided with the distribution.
+    50                           ; 
+    51                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    52                           ;        software without specific prior written permission.
+    53                           ; 
+    54                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    55                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    56                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    57                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    58                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    59                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    60                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    61                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    62                           ; 
+    63                           ; 
+    64                           ; Code-generator required, PIC18F4321 Definitions
+    65                           ; 
+    66                           ; SFR Addresses
+    67  0000                     
+    68                           	psect	idataBANK0
+    69  000F48                     __pidataBANK0:
+    70                           	opt callstack 0
+    71                           
+    72                           ;initializer for stoa@F1131
+    73  000F48  28                 	db	40
+    74  000F49  6E                 	db	110
+    75  000F4A  75                 	db	117
+    76  000F4B  6C                 	db	108
+    77  000F4C  6C                 	db	108
+    78  000F4D  29                 	db	41
+    79  000F4E  00                 	db	0
+    80                           
+    81                           	psect	smallconst
+    82  000200                     __psmallconst:
+    83                           	opt callstack 0
+    84  000200  00                 	db	0
+    85  000201                     STR_14:
+    86  000201  5B                 	db	91	;'['
+    87  000202  49                 	db	73	;'I'
+    88  000203  4E                 	db	78	;'N'
+    89  000204  46                 	db	70	;'F'
+    90  000205  4F                 	db	79	;'O'
+    91  000206  5D                 	db	93	;']'
+    92  000207  20                 	db	32
+    93  000208  2D                 	db	45
+    94  000209  2D                 	db	45
+    95  00020A  2D                 	db	45
+    96  00020B  2D                 	db	45
+    97  00020C  2D                 	db	45
+    98  00020D  2D                 	db	45
+    99  00020E  2D                 	db	45
+   100  00020F  2D                 	db	45
+   101  000210  2D                 	db	45
+   102  000211  2D                 	db	45
+   103  000212  2D                 	db	45
+   104  000213  2D                 	db	45
+   105  000214  20                 	db	32
+   106  000215  43                 	db	67	;'C'
+   107  000216  68                 	db	104	;'h'
+   108  000217  65                 	db	101	;'e'
+   109  000218  63                 	db	99	;'c'
+   110  000219  6B                 	db	107	;'k'
+   111  00021A  69                 	db	105	;'i'
+   112  00021B  6E                 	db	110	;'n'
+   113  00021C  67                 	db	103	;'g'
+   114  00021D  20                 	db	32
+   115  00021E  25                 	db	37
+   116  00021F  73                 	db	115	;'s'
+   117  000220  20                 	db	32
+   118  000221  77                 	db	119	;'w'
+   119  000222  69                 	db	105	;'i'
+   120  000223  74                 	db	116	;'t'
+   121  000224  68                 	db	104	;'h'
+   122  000225  20                 	db	32
+   123  000226  25                 	db	37
+   124  000227  73                 	db	115	;'s'
+   125  000228  0A                 	db	10
+   126  000229  00                 	db	0
+   127  00022A                     STR_17:
+   128  00022A  0A                 	db	10
+   129  00022B  2D                 	db	45
+   130  00022C  2D                 	db	45
+   131  00022D  20                 	db	32
+   132  00022E  52                 	db	82	;'R'
+   133  00022F  45                 	db	69	;'E'
+   134  000230  47                 	db	71	;'G'
+   135  000231  49                 	db	73	;'I'
+   136  000232  53                 	db	83	;'S'
+   137  000233  54                 	db	84	;'T'
+   138  000234  45                 	db	69	;'E'
+   139  000235  52                 	db	82	;'R'
+   140  000236  45                 	db	69	;'E'
+   141  000237  44                 	db	68	;'D'
+   142  000238  20                 	db	32
+   143  000239  45                 	db	69	;'E'
+   144  00023A  4D                 	db	77	;'M'
+   145  00023B  50                 	db	80	;'P'
+   146  00023C  4C                 	db	76	;'L'
+   147  00023D  4F                 	db	79	;'O'
+   148  00023E  59                 	db	89	;'Y'
+   149  00023F  45                 	db	69	;'E'
+   150  000240  45                 	db	69	;'E'
+   151  000241  53                 	db	83	;'S'
+   152  000242  20                 	db	32
+   153  000243  2D                 	db	45
+   154  000244  2D                 	db	45
+   155  000245  0A                 	db	10
+   156  000246  00                 	db	0
+   157  000247                     STR_15:
+   158  000247  0A                 	db	10
+   159  000248  2D                 	db	45
+   160  000249  2D                 	db	45
+   161  00024A  20                 	db	32
+   162  00024B  57                 	db	87	;'W'
+   163  00024C  4F                 	db	79	;'O'
+   164  00024D  52                 	db	82	;'R'
+   165  00024E  4B                 	db	75	;'K'
+   166  00024F  49                 	db	73	;'I'
+   167  000250  4E                 	db	78	;'N'
+   168  000251  47                 	db	71	;'G'
+   169  000252  20                 	db	32
+   170  000253  45                 	db	69	;'E'
+   171  000254  4D                 	db	77	;'M'
+   172  000255  50                 	db	80	;'P'
+   173  000256  4C                 	db	76	;'L'
+   174  000257  4F                 	db	79	;'O'
+   175  000258  59                 	db	89	;'Y'
+   176  000259  45                 	db	69	;'E'
+   177  00025A  45                 	db	69	;'E'
+   178  00025B  53                 	db	83	;'S'
+   179  00025C  20                 	db	32
+   180  00025D  2D                 	db	45
+   181  00025E  2D                 	db	45
+   182  00025F  0A                 	db	10
+   183  000260  00                 	db	0
+   184  000261                     STR_16:
+   185  000261  45                 	db	69	;'E'
+   186  000262  6D                 	db	109	;'m'
+   187  000263  70                 	db	112	;'p'
+   188  000264  6C                 	db	108	;'l'
+   189  000265  6F                 	db	111	;'o'
+   190  000266  79                 	db	121	;'y'
+   191  000267  65                 	db	101	;'e'
+   192  000268  65                 	db	101	;'e'
+   193  000269  3A                 	db	58	;':'
+   194  00026A  20                 	db	32
+   195  00026B  25                 	db	37
+   196  00026C  73                 	db	115	;'s'
+   197  00026D  20                 	db	32
+   198  00026E  2D                 	db	45
+   199  00026F  20                 	db	32
+   200  000270  25                 	db	37
+   201  000271  73                 	db	115	;'s'
+   202  000272  0A                 	db	10
+   203  000273  00                 	db	0
+   204  000274                     STR_11:
+   205  000274  0A                 	db	10
+   206  000275  75                 	db	117	;'u'
+   207  000276  69                 	db	105	;'i'
+   208  000277  64                 	db	100	;'d'
+   209  000278  20                 	db	32
+   210  000279  49                 	db	73	;'I'
+   211  00027A  3A                 	db	58	;':'
+   212  00027B  20                 	db	32
+   213  00027C  25                 	db	37
+   214  00027D  73                 	db	115	;'s'
+   215  00027E  0A                 	db	10
+   216  00027F  00                 	db	0
+   217  000280                     STR_13:
+   218  000280  75                 	db	117	;'u'
+   219  000281  69                 	db	105	;'i'
+   220  000282  64                 	db	100	;'d'
+   221  000283  20                 	db	32
+   222  000284  73                 	db	115	;'s'
+   223  000285  77                 	db	119	;'w'
+   224  000286  3A                 	db	58	;':'
+   225  000287  20                 	db	32
+   226  000288  25                 	db	37
+   227  000289  73                 	db	115	;'s'
+   228  00028A  0A                 	db	10
+   229  00028B  00                 	db	0
+   230  00028C                     STR_12:
+   231  00028C  75                 	db	117	;'u'
+   232  00028D  69                 	db	105	;'i'
+   233  00028E  64                 	db	100	;'d'
+   234  00028F  20                 	db	32
+   235  000290  4A                 	db	74	;'J'
+   236  000291  3A                 	db	58	;':'
+   237  000292  20                 	db	32
+   238  000293  25                 	db	37
+   239  000294  73                 	db	115	;'s'
+   240  000295  0A                 	db	10
+   241  000296  00                 	db	0
+   242  000297                     STR_3:
+   243  000297  4D                 	db	77	;'M'
+   244  000298  65                 	db	101	;'e'
+   245  000299  73                 	db	115	;'s'
+   246  00029A  61                 	db	97	;'a'
+   247  00029B  53                 	db	83	;'S'
+   248  00029C  69                 	db	105	;'i'
+   249  00029D  6C                 	db	108	;'l'
+   250  00029E  6C                 	db	108	;'l'
+   251  00029F  61                 	db	97	;'a'
+   252  0002A0  00                 	db	0
+   253  0002A1  00                 	db	0
+   254  0002A2                     STR_2:
+   255  0002A2  31                 	db	49	;'1'
+   256  0002A3  33                 	db	51	;'3'
+   257  0002A4  33                 	db	51	;'3'
+   258  0002A5  33                 	db	51	;'3'
+   259  0002A6  31                 	db	49	;'1'
+   260  0002A7  00                 	db	0
+   261  0002A8  00                 	db	0
+   262  0002A9                     STR_4:
+   263  0002A9  32                 	db	50	;'2'
+   264  0002AA  37                 	db	55	;'7'
+   265  0002AB  36                 	db	54	;'6'
+   266  0002AC  35                 	db	53	;'5'
+   267  0002AD  33                 	db	51	;'3'
+   268  0002AE  00                 	db	0
+   269  0002AF  00                 	db	0
+   270  0002B0                     STR_6:
+   271  0002B0  33                 	db	51	;'3'
+   272  0002B1  38                 	db	56	;'8'
+   273  0002B2  33                 	db	51	;'3'
+   274  0002B3  38                 	db	56	;'8'
+   275  0002B4  37                 	db	55	;'7'
+   276  0002B5  00                 	db	0
+   277  0002B6  00                 	db	0
+   278  0002B7                     STR_8:
+   279  0002B7  31                 	db	49	;'1'
+   280  0002B8  37                 	db	55	;'7'
+   281  0002B9  31                 	db	49	;'1'
+   282  0002BA  37                 	db	55	;'7'
+   283  0002BB  39                 	db	57	;'9'
+   284  0002BC  00                 	db	0
+   285  0002BD  00                 	db	0
+   286  0002BE                     STR_7:
+   287  0002BE  50                 	db	80	;'P'
+   288  0002BF  61                 	db	97	;'a'
+   289  0002C0  75                 	db	117	;'u'
+   290  0002C1  6C                 	db	108	;'l'
+   291  0002C2  61                 	db	97	;'a'
+   292  0002C3  00                 	db	0
+   293  0002C4  00                 	db	0
+   294  0002C5                     STR_5:
+   295  0002C5  58                 	db	88	;'X'
+   296  0002C6  6F                 	db	111	;'o'
+   297  0002C7  73                 	db	115	;'s'
+   298  0002C8  65                 	db	101	;'e'
+   299  0002C9  00                 	db	0
+   300  0002CA  00                 	db	0
+   301  0002CB                     STR_1:
+   302  0002CB  4C                 	db	76	;'L'
+   303  0002CC  75                 	db	117	;'u'
+   304  0002CD  61                 	db	97	;'a'
+   305  0002CE  00                 	db	0
+   306  0002CF  00                 	db	0
+   307  0002D0  00                 	db	0	; dummy byte at the end
+   308  0000                     
+   309                           ; #config settings
+   310                           
+   311                           	psect	cinit
+   312  000E20                     __pcinit:
+   313                           	opt callstack 0
+   314  000E20                     start_initialization:
+   315                           	opt callstack 0
+   316  000E20                     __initialization:
+   317                           	opt callstack 0
+   318                           
+   319                           ; Initialize objects allocated to BANK0 (7 bytes)
+   320                           ; load TBLPTR registers with __pidataBANK0
+   321  000E20  0E48               	movlw	low __pidataBANK0
+   322  000E22  6EF6               	movwf	tblptrl,c
+   323  000E24  0E0F               	movlw	high __pidataBANK0
+   324  000E26  6EF7               	movwf	tblptrh,c
+   325  000E28  0E00               	movlw	low (__pidataBANK0 shr (0+16))
+   326  000E2A  6EF8               	movwf	tblptru,c
+   327  000E2C  EE00  F0F9         	lfsr	0,__pdataBANK0
+   328  000E30  EE10 F007          	lfsr	1,7
+   329  000E34                     copy_data0:
+   330  000E34  0009               	tblrd		*+
+   331  000E36  CFF5 FFEE          	movff	tablat,postinc0
+   332  000E3A  50E5               	movf	postdec1,w,c
+   333  000E3C  50E1               	movf	fsr1l,w,c
+   334  000E3E  E1FA               	bnz	copy_data0
+   335                           
+   336                           ; Clear objects allocated to BANK1 (32 bytes)
+   337  000E40  EE01  F000         	lfsr	0,__pbssBANK1
+   338  000E44  0E20               	movlw	32
+   339  000E46                     clear_0:
+   340  000E46  6AEE               	clrf	postinc0,c
+   341  000E48  06E8               	decf	wreg,f,c
+   342  000E4A  E1FD               	bnz	clear_0
+   343                           
+   344                           ; Clear objects allocated to BANK0 (121 bytes)
+   345  000E4C  EE00  F080         	lfsr	0,__pbssBANK0
+   346  000E50  0E79               	movlw	121
+   347  000E52                     clear_1:
+   348  000E52  6AEE               	clrf	postinc0,c
+   349  000E54  06E8               	decf	wreg,f,c
+   350  000E56  E1FD               	bnz	clear_1
+   351                           
+   352                           ; Clear objects allocated to COMRAM (31 bytes)
+   353  000E58  EE00  F05D         	lfsr	0,__pbssCOMRAM
+   354  000E5C  0E1F               	movlw	31
+   355  000E5E                     clear_2:
+   356  000E5E  6AEE               	clrf	postinc0,c
+   357  000E60  06E8               	decf	wreg,f,c
+   358  000E62  E1FD               	bnz	clear_2
+   359  000E64                     end_of_initialization:
+   360                           	opt callstack 0
+   361  000E64                     __end_of__initialization:
+   362                           	opt callstack 0
+   363  000E64  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   364  000E66  6EF8               	movwf	tblptru,c
+   365  000E68  0100               	movlb	0
+   366  000E6A  EFD1  F002         	goto	_main	;jump to C main() function
+   367                           
+   368                           	psect	bssCOMRAM
+   369  00005D                     __pbssCOMRAM:
+   370                           	opt callstack 0
+   371  00005D                     _nout:
+   372                           	opt callstack 0
+   373  00005D                     	ds	2
+   374  00005F                     _width:
+   375                           	opt callstack 0
+   376  00005F                     	ds	2
+   377  000061                     _prec:
+   378                           	opt callstack 0
+   379  000061                     	ds	2
+   380  000063                     _flags:
+   381                           	opt callstack 0
+   382  000063                     	ds	2
+   383  000065                     _swappy:
+   384                           	opt callstack 0
+   385  000065                     	ds	23
+   386                           
+   387                           	psect	bssBANK0
+   388  000080                     __pbssBANK0:
+   389                           	opt callstack 0
+   390  000080                     _database:
+   391                           	opt callstack 0
+   392  000080                     	ds	121
+   393                           
+   394                           	psect	dataBANK0
+   395  0000F9                     __pdataBANK0:
+   396                           	opt callstack 0
+   397  0000F9                     stoa@F1131:
+   398                           	opt callstack 0
+   399  0000F9                     	ds	7
+   400                           
+   401                           	psect	bssBANK1
+   402  000100                     __pbssBANK1:
+   403                           	opt callstack 0
+   404  000100                     	ds	32
+   405                           
+   406                           	psect	cstackCOMRAM
+   407  000001                     __pcstackCOMRAM:
+   408                           	opt callstack 0
+   409  000001                     ?_strcmp:
+   410                           	opt callstack 0
+   411  000001                     ?_strlen:
+   412                           	opt callstack 0
+   413  000001                     ?___wmul:
+   414                           	opt callstack 0
+   415  000001                     ___wmul@multiplier:
+   416                           	opt callstack 0
+   417  000001                     fputc@c:
+   418                           	opt callstack 0
+   419  000001                     strcmp@l:
+   420                           	opt callstack 0
+   421  000001                     strcpy@dest:
+   422                           	opt callstack 0
+   423  000001                     strlen@s:
+   424                           	opt callstack 0
+   425  000001                     IOTICAT_register@user:
+   426                           	opt callstack 0
+   427                           
+   428                           ; 23 bytes @ 0x0
+   429  000001                     	ds	2
+   430  000003                     ___wmul@multiplicand:
+   431                           	opt callstack 0
+   432  000003                     fputc@fp:
+   433                           	opt callstack 0
+   434  000003                     strcmp@r:
+   435                           	opt callstack 0
+   436  000003                     strcpy@src:
+   437                           	opt callstack 0
+   438  000003                     strlen@a:
+   439                           	opt callstack 0
+   440                           
+   441                           ; 2 bytes @ 0x2
+   442  000003                     	ds	2
+   443  000005                     ??_strcpy:
+   444  000005                     ??_strcmp:
+   445  000005                     ??_fputc:
+   446  000005                     ___wmul@product:
+   447                           	opt callstack 0
+   448                           
+   449                           ; 2 bytes @ 0x4
+   450  000005                     	ds	1
+   451  000006                     IOTICAT_exists@uid:
+   452                           	opt callstack 0
+   453                           
+   454                           ; 2 bytes @ 0x5
+   455  000006                     	ds	1
+   456  000007                     strcpy@s:
+   457                           	opt callstack 0
+   458                           
+   459                           ; 2 bytes @ 0x6
+   460  000007                     	ds	1
+   461  000008                     IOTICAT_exists@i:
+   462                           	opt callstack 0
+   463                           
+   464                           ; 1 bytes @ 0x7
+   465  000008                     	ds	1
+   466  000009                     strcpy@d:
+   467                           	opt callstack 0
+   468                           
+   469                           ; 2 bytes @ 0x8
+   470  000009                     	ds	1
+   471  00000A                     ?_stoa:
+   472                           	opt callstack 0
+   473  00000A                     stoa@fp:
+   474                           	opt callstack 0
+   475                           
+   476                           ; 2 bytes @ 0x9
+   477  00000A                     	ds	2
+   478  00000C                     stoa@s:
+   479                           	opt callstack 0
+   480                           
+   481                           ; 2 bytes @ 0xB
+   482  00000C                     	ds	2
+   483  00000E                     ??_stoa:
+   484                           
+   485                           ; 1 bytes @ 0xD
+   486  00000E                     	ds	1
+   487  00000F                     stoa@nuls:
+   488                           	opt callstack 0
+   489                           
+   490                           ; 7 bytes @ 0xE
+   491  00000F                     	ds	7
+   492  000016                     stoa@i:
+   493                           	opt callstack 0
+   494                           
+   495                           ; 2 bytes @ 0x15
+   496  000016                     	ds	2
+   497  000018                     stoa@w:
+   498                           	opt callstack 0
+   499                           
+   500                           ; 2 bytes @ 0x17
+   501  000018                     	ds	2
+   502  00001A                     stoa@cp:
+   503                           	opt callstack 0
+   504                           
+   505                           ; 2 bytes @ 0x19
+   506  00001A                     	ds	2
+   507  00001C                     stoa@p:
+   508                           	opt callstack 0
+   509                           
+   510                           ; 2 bytes @ 0x1B
+   511  00001C                     	ds	2
+   512  00001E                     stoa@l:
+   513                           	opt callstack 0
+   514                           
+   515                           ; 2 bytes @ 0x1D
+   516  00001E                     	ds	2
+   517  000020                     ?_vfpfcnvrt:
+   518                           	opt callstack 0
+   519  000020                     vfpfcnvrt@fp:
+   520                           	opt callstack 0
+   521                           
+   522                           ; 2 bytes @ 0x1F
+   523  000020                     	ds	2
+   524  000022                     vfpfcnvrt@fmt:
+   525                           	opt callstack 0
+   526                           
+   527                           ; 2 bytes @ 0x21
+   528  000022                     	ds	2
+   529  000024                     vfpfcnvrt@ap:
+   530                           	opt callstack 0
+   531                           
+   532                           ; 2 bytes @ 0x23
+   533  000024                     	ds	2
+   534  000026                     ??_vfpfcnvrt:
+   535                           
+   536                           ; 1 bytes @ 0x25
+   537  000026                     	ds	2
+   538  000028                     vfpfcnvrt@cp:
+   539                           	opt callstack 0
+   540                           
+   541                           ; 2 bytes @ 0x27
+   542  000028                     	ds	2
+   543  00002A                     ?_vfprintf:
+   544                           	opt callstack 0
+   545  00002A                     vfprintf@fp:
+   546                           	opt callstack 0
+   547                           
+   548                           ; 2 bytes @ 0x29
+   549  00002A                     	ds	2
+   550  00002C                     vfprintf@fmt:
+   551                           	opt callstack 0
+   552                           
+   553                           ; 2 bytes @ 0x2B
+   554  00002C                     	ds	2
+   555  00002E                     vfprintf@ap:
+   556                           	opt callstack 0
+   557                           
+   558                           ; 2 bytes @ 0x2D
+   559  00002E                     	ds	2
+   560  000030                     vfprintf@cfmt:
+   561                           	opt callstack 0
+   562                           
+   563                           ; 2 bytes @ 0x2F
+   564  000030                     	ds	2
+   565  000032                     ?_printf:
+   566                           	opt callstack 0
+   567  000032                     printf@fmt:
+   568                           	opt callstack 0
+   569                           
+   570                           ; 2 bytes @ 0x31
+   571  000032                     	ds	6
+   572  000038                     
+   573                           ; 1 bytes @ 0x37
+   574  000038                     	ds	2
+   575  00003A                     printf@ap:
+   576                           	opt callstack 0
+   577                           
+   578                           ; 2 bytes @ 0x39
+   579  00003A                     	ds	2
+   580  00003C                     ??_IOTICAT_show:
+   581  00003C                     swap@j:
+   582                           	opt callstack 0
+   583                           
+   584                           ; 1 bytes @ 0x3B
+   585  00003C                     	ds	1
+   586  00003D                     swap@i:
+   587                           	opt callstack 0
+   588                           
+   589                           ; 1 bytes @ 0x3C
+   590  00003D                     	ds	1
+   591  00003E                     IOTICAT_login@uid:
+   592                           	opt callstack 0
+   593                           
+   594                           ; 2 bytes @ 0x3D
+   595  00003E                     	ds	1
+   596  00003F                     IOTICAT_show@i:
+   597                           	opt callstack 0
+   598                           
+   599                           ; 2 bytes @ 0x3E
+   600  00003F                     	ds	1
+   601  000040                     IOTICAT_login@i:
+   602                           	opt callstack 0
+   603                           
+   604                           ; 1 bytes @ 0x3F
+   605  000040                     	ds	1
+   606  000041                     IOTICAT_show@i_167:
+   607                           	opt callstack 0
+   608                           
+   609                           ; 2 bytes @ 0x40
+   610  000041                     	ds	2
+   611  000043                     
+   612                           ; 1 bytes @ 0x42
+   613  000043                     	ds	1
+   614  000044                     main@permanencia:
+   615                           	opt callstack 0
+   616                           
+   617                           ; 2 bytes @ 0x43
+   618  000044                     	ds	2
+   619  000046                     main@user:
+   620                           	opt callstack 0
+   621                           
+   622                           ; 23 bytes @ 0x45
+   623  000046                     	ds	23
+   624                           
+   625 ;;
+   626 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   627 ;;
+   628 ;; *************** function _main *****************
+   629 ;; Defined at:
+   630 ;;		line 12 in file "main.c"
+   631 ;; Parameters:    Size  Location     Type
+   632 ;;		None
+   633 ;; Auto vars:     Size  Location     Type
+   634 ;;  user           23   69[COMRAM] struct .
+   635 ;;  permanencia     2   67[COMRAM] struct .
+   636 ;;  state           1    0        unsigned char 
+   637 ;; Return value:  Size  Location     Type
+   638 ;;                  1    wreg      void 
+   639 ;; Registers used:
+   640 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   641 ;; Tracked objects:
+   642 ;;		On entry : 0/0
+   643 ;;		On exit  : 0/0
+   644 ;;		Unchanged: 0/0
+   645 ;; Data sizes:     COMRAM   BANK0   BANK1
+   646 ;;      Params:         0       0       0
+   647 ;;      Locals:        26       0       0
+   648 ;;      Temps:          0       0       0
+   649 ;;      Totals:        26       0       0
+   650 ;;Total ram usage:       26 bytes
+   651 ;; Hardware stack levels required when called:    8
+   652 ;; This function calls:
+   653 ;;		_IOTICAT_exists
+   654 ;;		_IOTICAT_init
+   655 ;;		_IOTICAT_login
+   656 ;;		_IOTICAT_register
+   657 ;;		_IOTICAT_show
+   658 ;;		_strcpy
+   659 ;; This function is called by:
+   660 ;;		Startup code after reset
+   661 ;; This function uses a non-reentrant model
+   662 ;;
+   663                           
+   664                           	psect	text0
+   665  0005A2                     __ptext0:
+   666                           	opt callstack 0
+   667  0005A2                     _main:
+   668                           	opt callstack 23
+   669  0005A2                     
+   670                           ;main.c: 13:     IOTICAT_init();
+   671  0005A2  EC9E  F007         	call	_IOTICAT_init	;wreg free
+   672  0005A6                     
+   673                           ;main.c: 15:     User user;;main.c: 17:     strcpy(user.name, "Lua\0");
+   674  0005A6  0E46               	movlw	low main@user
+   675  0005A8  6E01               	movwf	strcpy@dest^0,c
+   676  0005AA  0E00               	movlw	high main@user
+   677  0005AC  6E02               	movwf	(strcpy@dest+1)^0,c
+   678  0005AE  0ECB               	movlw	low STR_1
+   679  0005B0  6E03               	movwf	strcpy@src^0,c
+   680  0005B2  0E02               	movlw	high STR_1
+   681  0005B4  6E04               	movwf	(strcpy@src+1)^0,c
+   682  0005B6  ECE2  F006         	call	_strcpy	;wreg free
+   683  0005BA                     
+   684                           ;main.c: 18:     strcpy(user.uid, "13331\0");
+   685  0005BA  0E51               	movlw	low (main@user+11)
+   686  0005BC  6E01               	movwf	strcpy@dest^0,c
+   687  0005BE  0E00               	movlw	high (main@user+11)
+   688  0005C0  6E02               	movwf	(strcpy@dest+1)^0,c
+   689  0005C2  0EA2               	movlw	low STR_2
+   690  0005C4  6E03               	movwf	strcpy@src^0,c
+   691  0005C6  0E02               	movlw	high STR_2
+   692  0005C8  6E04               	movwf	(strcpy@src+1)^0,c
+   693  0005CA  ECE2  F006         	call	_strcpy	;wreg free
+   694  0005CE                     
+   695                           ;main.c: 19:     TimeInMinutes permanencia;;main.c: 20:     permanencia.value[0] = 0x00;
+   696  0005CE  0E00               	movlw	0
+   697  0005D0  6E44               	movwf	main@permanencia^0,c
+   698  0005D2                     
+   699                           ;main.c: 21:     permanencia.value[1] = 0x40;
+   700  0005D2  0E40               	movlw	64
+   701  0005D4  6E45               	movwf	(main@permanencia+1)^0,c
+   702  0005D6                     
+   703                           ;main.c: 22:     user.min_permanence_time = permanencia;
+   704  0005D6  C044  F05B         	movff	main@permanencia,main@user+21
+   705  0005DA  C045  F05C         	movff	main@permanencia+1,main@user+22
+   706  0005DE                     
+   707                           ;main.c: 23:     user.in_min_hour = 0x08;
+   708  0005DE  0E08               	movlw	8
+   709  0005E0  6E57               	movwf	(main@user+17)^0,c
+   710  0005E2                     
+   711                           ;main.c: 24:     user.in_min_minute = 0x00;
+   712  0005E2  0E00               	movlw	0
+   713  0005E4  6E58               	movwf	(main@user+18)^0,c
+   714  0005E6                     
+   715                           ;main.c: 25:     user.in_max_hour = 0x09;
+   716  0005E6  0E09               	movlw	9
+   717  0005E8  6E59               	movwf	(main@user+19)^0,c
+   718  0005EA                     
+   719                           ;main.c: 26:     user.in_max_minute = 0x00;
+   720  0005EA  0E00               	movlw	0
+   721  0005EC  6E5A               	movwf	(main@user+20)^0,c
+   722  0005EE                     
+   723                           ;main.c: 27:     IOTICAT_register(user);
+   724  0005EE  EE20  F046         	lfsr	2,main@user
+   725  0005F2  EE00  F001         	lfsr	0,IOTICAT_register@user
+   726  0005F6  0E16               	movlw	22
+   727  0005F8                     u731:
+   728  0005F8  CFDB FFEB          	movff	plusw2,plusw0
+   729  0005FC  06E8               	decf	wreg,f,c
+   730  0005FE  E2FC               	bc	u731
+   731  000600  EC5E  F007         	call	_IOTICAT_register	;wreg free
+   732  000604                     
+   733                           ;main.c: 30:     strcpy(user.name, "MesaSilla\0");
+   734  000604  0E46               	movlw	low main@user
+   735  000606  6E01               	movwf	strcpy@dest^0,c
+   736  000608  0E00               	movlw	high main@user
+   737  00060A  6E02               	movwf	(strcpy@dest+1)^0,c
+   738  00060C  0E97               	movlw	low STR_3
+   739  00060E  6E03               	movwf	strcpy@src^0,c
+   740  000610  0E02               	movlw	high STR_3
+   741  000612  6E04               	movwf	(strcpy@src+1)^0,c
+   742  000614  ECE2  F006         	call	_strcpy	;wreg free
+   743  000618                     
+   744                           ;main.c: 31:     strcpy(user.uid, "27653\0");
+   745  000618  0E51               	movlw	low (main@user+11)
+   746  00061A  6E01               	movwf	strcpy@dest^0,c
+   747  00061C  0E00               	movlw	high (main@user+11)
+   748  00061E  6E02               	movwf	(strcpy@dest+1)^0,c
+   749  000620  0EA9               	movlw	low STR_4
+   750  000622  6E03               	movwf	strcpy@src^0,c
+   751  000624  0E02               	movlw	high STR_4
+   752  000626  6E04               	movwf	(strcpy@src+1)^0,c
+   753  000628  ECE2  F006         	call	_strcpy	;wreg free
+   754  00062C                     
+   755                           ;main.c: 32:     permanencia.value[0] = 0x00;
+   756  00062C  0E00               	movlw	0
+   757  00062E  6E44               	movwf	main@permanencia^0,c
+   758  000630                     
+   759                           ;main.c: 33:     permanencia.value[1] = 0x40;
+   760  000630  0E40               	movlw	64
+   761  000632  6E45               	movwf	(main@permanencia+1)^0,c
+   762  000634                     
+   763                           ;main.c: 34:     user.min_permanence_time = permanencia;
+   764  000634  C044  F05B         	movff	main@permanencia,main@user+21
+   765  000638  C045  F05C         	movff	main@permanencia+1,main@user+22
+   766  00063C                     
+   767                           ;main.c: 35:     user.in_min_hour = 0x08;
+   768  00063C  0E08               	movlw	8
+   769  00063E  6E57               	movwf	(main@user+17)^0,c
+   770  000640                     
+   771                           ;main.c: 36:     user.in_min_minute = 0x00;
+   772  000640  0E00               	movlw	0
+   773  000642  6E58               	movwf	(main@user+18)^0,c
+   774  000644                     
+   775                           ;main.c: 37:     user.in_max_hour = 0x09;
+   776  000644  0E09               	movlw	9
+   777  000646  6E59               	movwf	(main@user+19)^0,c
+   778  000648                     
+   779                           ;main.c: 38:     user.in_max_minute = 0x00;
+   780  000648  0E00               	movlw	0
+   781  00064A  6E5A               	movwf	(main@user+20)^0,c
+   782  00064C                     
+   783                           ;main.c: 39:     IOTICAT_register(user);
+   784  00064C  EE20  F046         	lfsr	2,main@user
+   785  000650  EE00  F001         	lfsr	0,IOTICAT_register@user
+   786  000654  0E16               	movlw	22
+   787  000656                     u741:
+   788  000656  CFDB FFEB          	movff	plusw2,plusw0
+   789  00065A  06E8               	decf	wreg,f,c
+   790  00065C  E2FC               	bc	u741
+   791  00065E  EC5E  F007         	call	_IOTICAT_register	;wreg free
+   792  000662                     
+   793                           ;main.c: 42:     strcpy(user.name, "Xose\0");
+   794  000662  0E46               	movlw	low main@user
+   795  000664  6E01               	movwf	strcpy@dest^0,c
+   796  000666  0E00               	movlw	high main@user
+   797  000668  6E02               	movwf	(strcpy@dest+1)^0,c
+   798  00066A  0EC5               	movlw	low STR_5
+   799  00066C  6E03               	movwf	strcpy@src^0,c
+   800  00066E  0E02               	movlw	high STR_5
+   801  000670  6E04               	movwf	(strcpy@src+1)^0,c
+   802  000672  ECE2  F006         	call	_strcpy	;wreg free
+   803  000676                     
+   804                           ;main.c: 43:     strcpy(user.uid, "38387\0");
+   805  000676  0E51               	movlw	low (main@user+11)
+   806  000678  6E01               	movwf	strcpy@dest^0,c
+   807  00067A  0E00               	movlw	high (main@user+11)
+   808  00067C  6E02               	movwf	(strcpy@dest+1)^0,c
+   809  00067E  0EB0               	movlw	low STR_6
+   810  000680  6E03               	movwf	strcpy@src^0,c
+   811  000682  0E02               	movlw	high STR_6
+   812  000684  6E04               	movwf	(strcpy@src+1)^0,c
+   813  000686  ECE2  F006         	call	_strcpy	;wreg free
+   814  00068A                     
+   815                           ;main.c: 44:     permanencia.value[0] = 0x00;
+   816  00068A  0E00               	movlw	0
+   817  00068C  6E44               	movwf	main@permanencia^0,c
+   818  00068E                     
+   819                           ;main.c: 45:     permanencia.value[1] = 0x40;
+   820  00068E  0E40               	movlw	64
+   821  000690  6E45               	movwf	(main@permanencia+1)^0,c
+   822  000692                     
+   823                           ;main.c: 46:     user.min_permanence_time = permanencia;
+   824  000692  C044  F05B         	movff	main@permanencia,main@user+21
+   825  000696  C045  F05C         	movff	main@permanencia+1,main@user+22
+   826  00069A                     
+   827                           ;main.c: 47:     user.in_min_hour = 0x08;
+   828  00069A  0E08               	movlw	8
+   829  00069C  6E57               	movwf	(main@user+17)^0,c
+   830  00069E                     
+   831                           ;main.c: 48:     user.in_min_minute = 0x00;
+   832  00069E  0E00               	movlw	0
+   833  0006A0  6E58               	movwf	(main@user+18)^0,c
+   834  0006A2                     
+   835                           ;main.c: 49:     user.in_max_hour = 0x09;
+   836  0006A2  0E09               	movlw	9
+   837  0006A4  6E59               	movwf	(main@user+19)^0,c
+   838  0006A6                     
+   839                           ;main.c: 50:     user.in_max_minute = 0x00;
+   840  0006A6  0E00               	movlw	0
+   841  0006A8  6E5A               	movwf	(main@user+20)^0,c
+   842  0006AA                     
+   843                           ;main.c: 51:     IOTICAT_register(user);
+   844  0006AA  EE20  F046         	lfsr	2,main@user
+   845  0006AE  EE00  F001         	lfsr	0,IOTICAT_register@user
+   846  0006B2  0E16               	movlw	22
+   847  0006B4                     u751:
+   848  0006B4  CFDB FFEB          	movff	plusw2,plusw0
+   849  0006B8  06E8               	decf	wreg,f,c
+   850  0006BA  E2FC               	bc	u751
+   851  0006BC  EC5E  F007         	call	_IOTICAT_register	;wreg free
+   852  0006C0                     
+   853                           ;main.c: 54:     strcpy(user.name, "Paula\0");
+   854  0006C0  0E46               	movlw	low main@user
+   855  0006C2  6E01               	movwf	strcpy@dest^0,c
+   856  0006C4  0E00               	movlw	high main@user
+   857  0006C6  6E02               	movwf	(strcpy@dest+1)^0,c
+   858  0006C8  0EBE               	movlw	low STR_7
+   859  0006CA  6E03               	movwf	strcpy@src^0,c
+   860  0006CC  0E02               	movlw	high STR_7
+   861  0006CE  6E04               	movwf	(strcpy@src+1)^0,c
+   862  0006D0  ECE2  F006         	call	_strcpy	;wreg free
+   863  0006D4                     
+   864                           ;main.c: 55:     strcpy(user.uid, "17179\0");
+   865  0006D4  0E51               	movlw	low (main@user+11)
+   866  0006D6  6E01               	movwf	strcpy@dest^0,c
+   867  0006D8  0E00               	movlw	high (main@user+11)
+   868  0006DA  6E02               	movwf	(strcpy@dest+1)^0,c
+   869  0006DC  0EB7               	movlw	low STR_8
+   870  0006DE  6E03               	movwf	strcpy@src^0,c
+   871  0006E0  0E02               	movlw	high STR_8
+   872  0006E2  6E04               	movwf	(strcpy@src+1)^0,c
+   873  0006E4  ECE2  F006         	call	_strcpy	;wreg free
+   874  0006E8                     
+   875                           ;main.c: 56:     permanencia.value[0] = 0x00;
+   876  0006E8  0E00               	movlw	0
+   877  0006EA  6E44               	movwf	main@permanencia^0,c
+   878  0006EC                     
+   879                           ;main.c: 57:     permanencia.value[1] = 0x40;
+   880  0006EC  0E40               	movlw	64
+   881  0006EE  6E45               	movwf	(main@permanencia+1)^0,c
+   882  0006F0                     
+   883                           ;main.c: 58:     user.min_permanence_time = permanencia;
+   884  0006F0  C044  F05B         	movff	main@permanencia,main@user+21
+   885  0006F4  C045  F05C         	movff	main@permanencia+1,main@user+22
+   886  0006F8                     
+   887                           ;main.c: 59:     user.in_min_hour = 0x08;
+   888  0006F8  0E08               	movlw	8
+   889  0006FA  6E57               	movwf	(main@user+17)^0,c
+   890  0006FC                     
+   891                           ;main.c: 60:     user.in_min_minute = 0x00;
+   892  0006FC  0E00               	movlw	0
+   893  0006FE  6E58               	movwf	(main@user+18)^0,c
+   894  000700                     
+   895                           ;main.c: 61:     user.in_max_hour = 0x09;
+   896  000700  0E09               	movlw	9
+   897  000702  6E59               	movwf	(main@user+19)^0,c
+   898  000704                     
+   899                           ;main.c: 62:     user.in_max_minute = 0x00;
+   900  000704  0E00               	movlw	0
+   901  000706  6E5A               	movwf	(main@user+20)^0,c
+   902  000708                     
+   903                           ;main.c: 63:     IOTICAT_register(user);
+   904  000708  EE20  F046         	lfsr	2,main@user
+   905  00070C  EE00  F001         	lfsr	0,IOTICAT_register@user
+   906  000710  0E16               	movlw	22
+   907  000712                     u761:
+   908  000712  CFDB FFEB          	movff	plusw2,plusw0
+   909  000716  06E8               	decf	wreg,f,c
+   910  000718  E2FC               	bc	u761
+   911  00071A  EC5E  F007         	call	_IOTICAT_register	;wreg free
+   912  00071E                     
+   913                           ;main.c: 65:     IOTICAT_show();
+   914  00071E  EC1F  F005         	call	_IOTICAT_show	;wreg free
+   915  000722                     
+   916                           ;main.c: 67:     IOTICAT_login("38387\0");
+   917  000722  0EB0               	movlw	low STR_6
+   918  000724  6E3E               	movwf	IOTICAT_login@uid^0,c
+   919  000726  0E02               	movlw	high STR_6
+   920  000728  6E3F               	movwf	(IOTICAT_login@uid+1)^0,c
+   921  00072A  ECAD  F005         	call	_IOTICAT_login	;wreg free
+   922  00072E                     
+   923                           ;main.c: 69:     IOTICAT_show();
+   924  00072E  EC1F  F005         	call	_IOTICAT_show	;wreg free
+   925  000732  0EB0               	movlw	low STR_6
+   926  000734  6E06               	movwf	IOTICAT_exists@uid^0,c
+   927  000736  0E02               	movlw	high STR_6
+   928  000738  6E07               	movwf	(IOTICAT_exists@uid+1)^0,c
+   929  00073A  EC43  F006         	call	_IOTICAT_exists	;wreg free
+   930  00073E  EF00  F000         	goto	start
+   931  000742                     __end_of_main:
+   932                           	opt callstack 0
+   933                           
+   934 ;; *************** function _IOTICAT_show *****************
+   935 ;; Defined at:
+   936 ;;		line 118 in file "ioticat.c"
+   937 ;; Parameters:    Size  Location     Type
+   938 ;;		None
+   939 ;; Auto vars:     Size  Location     Type
+   940 ;;  i               2   64[COMRAM] int 
+   941 ;;  i               2   62[COMRAM] int 
+   942 ;; Return value:  Size  Location     Type
+   943 ;;                  1    wreg      void 
+   944 ;; Registers used:
+   945 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   946 ;; Tracked objects:
+   947 ;;		On entry : 0/0
+   948 ;;		On exit  : 0/0
+   949 ;;		Unchanged: 0/0
+   950 ;; Data sizes:     COMRAM   BANK0   BANK1
+   951 ;;      Params:         0       0       0
+   952 ;;      Locals:         4       0       0
+   953 ;;      Temps:          3       0       0
+   954 ;;      Totals:         7       0       0
+   955 ;;Total ram usage:        7 bytes
+   956 ;; Hardware stack levels used:    1
+   957 ;; Hardware stack levels required when called:    6
+   958 ;; This function calls:
+   959 ;;		___wmul
+   960 ;;		_printf
+   961 ;; This function is called by:
+   962 ;;		_main
+   963 ;; This function uses a non-reentrant model
+   964 ;;
+   965                           
+   966                           	psect	text1
+   967  000A3E                     __ptext1:
+   968                           	opt callstack 0
+   969  000A3E                     _IOTICAT_show:
+   970                           	opt callstack 24
+   971  000A3E                     
+   972                           ;ioticat.c: 119:     printf("\n-- WORKING EMPLOYEES --\n");
+   973  000A3E  0E47               	movlw	low STR_15
+   974  000A40  6E32               	movwf	printf@fmt^0,c
+   975  000A42  0E02               	movlw	high STR_15
+   976  000A44  6E33               	movwf	(printf@fmt+1)^0,c
+   977  000A46  EC8B  F007         	call	_printf	;wreg free
+   978  000A4A                     
+   979                           ;ioticat.c: 120:     for (int i = 0; i < database.cuantos_in; i++) {
+   980  000A4A  0E00               	movlw	0
+   981  000A4C  6E40               	movwf	(IOTICAT_show@i+1)^0,c
+   982  000A4E  0E00               	movlw	0
+   983  000A50  6E3F               	movwf	IOTICAT_show@i^0,c
+   984  000A52  EF53  F005         	goto	l1412
+   985  000A56                     l1408:
+   986                           
+   987                           ; BSR set to: 0
+   988                           ;ioticat.c: 121:         printf("Employee: %s - %s\n", database.users[i].name, database.
+      +                          users[i].uid);
+   989  000A56  0E61               	movlw	low STR_16
+   990  000A58  6E32               	movwf	printf@fmt^0,c
+   991  000A5A  0E02               	movlw	high STR_16
+   992  000A5C  6E33               	movwf	(printf@fmt+1)^0,c
+   993  000A5E  C03F  F001         	movff	IOTICAT_show@i,___wmul@multiplier
+   994  000A62  C040  F002         	movff	IOTICAT_show@i+1,___wmul@multiplier+1
+   995  000A66  0E00               	movlw	0
+   996  000A68  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+   997  000A6A  0E17               	movlw	23
+   998  000A6C  6E03               	movwf	___wmul@multiplicand^0,c
+   999  000A6E  EC78  F007         	call	___wmul	;wreg free
+  1000  000A72  0E80               	movlw	low _database
+  1001  000A74  2401               	addwf	?___wmul^0,w,c
+  1002  000A76  6E34               	movwf	(?_printf+2)^0,c
+  1003  000A78  0E00               	movlw	high _database
+  1004  000A7A  2002               	addwfc	(?___wmul+1)^0,w,c
+  1005  000A7C  6E35               	movwf	(?_printf+3)^0,c
+  1006  000A7E  C03F  F001         	movff	IOTICAT_show@i,___wmul@multiplier
+  1007  000A82  C040  F002         	movff	IOTICAT_show@i+1,___wmul@multiplier+1
+  1008  000A86  0E00               	movlw	0
+  1009  000A88  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+  1010  000A8A  0E17               	movlw	23
+  1011  000A8C  6E03               	movwf	___wmul@multiplicand^0,c
+  1012  000A8E  EC78  F007         	call	___wmul	;wreg free
+  1013  000A92  0E8B               	movlw	low (_database+11)
+  1014  000A94  2401               	addwf	?___wmul^0,w,c
+  1015  000A96  6E36               	movwf	(?_printf+4)^0,c
+  1016  000A98  0E00               	movlw	high (_database+11)
+  1017  000A9A  2002               	addwfc	(?___wmul+1)^0,w,c
+  1018  000A9C  6E37               	movwf	(?_printf+5)^0,c
+  1019  000A9E  EC8B  F007         	call	_printf	;wreg free
+  1020  000AA2                     
+  1021                           ;ioticat.c: 122:     }
+  1022  000AA2  4A3F               	infsnz	IOTICAT_show@i^0,f,c
+  1023  000AA4  2A40               	incf	(IOTICAT_show@i+1)^0,f,c
+  1024  000AA6                     l1412:
+  1025  000AA6  0100               	movlb	0	; () banked
+  1026  000AA8  51F8               	movf	(_database+120)& (0+255),w,b
+  1027  000AAA  6E3C               	movwf	??_IOTICAT_show^0,c
+  1028  000AAC  6A3D               	clrf	(??_IOTICAT_show+1)^0,c
+  1029  000AAE  503C               	movf	??_IOTICAT_show^0,w,c
+  1030  000AB0  5C3F               	subwf	IOTICAT_show@i^0,w,c
+  1031  000AB2  5040               	movf	(IOTICAT_show@i+1)^0,w,c
+  1032  000AB4  0A80               	xorlw	128
+  1033  000AB6  6E3E               	movwf	(??_IOTICAT_show+2)^0,c
+  1034  000AB8  503D               	movf	(??_IOTICAT_show+1)^0,w,c
+  1035  000ABA  0A80               	xorlw	128
+  1036  000ABC  583E               	subwfb	(??_IOTICAT_show+2)^0,w,c
+  1037  000ABE  A0D8               	btfss	status,0,c
+  1038  000AC0  EF64  F005         	goto	u651
+  1039  000AC4  EF66  F005         	goto	u650
+  1040  000AC8                     u651:
+  1041  000AC8  EF2B  F005         	goto	l1408
+  1042  000ACC                     u650:
+  1043  000ACC                     
+  1044                           ; BSR set to: 0
+  1045                           ;ioticat.c: 124:     printf("\n-- REGISTERED EMPLOYEES --\n");
+  1046  000ACC  0E2A               	movlw	low STR_17
+  1047  000ACE  6E32               	movwf	printf@fmt^0,c
+  1048  000AD0  0E02               	movlw	high STR_17
+  1049  000AD2  6E33               	movwf	(printf@fmt+1)^0,c
+  1050  000AD4  EC8B  F007         	call	_printf	;wreg free
+  1051  000AD8                     
+  1052                           ;ioticat.c: 125:     for (int i = database.cuantos_in; i < database.cuantos; i++) {
+  1053  000AD8  C0F8  F041         	movff	_database+120,IOTICAT_show@i_167
+  1054  000ADC  6A42               	clrf	(IOTICAT_show@i_167+1)^0,c
+  1055  000ADE  EF99  F005         	goto	l1422
+  1056  000AE2                     l1418:
+  1057                           
+  1058                           ; BSR set to: 0
+  1059                           ;ioticat.c: 126:         printf("Employee: %s - %s\n", database.users[i].name, database.
+      +                          users[i].uid);
+  1060  000AE2  0E61               	movlw	low STR_16
+  1061  000AE4  6E32               	movwf	printf@fmt^0,c
+  1062  000AE6  0E02               	movlw	high STR_16
+  1063  000AE8  6E33               	movwf	(printf@fmt+1)^0,c
+  1064  000AEA  C041  F001         	movff	IOTICAT_show@i_167,___wmul@multiplier
+  1065  000AEE  C042  F002         	movff	IOTICAT_show@i_167+1,___wmul@multiplier+1
+  1066  000AF2  0E00               	movlw	0
+  1067  000AF4  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+  1068  000AF6  0E17               	movlw	23
+  1069  000AF8  6E03               	movwf	___wmul@multiplicand^0,c
+  1070  000AFA  EC78  F007         	call	___wmul	;wreg free
+  1071  000AFE  0E80               	movlw	low _database
+  1072  000B00  2401               	addwf	?___wmul^0,w,c
+  1073  000B02  6E34               	movwf	(?_printf+2)^0,c
+  1074  000B04  0E00               	movlw	high _database
+  1075  000B06  2002               	addwfc	(?___wmul+1)^0,w,c
+  1076  000B08  6E35               	movwf	(?_printf+3)^0,c
+  1077  000B0A  C041  F001         	movff	IOTICAT_show@i_167,___wmul@multiplier
+  1078  000B0E  C042  F002         	movff	IOTICAT_show@i_167+1,___wmul@multiplier+1
+  1079  000B12  0E00               	movlw	0
+  1080  000B14  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+  1081  000B16  0E17               	movlw	23
+  1082  000B18  6E03               	movwf	___wmul@multiplicand^0,c
+  1083  000B1A  EC78  F007         	call	___wmul	;wreg free
+  1084  000B1E  0E8B               	movlw	low (_database+11)
+  1085  000B20  2401               	addwf	?___wmul^0,w,c
+  1086  000B22  6E36               	movwf	(?_printf+4)^0,c
+  1087  000B24  0E00               	movlw	high (_database+11)
+  1088  000B26  2002               	addwfc	(?___wmul+1)^0,w,c
+  1089  000B28  6E37               	movwf	(?_printf+5)^0,c
+  1090  000B2A  EC8B  F007         	call	_printf	;wreg free
+  1091  000B2E                     
+  1092                           ;ioticat.c: 127:     }
+  1093  000B2E  4A41               	infsnz	IOTICAT_show@i_167^0,f,c
+  1094  000B30  2A42               	incf	(IOTICAT_show@i_167+1)^0,f,c
+  1095  000B32                     l1422:
+  1096  000B32  0100               	movlb	0	; () banked
+  1097  000B34  51F7               	movf	(_database+119)& (0+255),w,b
+  1098  000B36  6E3C               	movwf	??_IOTICAT_show^0,c
+  1099  000B38  6A3D               	clrf	(??_IOTICAT_show+1)^0,c
+  1100  000B3A  503C               	movf	??_IOTICAT_show^0,w,c
+  1101  000B3C  5C41               	subwf	IOTICAT_show@i_167^0,w,c
+  1102  000B3E  5042               	movf	(IOTICAT_show@i_167+1)^0,w,c
+  1103  000B40  0A80               	xorlw	128
+  1104  000B42  6E3E               	movwf	(??_IOTICAT_show+2)^0,c
+  1105  000B44  503D               	movf	(??_IOTICAT_show+1)^0,w,c
+  1106  000B46  0A80               	xorlw	128
+  1107  000B48  583E               	subwfb	(??_IOTICAT_show+2)^0,w,c
+  1108  000B4A  A0D8               	btfss	status,0,c
+  1109  000B4C  EFAA  F005         	goto	u661
+  1110  000B50  EFAC  F005         	goto	u660
+  1111  000B54                     u661:
+  1112  000B54  EF71  F005         	goto	l1418
+  1113  000B58                     u660:
+  1114  000B58                     
+  1115                           ; BSR set to: 0
+  1116  000B58  0012               	return		;funcret
+  1117  000B5A                     __end_of_IOTICAT_show:
+  1118                           	opt callstack 0
+  1119                           
+  1120 ;; *************** function ___wmul *****************
+  1121 ;; Defined at:
+  1122 ;;		line 15 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul16.c"
+  1123 ;; Parameters:    Size  Location     Type
+  1124 ;;  multiplier      2    0[COMRAM] unsigned int 
+  1125 ;;  multiplicand    2    2[COMRAM] unsigned int 
+  1126 ;; Auto vars:     Size  Location     Type
+  1127 ;;  product         2    4[COMRAM] unsigned int 
+  1128 ;; Return value:  Size  Location     Type
+  1129 ;;                  2    0[COMRAM] unsigned int 
+  1130 ;; Registers used:
+  1131 ;;		wreg, status,2, status,0, prodl, prodh
+  1132 ;; Tracked objects:
+  1133 ;;		On entry : 0/0
+  1134 ;;		On exit  : 0/0
+  1135 ;;		Unchanged: 0/0
+  1136 ;; Data sizes:     COMRAM   BANK0   BANK1
+  1137 ;;      Params:         4       0       0
+  1138 ;;      Locals:         2       0       0
+  1139 ;;      Temps:          0       0       0
+  1140 ;;      Totals:         6       0       0
+  1141 ;;Total ram usage:        6 bytes
+  1142 ;; Hardware stack levels used:    1
+  1143 ;; This function calls:
+  1144 ;;		Nothing
+  1145 ;; This function is called by:
+  1146 ;;		_IOTICAT_show
+  1147 ;; This function uses a non-reentrant model
+  1148 ;;
+  1149                           
+  1150                           	psect	text2
+  1151  000EF0                     __ptext2:
+  1152                           	opt callstack 0
+  1153  000EF0                     ___wmul:
+  1154                           	opt callstack 29
+  1155  000EF0  5001               	movf	___wmul@multiplier^0,w,c
+  1156  000EF2  0203               	mulwf	___wmul@multiplicand^0,c
+  1157  000EF4  CFF3 F005          	movff	prodl,___wmul@product
+  1158  000EF8  CFF4 F006          	movff	prodh,___wmul@product+1
+  1159  000EFC  5001               	movf	___wmul@multiplier^0,w,c
+  1160  000EFE  0204               	mulwf	(___wmul@multiplicand+1)^0,c
+  1161  000F00  50F3               	movf	243,w,c
+  1162  000F02  2606               	addwf	(___wmul@product+1)^0,f,c
+  1163  000F04  5002               	movf	(___wmul@multiplier+1)^0,w,c
+  1164  000F06  0203               	mulwf	___wmul@multiplicand^0,c
+  1165  000F08  50F3               	movf	243,w,c
+  1166  000F0A  2606               	addwf	(___wmul@product+1)^0,f,c
+  1167  000F0C  C005  F001         	movff	___wmul@product,?___wmul
+  1168  000F10  C006  F002         	movff	___wmul@product+1,?___wmul+1
+  1169  000F14  0012               	return		;funcret
+  1170  000F16                     __end_of___wmul:
+  1171                           	opt callstack 0
+  1172                           
+  1173 ;; *************** function _IOTICAT_register *****************
+  1174 ;; Defined at:
+  1175 ;;		line 32 in file "ioticat.c"
+  1176 ;; Parameters:    Size  Location     Type
+  1177 ;;  user           23    0[COMRAM] struct .
+  1178 ;; Auto vars:     Size  Location     Type
+  1179 ;;		None
+  1180 ;; Return value:  Size  Location     Type
+  1181 ;;                  1    wreg      unsigned char 
+  1182 ;; Registers used:
+  1183 ;;		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+  1184 ;; Tracked objects:
+  1185 ;;		On entry : 0/0
+  1186 ;;		On exit  : 0/0
+  1187 ;;		Unchanged: 0/0
+  1188 ;; Data sizes:     COMRAM   BANK0   BANK1
+  1189 ;;      Params:        23       0       0
+  1190 ;;      Locals:         0       0       0
+  1191 ;;      Temps:          0       0       0
+  1192 ;;      Totals:        23       0       0
+  1193 ;;Total ram usage:       23 bytes
+  1194 ;; Hardware stack levels used:    1
+  1195 ;; This function calls:
+  1196 ;;		Nothing
+  1197 ;; This function is called by:
+  1198 ;;		_main
+  1199 ;; This function uses a non-reentrant model
+  1200 ;;
+  1201                           
+  1202                           	psect	text3
+  1203  000EBC                     __ptext3:
+  1204                           	opt callstack 0
+  1205  000EBC                     _IOTICAT_register:
+  1206                           	opt callstack 30
+  1207  000EBC                     
+  1208                           ;ioticat.c: 33:     if(database.cuantos < 5){
+  1209  000EBC  0E05               	movlw	5
+  1210  000EBE  0100               	movlb	0	; () banked
+  1211  000EC0  61F7               	cpfslt	(_database+119)& (0+255),b
+  1212  000EC2  EF65  F007         	goto	u631
+  1213  000EC6  EF67  F007         	goto	u630
+  1214  000ECA                     u631:
+  1215  000ECA  EF77  F007         	goto	l34
+  1216  000ECE                     u630:
+  1217  000ECE                     
+  1218                           ; BSR set to: 0
+  1219                           ;ioticat.c: 34:         database.users[database.cuantos++] = user;
+  1220  000ECE  EE20  F001         	lfsr	2,IOTICAT_register@user
+  1221  000ED2  51F7               	movf	(_database+119)& (0+255),w,b
+  1222  000ED4  0D17               	mullw	23
+  1223  000ED6  0E80               	movlw	low _database
+  1224  000ED8  24F3               	addwf	243,w,c
+  1225  000EDA  6EE1               	movwf	fsr1l,c
+  1226  000EDC  0E00               	movlw	high _database
+  1227  000EDE  20F4               	addwfc	prodh,w,c
+  1228  000EE0  6EE2               	movwf	fsr1h,c
+  1229  000EE2  0E16               	movlw	22
+  1230  000EE4                     u641:
+  1231  000EE4  CFDB FFE3          	movff	plusw2,plusw1
+  1232  000EE8  06E8               	decf	wreg,f,c
+  1233  000EEA  E2FC               	bc	u641
+  1234  000EEC                     
+  1235                           ; BSR set to: 0
+  1236  000EEC  2BF7               	incf	(_database+119)& (0+255),f,b
+  1237  000EEE                     l34:
+  1238                           
+  1239                           ; BSR set to: 0
+  1240  000EEE  0012               	return		;funcret
+  1241  000EF0                     __end_of_IOTICAT_register:
+  1242                           	opt callstack 0
+  1243                           
+  1244 ;; *************** function _IOTICAT_login *****************
+  1245 ;; Defined at:
+  1246 ;;		line 95 in file "ioticat.c"
+  1247 ;; Parameters:    Size  Location     Type
+  1248 ;;  uid             2   61[COMRAM] PTR const unsigned char 
+  1249 ;;		 -> STR_9(7), 
+  1250 ;; Auto vars:     Size  Location     Type
+  1251 ;;  i               1   63[COMRAM] unsigned char 
+  1252 ;; Return value:  Size  Location     Type
+  1253 ;;                  1    wreg      unsigned char 
+  1254 ;; Registers used:
+  1255 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+  1256 ;; Tracked objects:
+  1257 ;;		On entry : 0/0
+  1258 ;;		On exit  : 0/0
+  1259 ;;		Unchanged: 0/0
+  1260 ;; Data sizes:     COMRAM   BANK0   BANK1
+  1261 ;;      Params:         2       0       0
+  1262 ;;      Locals:         1       0       0
+  1263 ;;      Temps:          0       0       0
+  1264 ;;      Totals:         3       0       0
+  1265 ;;Total ram usage:        3 bytes
+  1266 ;; Hardware stack levels used:    1
+  1267 ;; Hardware stack levels required when called:    7
+  1268 ;; This function calls:
+  1269 ;;		_printf
+  1270 ;;		_strcmp
+  1271 ;;		_swap
+  1272 ;; This function is called by:
+  1273 ;;		_main
+  1274 ;; This function uses a non-reentrant model
+  1275 ;;
+  1276                           
+  1277                           	psect	text4
+  1278  000B5A                     __ptext4:
+  1279                           	opt callstack 0
+  1280  000B5A                     _IOTICAT_login:
+  1281                           	opt callstack 23
+  1282  000B5A                     
+  1283                           ;ioticat.c: 96:     if(database.cuantos_in < 2){
+  1284  000B5A  0E02               	movlw	2
+  1285  000B5C  0100               	movlb	0	; () banked
+  1286  000B5E  61F8               	cpfslt	(_database+120)& (0+255),b
+  1287  000B60  EFB4  F005         	goto	u671
+  1288  000B64  EFB6  F005         	goto	u670
+  1289  000B68                     u671:
+  1290  000B68  EFF7  F005         	goto	l45
+  1291  000B6C                     u670:
+  1292  000B6C                     
+  1293                           ; BSR set to: 0
+  1294                           ;ioticat.c: 98:         for(unsigned char i = database.cuantos_in; i < database.cuantos;
+      +                           i++){
+  1295  000B6C  C0F8  F040         	movff	_database+120,IOTICAT_login@i
+  1296  000B70  EFED  F005         	goto	l1440
+  1297  000B74                     l1428:
+  1298                           
+  1299                           ; BSR set to: 0
+  1300                           ;ioticat.c: 99:             printf("[INFO] ------------ Checking %s with %s\n", database
+      +                          .users[i].uid, uid);
+  1301  000B74  0E01               	movlw	low STR_14
+  1302  000B76  6E32               	movwf	printf@fmt^0,c
+  1303  000B78  0E02               	movlw	high STR_14
+  1304  000B7A  6E33               	movwf	(printf@fmt+1)^0,c
+  1305  000B7C  5040               	movf	IOTICAT_login@i^0,w,c
+  1306  000B7E  0D17               	mullw	23
+  1307  000B80  0E8B               	movlw	low (_database+11)
+  1308  000B82  24F3               	addwf	243,w,c
+  1309  000B84  6E34               	movwf	(?_printf+2)^0,c
+  1310  000B86  0E00               	movlw	high (_database+11)
+  1311  000B88  20F4               	addwfc	prodh,w,c
+  1312  000B8A  6E35               	movwf	(?_printf+3)^0,c
+  1313  000B8C  C03E  F036         	movff	IOTICAT_login@uid,?_printf+4
+  1314  000B90  C03F  F037         	movff	IOTICAT_login@uid+1,?_printf+5
+  1315  000B94  EC8B  F007         	call	_printf	;wreg free
+  1316  000B98                     
+  1317                           ;ioticat.c: 100:             if (strcmp(database.users[i].uid, uid) == 0){
+  1318  000B98  5040               	movf	IOTICAT_login@i^0,w,c
+  1319  000B9A  0D17               	mullw	23
+  1320  000B9C  0E8B               	movlw	low (_database+11)
+  1321  000B9E  24F3               	addwf	243,w,c
+  1322  000BA0  6E01               	movwf	strcmp@l^0,c
+  1323  000BA2  0E00               	movlw	high (_database+11)
+  1324  000BA4  20F4               	addwfc	prodh,w,c
+  1325  000BA6  6E02               	movwf	(strcmp@l+1)^0,c
+  1326  000BA8  C03E  F003         	movff	IOTICAT_login@uid,strcmp@r
+  1327  000BAC  C03F  F004         	movff	IOTICAT_login@uid+1,strcmp@r+1
+  1328  000BB0  EC7B  F006         	call	_strcmp	;wreg free
+  1329  000BB4  5001               	movf	?_strcmp^0,w,c
+  1330  000BB6  1002               	iorwf	(?_strcmp+1)^0,w,c
+  1331  000BB8  A4D8               	btfss	status,2,c
+  1332  000BBA  EFE1  F005         	goto	u681
+  1333  000BBE  EFE3  F005         	goto	u680
+  1334  000BC2                     u681:
+  1335  000BC2  EFEC  F005         	goto	l1438
+  1336  000BC6                     u680:
+  1337  000BC6                     
+  1338                           ;ioticat.c: 102:                 swap(i, database.cuantos_in);
+  1339  000BC6  C0F8  F03C         	movff	_database+120,swap@j
+  1340  000BCA  5040               	movf	IOTICAT_login@i^0,w,c
+  1341  000BCC  EC69  F001         	call	_swap
+  1342  000BD0                     
+  1343                           ;ioticat.c: 103:                 database.cuantos_in++;
+  1344  000BD0  0100               	movlb	0	; () banked
+  1345  000BD2  2BF8               	incf	(_database+120)& (0+255),f,b
+  1346  000BD4  EFF7  F005         	goto	l45
+  1347  000BD8                     l1438:
+  1348                           
+  1349                           ;ioticat.c: 106:         }
+  1350  000BD8  2A40               	incf	IOTICAT_login@i^0,f,c
+  1351  000BDA                     l1440:
+  1352  000BDA  0100               	movlb	0	; () banked
+  1353  000BDC  51F7               	movf	(_database+119)& (0+255),w,b
+  1354  000BDE  5C40               	subwf	IOTICAT_login@i^0,w,c
+  1355  000BE0  A0D8               	btfss	status,0,c
+  1356  000BE2  EFF5  F005         	goto	u691
+  1357  000BE6  EFF7  F005         	goto	u690
+  1358  000BEA                     u691:
+  1359  000BEA  EFBA  F005         	goto	l1428
+  1360  000BEE                     u690:
+  1361  000BEE                     l45:
+  1362                           
+  1363                           ; BSR set to: 0
+  1364  000BEE  0012               	return		;funcret
+  1365  000BF0                     __end_of_IOTICAT_login:
+  1366                           	opt callstack 0
+  1367                           
+  1368 ;; *************** function _swap *****************
+  1369 ;; Defined at:
+  1370 ;;		line 46 in file "ioticat.c"
+  1371 ;; Parameters:    Size  Location     Type
+  1372 ;;  i               1    wreg     unsigned char 
+  1373 ;;  j               1   59[COMRAM] unsigned char 
+  1374 ;; Auto vars:     Size  Location     Type
+  1375 ;;  i               1   60[COMRAM] unsigned char 
+  1376 ;; Return value:  Size  Location     Type
+  1377 ;;                  1    wreg      void 
+  1378 ;; Registers used:
+  1379 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+  1380 ;; Tracked objects:
+  1381 ;;		On entry : 0/0
+  1382 ;;		On exit  : 0/0
+  1383 ;;		Unchanged: 0/0
+  1384 ;; Data sizes:     COMRAM   BANK0   BANK1
+  1385 ;;      Params:         1       0       0
+  1386 ;;      Locals:         1       0       0
+  1387 ;;      Temps:          0       0       0
+  1388 ;;      Totals:         2       0       0
+  1389 ;;Total ram usage:        2 bytes
+  1390 ;; Hardware stack levels used:    1
+  1391 ;; Hardware stack levels required when called:    6
+  1392 ;; This function calls:
+  1393 ;;		_printf
+  1394 ;;		_strcpy
+  1395 ;; This function is called by:
+  1396 ;;		_IOTICAT_login
+  1397 ;; This function uses a non-reentrant model
+  1398 ;;
+  1399                           
+  1400                           	psect	text5
+  1401  0002D2                     __ptext5:
+  1402                           	opt callstack 0
+  1403  0002D2                     _swap:
+  1404                           	opt callstack 23
+  1405                           
+  1406                           ; BSR set to: 0
+  1407                           ;incstack = 0
+  1408                           ;swap@i stored from wreg
+  1409  0002D2  6E3D               	movwf	swap@i^0,c
+  1410  0002D4                     
+  1411                           ;ioticat.c: 47:     strcpy(swappy.name, database.users[i].name);
+  1412  0002D4  0E65               	movlw	low _swappy
+  1413  0002D6  6E01               	movwf	strcpy@dest^0,c
+  1414  0002D8  0E00               	movlw	high _swappy
+  1415  0002DA  6E02               	movwf	(strcpy@dest+1)^0,c
+  1416  0002DC  503D               	movf	swap@i^0,w,c
+  1417  0002DE  0D17               	mullw	23
+  1418  0002E0  0E80               	movlw	low _database
+  1419  0002E2  24F3               	addwf	243,w,c
+  1420  0002E4  6E03               	movwf	strcpy@src^0,c
+  1421  0002E6  0E00               	movlw	high _database
+  1422  0002E8  20F4               	addwfc	prodh,w,c
+  1423  0002EA  6E04               	movwf	(strcpy@src+1)^0,c
+  1424  0002EC  ECE2  F006         	call	_strcpy	;wreg free
+  1425                           
+  1426                           ;ioticat.c: 48:     strcpy(swappy.uid, database.users[i].uid);
+  1427  0002F0  0E70               	movlw	low (_swappy+11)
+  1428  0002F2  6E01               	movwf	strcpy@dest^0,c
+  1429  0002F4  0E00               	movlw	high (_swappy+11)
+  1430  0002F6  6E02               	movwf	(strcpy@dest+1)^0,c
+  1431  0002F8  503D               	movf	swap@i^0,w,c
+  1432  0002FA  0D17               	mullw	23
+  1433  0002FC  0E8B               	movlw	low (_database+11)
+  1434  0002FE  24F3               	addwf	243,w,c
+  1435  000300  6E03               	movwf	strcpy@src^0,c
+  1436  000302  0E00               	movlw	high (_database+11)
+  1437  000304  20F4               	addwfc	prodh,w,c
+  1438  000306  6E04               	movwf	(strcpy@src+1)^0,c
+  1439  000308  ECE2  F006         	call	_strcpy	;wreg free
+  1440  00030C                     
+  1441                           ;ioticat.c: 51:     swappy.min_permanence_time.value[0] = database.users[i].min_permanen
+      +                          ce_time.value[0];
+  1442  00030C  503D               	movf	swap@i^0,w,c
+  1443  00030E  0D17               	mullw	23
+  1444  000310  0E95               	movlw	low (_database+21)
+  1445  000312  24F3               	addwf	243,w,c
+  1446  000314  6ED9               	movwf	fsr2l,c
+  1447  000316  0E00               	movlw	high (_database+21)
+  1448  000318  20F4               	addwfc	prodh,w,c
+  1449  00031A  6EDA               	movwf	fsr2h,c
+  1450  00031C  50DF               	movf	indf2,w,c
+  1451  00031E  6E7A               	movwf	(_swappy+21)^0,c
+  1452  000320                     
+  1453                           ;ioticat.c: 52:     swappy.min_permanence_time.value[1] = database.users[i].min_permanen
+      +                          ce_time.value[1];
+  1454  000320  503D               	movf	swap@i^0,w,c
+  1455  000322  0D17               	mullw	23
+  1456  000324  0E96               	movlw	low (_database+22)
+  1457  000326  24F3               	addwf	243,w,c
+  1458  000328  6ED9               	movwf	fsr2l,c
+  1459  00032A  0E00               	movlw	high (_database+22)
+  1460  00032C  20F4               	addwfc	prodh,w,c
+  1461  00032E  6EDA               	movwf	fsr2h,c
+  1462  000330  50DF               	movf	indf2,w,c
+  1463  000332  6E7B               	movwf	(_swappy+22)^0,c
+  1464  000334                     
+  1465                           ;ioticat.c: 53:     swappy.in_min_hour = database.users[i].in_min_hour;
+  1466  000334  503D               	movf	swap@i^0,w,c
+  1467  000336  0D17               	mullw	23
+  1468  000338  0E91               	movlw	low (_database+17)
+  1469  00033A  24F3               	addwf	243,w,c
+  1470  00033C  6ED9               	movwf	fsr2l,c
+  1471  00033E  0E00               	movlw	high (_database+17)
+  1472  000340  20F4               	addwfc	prodh,w,c
+  1473  000342  6EDA               	movwf	fsr2h,c
+  1474  000344  50DF               	movf	indf2,w,c
+  1475  000346  6E76               	movwf	(_swappy+17)^0,c
+  1476  000348                     
+  1477                           ;ioticat.c: 54:     swappy.in_min_minute = database.users[i].in_min_minute;
+  1478  000348  503D               	movf	swap@i^0,w,c
+  1479  00034A  0D17               	mullw	23
+  1480  00034C  0E92               	movlw	low (_database+18)
+  1481  00034E  24F3               	addwf	243,w,c
+  1482  000350  6ED9               	movwf	fsr2l,c
+  1483  000352  0E00               	movlw	high (_database+18)
+  1484  000354  20F4               	addwfc	prodh,w,c
+  1485  000356  6EDA               	movwf	fsr2h,c
+  1486  000358  50DF               	movf	indf2,w,c
+  1487  00035A  6E77               	movwf	(_swappy+18)^0,c
+  1488  00035C                     
+  1489                           ;ioticat.c: 55:     swappy.in_max_hour = database.users[i].in_max_hour;
+  1490  00035C  503D               	movf	swap@i^0,w,c
+  1491  00035E  0D17               	mullw	23
+  1492  000360  0E93               	movlw	low (_database+19)
+  1493  000362  24F3               	addwf	243,w,c
+  1494  000364  6ED9               	movwf	fsr2l,c
+  1495  000366  0E00               	movlw	high (_database+19)
+  1496  000368  20F4               	addwfc	prodh,w,c
+  1497  00036A  6EDA               	movwf	fsr2h,c
+  1498  00036C  50DF               	movf	indf2,w,c
+  1499  00036E  6E78               	movwf	(_swappy+19)^0,c
+  1500  000370                     
+  1501                           ;ioticat.c: 56:     swappy.in_max_minute = database.users[i].in_max_minute;
+  1502  000370  503D               	movf	swap@i^0,w,c
+  1503  000372  0D17               	mullw	23
+  1504  000374  0E94               	movlw	low (_database+20)
+  1505  000376  24F3               	addwf	243,w,c
+  1506  000378  6ED9               	movwf	fsr2l,c
+  1507  00037A  0E00               	movlw	high (_database+20)
+  1508  00037C  20F4               	addwfc	prodh,w,c
+  1509  00037E  6EDA               	movwf	fsr2h,c
+  1510  000380  50DF               	movf	indf2,w,c
+  1511  000382  6E79               	movwf	(_swappy+20)^0,c
+  1512                           
+  1513                           ;ioticat.c: 58:     strcpy(database.users[i].name, database.users[j].name);
+  1514  000384  503D               	movf	swap@i^0,w,c
+  1515  000386  0D17               	mullw	23
+  1516  000388  0E80               	movlw	low _database
+  1517  00038A  24F3               	addwf	243,w,c
+  1518  00038C  6E01               	movwf	strcpy@dest^0,c
+  1519  00038E  0E00               	movlw	high _database
+  1520  000390  20F4               	addwfc	prodh,w,c
+  1521  000392  6E02               	movwf	(strcpy@dest+1)^0,c
+  1522  000394  503C               	movf	swap@j^0,w,c
+  1523  000396  0D17               	mullw	23
+  1524  000398  0E80               	movlw	low _database
+  1525  00039A  24F3               	addwf	243,w,c
+  1526  00039C  6E03               	movwf	strcpy@src^0,c
+  1527  00039E  0E00               	movlw	high _database
+  1528  0003A0  20F4               	addwfc	prodh,w,c
+  1529  0003A2  6E04               	movwf	(strcpy@src+1)^0,c
+  1530  0003A4  ECE2  F006         	call	_strcpy	;wreg free
+  1531                           
+  1532                           ;ioticat.c: 59:     strcpy(database.users[i].uid, database.users[j].uid);
+  1533  0003A8  503D               	movf	swap@i^0,w,c
+  1534  0003AA  0D17               	mullw	23
+  1535  0003AC  0E8B               	movlw	low (_database+11)
+  1536  0003AE  24F3               	addwf	243,w,c
+  1537  0003B0  6E01               	movwf	strcpy@dest^0,c
+  1538  0003B2  0E00               	movlw	high (_database+11)
+  1539  0003B4  20F4               	addwfc	prodh,w,c
+  1540  0003B6  6E02               	movwf	(strcpy@dest+1)^0,c
+  1541  0003B8  503C               	movf	swap@j^0,w,c
+  1542  0003BA  0D17               	mullw	23
+  1543  0003BC  0E8B               	movlw	low (_database+11)
+  1544  0003BE  24F3               	addwf	243,w,c
+  1545  0003C0  6E03               	movwf	strcpy@src^0,c
+  1546  0003C2  0E00               	movlw	high (_database+11)
+  1547  0003C4  20F4               	addwfc	prodh,w,c
+  1548  0003C6  6E04               	movwf	(strcpy@src+1)^0,c
+  1549  0003C8  ECE2  F006         	call	_strcpy	;wreg free
+  1550  0003CC                     
+  1551                           ;ioticat.c: 62:     database.users[i].min_permanence_time.value[0] = database.users[j].m
+      +                          in_permanence_time.value[0];
+  1552  0003CC  503C               	movf	swap@j^0,w,c
+  1553  0003CE  0D17               	mullw	23
+  1554  0003D0  0E95               	movlw	low (_database+21)
+  1555  0003D2  24F3               	addwf	243,w,c
+  1556  0003D4  6ED9               	movwf	fsr2l,c
+  1557  0003D6  0E00               	movlw	high (_database+21)
+  1558  0003D8  20F4               	addwfc	prodh,w,c
+  1559  0003DA  6EDA               	movwf	fsr2h,c
+  1560  0003DC  503D               	movf	swap@i^0,w,c
+  1561  0003DE  0D17               	mullw	23
+  1562  0003E0  0E95               	movlw	low (_database+21)
+  1563  0003E2  24F3               	addwf	243,w,c
+  1564  0003E4  6EE1               	movwf	fsr1l,c
+  1565  0003E6  0E00               	movlw	high (_database+21)
+  1566  0003E8  20F4               	addwfc	prodh,w,c
+  1567  0003EA  6EE2               	movwf	fsr1h,c
+  1568  0003EC  CFDF FFE7          	movff	indf2,indf1
+  1569  0003F0                     
+  1570                           ;ioticat.c: 63:     database.users[i].min_permanence_time.value[1] = database.users[j].m
+      +                          in_permanence_time.value[1];
+  1571  0003F0  503C               	movf	swap@j^0,w,c
+  1572  0003F2  0D17               	mullw	23
+  1573  0003F4  0E96               	movlw	low (_database+22)
+  1574  0003F6  24F3               	addwf	243,w,c
+  1575  0003F8  6ED9               	movwf	fsr2l,c
+  1576  0003FA  0E00               	movlw	high (_database+22)
+  1577  0003FC  20F4               	addwfc	prodh,w,c
+  1578  0003FE  6EDA               	movwf	fsr2h,c
+  1579  000400  503D               	movf	swap@i^0,w,c
+  1580  000402  0D17               	mullw	23
+  1581  000404  0E96               	movlw	low (_database+22)
+  1582  000406  24F3               	addwf	243,w,c
+  1583  000408  6EE1               	movwf	fsr1l,c
+  1584  00040A  0E00               	movlw	high (_database+22)
+  1585  00040C  20F4               	addwfc	prodh,w,c
+  1586  00040E  6EE2               	movwf	fsr1h,c
+  1587  000410  CFDF FFE7          	movff	indf2,indf1
+  1588  000414                     
+  1589                           ;ioticat.c: 64:     database.users[i].in_min_hour = database.users[j].in_min_hour;
+  1590  000414  503C               	movf	swap@j^0,w,c
+  1591  000416  0D17               	mullw	23
+  1592  000418  0E91               	movlw	low (_database+17)
+  1593  00041A  24F3               	addwf	243,w,c
+  1594  00041C  6ED9               	movwf	fsr2l,c
+  1595  00041E  0E00               	movlw	high (_database+17)
+  1596  000420  20F4               	addwfc	prodh,w,c
+  1597  000422  6EDA               	movwf	fsr2h,c
+  1598  000424  503D               	movf	swap@i^0,w,c
+  1599  000426  0D17               	mullw	23
+  1600  000428  0E91               	movlw	low (_database+17)
+  1601  00042A  24F3               	addwf	243,w,c
+  1602  00042C  6EE1               	movwf	fsr1l,c
+  1603  00042E  0E00               	movlw	high (_database+17)
+  1604  000430  20F4               	addwfc	prodh,w,c
+  1605  000432  6EE2               	movwf	fsr1h,c
+  1606  000434  CFDF FFE7          	movff	indf2,indf1
+  1607  000438                     
+  1608                           ;ioticat.c: 65:     database.users[i].in_min_minute = database.users[j].in_min_minute;
+  1609  000438  503C               	movf	swap@j^0,w,c
+  1610  00043A  0D17               	mullw	23
+  1611  00043C  0E92               	movlw	low (_database+18)
+  1612  00043E  24F3               	addwf	243,w,c
+  1613  000440  6ED9               	movwf	fsr2l,c
+  1614  000442  0E00               	movlw	high (_database+18)
+  1615  000444  20F4               	addwfc	prodh,w,c
+  1616  000446  6EDA               	movwf	fsr2h,c
+  1617  000448  503D               	movf	swap@i^0,w,c
+  1618  00044A  0D17               	mullw	23
+  1619  00044C  0E92               	movlw	low (_database+18)
+  1620  00044E  24F3               	addwf	243,w,c
+  1621  000450  6EE1               	movwf	fsr1l,c
+  1622  000452  0E00               	movlw	high (_database+18)
+  1623  000454  20F4               	addwfc	prodh,w,c
+  1624  000456  6EE2               	movwf	fsr1h,c
+  1625  000458  CFDF FFE7          	movff	indf2,indf1
+  1626  00045C                     
+  1627                           ;ioticat.c: 66:     database.users[i].in_max_hour = database.users[j].in_max_hour;
+  1628  00045C  503C               	movf	swap@j^0,w,c
+  1629  00045E  0D17               	mullw	23
+  1630  000460  0E93               	movlw	low (_database+19)
+  1631  000462  24F3               	addwf	243,w,c
+  1632  000464  6ED9               	movwf	fsr2l,c
+  1633  000466  0E00               	movlw	high (_database+19)
+  1634  000468  20F4               	addwfc	prodh,w,c
+  1635  00046A  6EDA               	movwf	fsr2h,c
+  1636  00046C  503D               	movf	swap@i^0,w,c
+  1637  00046E  0D17               	mullw	23
+  1638  000470  0E93               	movlw	low (_database+19)
+  1639  000472  24F3               	addwf	243,w,c
+  1640  000474  6EE1               	movwf	fsr1l,c
+  1641  000476  0E00               	movlw	high (_database+19)
+  1642  000478  20F4               	addwfc	prodh,w,c
+  1643  00047A  6EE2               	movwf	fsr1h,c
+  1644  00047C  CFDF FFE7          	movff	indf2,indf1
+  1645  000480                     
+  1646                           ;ioticat.c: 67:     database.users[i].in_max_minute = database.users[j].in_max_minute;
+  1647  000480  503C               	movf	swap@j^0,w,c
+  1648  000482  0D17               	mullw	23
+  1649  000484  0E94               	movlw	low (_database+20)
+  1650  000486  24F3               	addwf	243,w,c
+  1651  000488  6ED9               	movwf	fsr2l,c
+  1652  00048A  0E00               	movlw	high (_database+20)
+  1653  00048C  20F4               	addwfc	prodh,w,c
+  1654  00048E  6EDA               	movwf	fsr2h,c
+  1655  000490  503D               	movf	swap@i^0,w,c
+  1656  000492  0D17               	mullw	23
+  1657  000494  0E94               	movlw	low (_database+20)
+  1658  000496  24F3               	addwf	243,w,c
+  1659  000498  6EE1               	movwf	fsr1l,c
+  1660  00049A  0E00               	movlw	high (_database+20)
+  1661  00049C  20F4               	addwfc	prodh,w,c
+  1662  00049E  6EE2               	movwf	fsr1h,c
+  1663  0004A0  CFDF FFE7          	movff	indf2,indf1
+  1664                           
+  1665                           ;ioticat.c: 69:     strcpy(database.users[j].name, swappy.name);
+  1666  0004A4  503C               	movf	swap@j^0,w,c
+  1667  0004A6  0D17               	mullw	23
+  1668  0004A8  0E80               	movlw	low _database
+  1669  0004AA  24F3               	addwf	243,w,c
+  1670  0004AC  6E01               	movwf	strcpy@dest^0,c
+  1671  0004AE  0E00               	movlw	high _database
+  1672  0004B0  20F4               	addwfc	prodh,w,c
+  1673  0004B2  6E02               	movwf	(strcpy@dest+1)^0,c
+  1674  0004B4  0E65               	movlw	low _swappy
+  1675  0004B6  6E03               	movwf	strcpy@src^0,c
+  1676  0004B8  0E00               	movlw	high _swappy
+  1677  0004BA  6E04               	movwf	(strcpy@src+1)^0,c
+  1678  0004BC  ECE2  F006         	call	_strcpy	;wreg free
+  1679                           
+  1680                           ;ioticat.c: 70:     strcpy(database.users[j].uid, swappy.uid);
+  1681  0004C0  503C               	movf	swap@j^0,w,c
+  1682  0004C2  0D17               	mullw	23
+  1683  0004C4  0E8B               	movlw	low (_database+11)
+  1684  0004C6  24F3               	addwf	243,w,c
+  1685  0004C8  6E01               	movwf	strcpy@dest^0,c
+  1686  0004CA  0E00               	movlw	high (_database+11)
+  1687  0004CC  20F4               	addwfc	prodh,w,c
+  1688  0004CE  6E02               	movwf	(strcpy@dest+1)^0,c
+  1689  0004D0  0E70               	movlw	low (_swappy+11)
+  1690  0004D2  6E03               	movwf	strcpy@src^0,c
+  1691  0004D4  0E00               	movlw	high (_swappy+11)
+  1692  0004D6  6E04               	movwf	(strcpy@src+1)^0,c
+  1693  0004D8  ECE2  F006         	call	_strcpy	;wreg free
+  1694  0004DC                     
+  1695                           ;ioticat.c: 73:     database.users[j].min_permanence_time.value[0] = swappy.min_permanen
+      +                          ce_time.value[0];
+  1696  0004DC  503C               	movf	swap@j^0,w,c
+  1697  0004DE  0D17               	mullw	23
+  1698  0004E0  0E95               	movlw	low (_database+21)
+  1699  0004E2  24F3               	addwf	243,w,c
+  1700  0004E4  6ED9               	movwf	fsr2l,c
+  1701  0004E6  0E00               	movlw	high (_database+21)
+  1702  0004E8  20F4               	addwfc	prodh,w,c
+  1703  0004EA  6EDA               	movwf	fsr2h,c
+  1704  0004EC  C07A  FFDF         	movff	_swappy+21,indf2
+  1705  0004F0                     
+  1706                           ;ioticat.c: 74:     database.users[j].min_permanence_time.value[1] = swappy.min_permanen
+      +                          ce_time.value[1];
+  1707  0004F0  503C               	movf	swap@j^0,w,c
+  1708  0004F2  0D17               	mullw	23
+  1709  0004F4  0E96               	movlw	low (_database+22)
+  1710  0004F6  24F3               	addwf	243,w,c
+  1711  0004F8  6ED9               	movwf	fsr2l,c
+  1712  0004FA  0E00               	movlw	high (_database+22)
+  1713  0004FC  20F4               	addwfc	prodh,w,c
+  1714  0004FE  6EDA               	movwf	fsr2h,c
+  1715  000500  C07B  FFDF         	movff	_swappy+22,indf2
+  1716  000504                     
+  1717                           ;ioticat.c: 75:     database.users[j].in_min_hour = swappy.in_min_hour;
+  1718  000504  503C               	movf	swap@j^0,w,c
+  1719  000506  0D17               	mullw	23
+  1720  000508  0E91               	movlw	low (_database+17)
+  1721  00050A  24F3               	addwf	243,w,c
+  1722  00050C  6ED9               	movwf	fsr2l,c
+  1723  00050E  0E00               	movlw	high (_database+17)
+  1724  000510  20F4               	addwfc	prodh,w,c
+  1725  000512  6EDA               	movwf	fsr2h,c
+  1726  000514  C076  FFDF         	movff	_swappy+17,indf2
+  1727  000518                     
+  1728                           ;ioticat.c: 76:     database.users[j].in_min_minute = swappy.in_min_minute;
+  1729  000518  503C               	movf	swap@j^0,w,c
+  1730  00051A  0D17               	mullw	23
+  1731  00051C  0E92               	movlw	low (_database+18)
+  1732  00051E  24F3               	addwf	243,w,c
+  1733  000520  6ED9               	movwf	fsr2l,c
+  1734  000522  0E00               	movlw	high (_database+18)
+  1735  000524  20F4               	addwfc	prodh,w,c
+  1736  000526  6EDA               	movwf	fsr2h,c
+  1737  000528  C077  FFDF         	movff	_swappy+18,indf2
+  1738  00052C                     
+  1739                           ;ioticat.c: 77:     database.users[j].in_max_hour = swappy.in_max_hour;
+  1740  00052C  503C               	movf	swap@j^0,w,c
+  1741  00052E  0D17               	mullw	23
+  1742  000530  0E93               	movlw	low (_database+19)
+  1743  000532  24F3               	addwf	243,w,c
+  1744  000534  6ED9               	movwf	fsr2l,c
+  1745  000536  0E00               	movlw	high (_database+19)
+  1746  000538  20F4               	addwfc	prodh,w,c
+  1747  00053A  6EDA               	movwf	fsr2h,c
+  1748  00053C  C078  FFDF         	movff	_swappy+19,indf2
+  1749  000540                     
+  1750                           ;ioticat.c: 78:     database.users[j].in_max_minute = swappy.in_max_minute;
+  1751  000540  503C               	movf	swap@j^0,w,c
+  1752  000542  0D17               	mullw	23
+  1753  000544  0E94               	movlw	low (_database+20)
+  1754  000546  24F3               	addwf	243,w,c
+  1755  000548  6ED9               	movwf	fsr2l,c
+  1756  00054A  0E00               	movlw	high (_database+20)
+  1757  00054C  20F4               	addwfc	prodh,w,c
+  1758  00054E  6EDA               	movwf	fsr2h,c
+  1759  000550  C079  FFDF         	movff	_swappy+20,indf2
+  1760  000554                     
+  1761                           ;ioticat.c: 80:     printf("\nuid I: %s\n", database.users[i].uid);
+  1762  000554  0E74               	movlw	low STR_11
+  1763  000556  6E32               	movwf	printf@fmt^0,c
+  1764  000558  0E02               	movlw	high STR_11
+  1765  00055A  6E33               	movwf	(printf@fmt+1)^0,c
+  1766  00055C  503D               	movf	swap@i^0,w,c
+  1767  00055E  0D17               	mullw	23
+  1768  000560  0E8B               	movlw	low (_database+11)
+  1769  000562  24F3               	addwf	243,w,c
+  1770  000564  6E34               	movwf	(?_printf+2)^0,c
+  1771  000566  0E00               	movlw	high (_database+11)
+  1772  000568  20F4               	addwfc	prodh,w,c
+  1773  00056A  6E35               	movwf	(?_printf+3)^0,c
+  1774  00056C  EC8B  F007         	call	_printf	;wreg free
+  1775  000570                     
+  1776                           ;ioticat.c: 81:     printf("uid J: %s\n", database.users[j].uid);
+  1777  000570  0E8C               	movlw	low STR_12
+  1778  000572  6E32               	movwf	printf@fmt^0,c
+  1779  000574  0E02               	movlw	high STR_12
+  1780  000576  6E33               	movwf	(printf@fmt+1)^0,c
+  1781  000578  503C               	movf	swap@j^0,w,c
+  1782  00057A  0D17               	mullw	23
+  1783  00057C  0E8B               	movlw	low (_database+11)
+  1784  00057E  24F3               	addwf	243,w,c
+  1785  000580  6E34               	movwf	(?_printf+2)^0,c
+  1786  000582  0E00               	movlw	high (_database+11)
+  1787  000584  20F4               	addwfc	prodh,w,c
+  1788  000586  6E35               	movwf	(?_printf+3)^0,c
+  1789  000588  EC8B  F007         	call	_printf	;wreg free
+  1790  00058C                     
+  1791                           ;ioticat.c: 82:     printf("uid sw: %s\n", swappy.uid);
+  1792  00058C  0E80               	movlw	low STR_13
+  1793  00058E  6E32               	movwf	printf@fmt^0,c
+  1794  000590  0E02               	movlw	high STR_13
+  1795  000592  6E33               	movwf	(printf@fmt+1)^0,c
+  1796  000594  0E70               	movlw	low (_swappy+11)
+  1797  000596  6E34               	movwf	(?_printf+2)^0,c
+  1798  000598  0E00               	movlw	high (_swappy+11)
+  1799  00059A  6E35               	movwf	(?_printf+3)^0,c
+  1800  00059C  EC8B  F007         	call	_printf	;wreg free
+  1801  0005A0  0012               	return		;funcret
+  1802  0005A2                     __end_of_swap:
+  1803                           	opt callstack 0
+  1804                           
+  1805 ;; *************** function _strcpy *****************
+  1806 ;; Defined at:
+  1807 ;;		line 3 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\strcpy.c"
+  1808 ;; Parameters:    Size  Location     Type
+  1809 ;;  dest            2    0[COMRAM] PTR unsigned char 
+  1810 ;;		 -> swappy(23), database.users(115), database(121), main@user(23), 
+  1811 ;;  src             2    2[COMRAM] PTR const unsigned char 
+  1812 ;;		 -> swappy.uid(6), swappy.name(11), swappy(23), database.users.uid(6), 
+  1813 ;;		 -> database.users.name(11), database.users(115), STR_8(7), STR_7(7), 
+  1814 ;;		 -> STR_6(7), STR_5(6), STR_4(7), STR_3(11), 
+  1815 ;;		 -> STR_2(7), STR_1(5), 
+  1816 ;; Auto vars:     Size  Location     Type
+  1817 ;;  d               2    8[COMRAM] PTR unsigned char 
+  1818 ;;		 -> swappy(23), database.users(115), database(121), main@user(23), 
+  1819 ;;  s               2    6[COMRAM] PTR const unsigned char 
+  1820 ;;		 -> swappy.uid(6), swappy.name(11), swappy(23), database.users.uid(6), 
+  1821 ;;		 -> database.users.name(11), database.users(115), STR_8(7), STR_7(7), 
+  1822 ;;		 -> STR_6(7), STR_5(6), STR_4(7), STR_3(11), 
+  1823 ;;		 -> STR_2(7), STR_1(5), 
+  1824 ;; Return value:  Size  Location     Type
+  1825 ;;                  2    0[COMRAM] PTR unsigned char 
+  1826 ;; Registers used:
+  1827 ;;		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru
+  1828 ;; Tracked objects:
+  1829 ;;		On entry : 0/0
+  1830 ;;		On exit  : 0/0
+  1831 ;;		Unchanged: 0/0
+  1832 ;; Data sizes:     COMRAM   BANK0   BANK1
+  1833 ;;      Params:         4       0       0
+  1834 ;;      Locals:         4       0       0
+  1835 ;;      Temps:          2       0       0
+  1836 ;;      Totals:        10       0       0
+  1837 ;;Total ram usage:       10 bytes
+  1838 ;; Hardware stack levels used:    1
+  1839 ;; This function calls:
+  1840 ;;		Nothing
+  1841 ;; This function is called by:
+  1842 ;;		_main
+  1843 ;;		_swap
+  1844 ;; This function uses a non-reentrant model
+  1845 ;;
+  1846                           
+  1847                           	psect	text6
+  1848  000DC4                     __ptext6:
+  1849                           	opt callstack 0
+  1850  000DC4                     _strcpy:
+  1851                           	opt callstack 30
+  1852  000DC4  C003  F007         	movff	strcpy@src,strcpy@s
+  1853  000DC8  C004  F008         	movff	strcpy@src+1,strcpy@s+1
+  1854  000DCC  C001  F009         	movff	strcpy@dest,strcpy@d
+  1855  000DD0  C002  F00A         	movff	strcpy@dest+1,strcpy@d+1
+  1856  000DD4                     l1322:
+  1857  000DD4  5007               	movf	strcpy@s^0,w,c
+  1858  000DD6  6E05               	movwf	??_strcpy^0,c
+  1859  000DD8  5008               	movf	(strcpy@s+1)^0,w,c
+  1860  000DDA  6E06               	movwf	(??_strcpy+1)^0,c
+  1861  000DDC  4A07               	infsnz	strcpy@s^0,f,c
+  1862  000DDE  2A08               	incf	(strcpy@s+1)^0,f,c
+  1863  000DE0  C005  FFF6         	movff	??_strcpy,tblptrl
+  1864  000DE4  C006  FFF7         	movff	??_strcpy+1,tblptrh
+  1865  000DE8  6AF8               	clrf	tblptru,c
+  1866  000DEA  C009  FFD9         	movff	strcpy@d,fsr2l
+  1867  000DEE  C00A  FFDA         	movff	strcpy@d+1,fsr2h
+  1868  000DF2  4A09               	infsnz	strcpy@d^0,f,c
+  1869  000DF4  2A0A               	incf	(strcpy@d+1)^0,f,c
+  1870  000DF6  0E01               	movlw	(high __ramtop+-1)
+  1871  000DF8  64F7               	cpfsgt	tblptrh,c
+  1872  000DFA  D003               	bra	u597
+  1873  000DFC  0008               	tblrd		*
+  1874  000DFE  50F5               	movf	tablat,w,c
+  1875  000E00  D005               	bra	u590
+  1876  000E02                     u597:
+  1877  000E02  CFF6 FFE9          	movff	tblptrl,fsr0l
+  1878  000E06  CFF7 FFEA          	movff	tblptrh,fsr0h
+  1879  000E0A  50EF               	movf	indf0,w,c
+  1880  000E0C                     u590:
+  1881  000E0C  6EDF               	movwf	indf2,c
+  1882  000E0E  50DF               	movf	indf2,w,c
+  1883  000E10  A4D8               	btfss	status,2,c
+  1884  000E12  EF0D  F007         	goto	u601
+  1885  000E16  EF0F  F007         	goto	u600
+  1886  000E1A                     u601:
+  1887  000E1A  EFEA  F006         	goto	l1322
+  1888  000E1E                     u600:
+  1889  000E1E  0012               	return		;funcret
+  1890  000E20                     __end_of_strcpy:
+  1891                           	opt callstack 0
+  1892                           
+  1893 ;; *************** function _printf *****************
+  1894 ;; Defined at:
+  1895 ;;		line 5 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\printf.c"
+  1896 ;; Parameters:    Size  Location     Type
+  1897 ;;  fmt             2   49[COMRAM] PTR const unsigned char 
+  1898 ;;		 -> STR_18(19), STR_17(29), STR_16(19), STR_15(26), 
+  1899 ;;		 -> STR_14(41), STR_13(12), STR_12(11), STR_11(12), 
+  1900 ;; Auto vars:     Size  Location     Type
+  1901 ;;  ap              2   57[COMRAM] PTR void [1]
+  1902 ;;		 -> ?_printf(2), 
+  1903 ;;  ret             2    0        int 
+  1904 ;; Return value:  Size  Location     Type
+  1905 ;;                  2   49[COMRAM] int 
+  1906 ;; Registers used:
+  1907 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+  1908 ;; Tracked objects:
+  1909 ;;		On entry : 0/0
+  1910 ;;		On exit  : 0/0
+  1911 ;;		Unchanged: 0/0
+  1912 ;; Data sizes:     COMRAM   BANK0   BANK1
+  1913 ;;      Params:         6       0       0
+  1914 ;;      Locals:         4       0       0
+  1915 ;;      Temps:          0       0       0
+  1916 ;;      Totals:        10       0       0
+  1917 ;;Total ram usage:       10 bytes
+  1918 ;; Hardware stack levels used:    1
+  1919 ;; Hardware stack levels required when called:    5
+  1920 ;; This function calls:
+  1921 ;;		_vfprintf
+  1922 ;; This function is called by:
+  1923 ;;		_swap
+  1924 ;;		_IOTICAT_login
+  1925 ;;		_IOTICAT_show
+  1926 ;; This function uses a non-reentrant model
+  1927 ;;
+  1928                           
+  1929                           	psect	text7
+  1930  000F16                     __ptext7:
+  1931                           	opt callstack 0
+  1932  000F16                     _printf:
+  1933                           	opt callstack 24
+  1934  000F16  0E34               	movlw	low (?_printf+2)
+  1935  000F18  6E3A               	movwf	printf@ap^0,c
+  1936  000F1A  0E00               	movlw	high (?_printf+2)
+  1937  000F1C  6E3B               	movwf	(printf@ap+1)^0,c
+  1938  000F1E  0E00               	movlw	0
+  1939  000F20  6E2A               	movwf	vfprintf@fp^0,c
+  1940  000F22  0E00               	movlw	0
+  1941  000F24  6E2B               	movwf	(vfprintf@fp+1)^0,c
+  1942  000F26  C032  F02C         	movff	printf@fmt,vfprintf@fmt
+  1943  000F2A  C033  F02D         	movff	printf@fmt+1,vfprintf@fmt+1
+  1944  000F2E  0E3A               	movlw	low printf@ap
+  1945  000F30  6E2E               	movwf	vfprintf@ap^0,c
+  1946  000F32  0E00               	movlw	high printf@ap
+  1947  000F34  6E2F               	movwf	(vfprintf@ap+1)^0,c
+  1948  000F36  ECB3  F006         	call	_vfprintf	;wreg free
+  1949  000F3A  0012               	return		;funcret
+  1950  000F3C                     __end_of_printf:
+  1951                           	opt callstack 0
+  1952                           
+  1953 ;; *************** function _vfprintf *****************
+  1954 ;; Defined at:
+  1955 ;;		line 1368 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c"
+  1956 ;; Parameters:    Size  Location     Type
+  1957 ;;  fp              2   41[COMRAM] PTR struct _IO_FILE
+  1958 ;;		 -> NULL(0), 
+  1959 ;;  fmt             2   43[COMRAM] PTR const unsigned char 
+  1960 ;;		 -> STR_18(19), STR_17(29), STR_16(19), STR_15(26), 
+  1961 ;;		 -> STR_14(41), STR_13(12), STR_12(11), STR_11(12), 
+  1962 ;;  ap              2   45[COMRAM] PTR PTR void 
+  1963 ;;		 -> printf@ap(2), 
+  1964 ;; Auto vars:     Size  Location     Type
+  1965 ;;  cfmt            2   47[COMRAM] PTR unsigned char 
+  1966 ;;		 -> STR_18(19), STR_17(29), STR_16(19), STR_15(26), 
+  1967 ;;		 -> STR_14(41), STR_13(12), STR_12(11), STR_11(12), 
+  1968 ;; Return value:  Size  Location     Type
+  1969 ;;                  2   41[COMRAM] int 
+  1970 ;; Registers used:
+  1971 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+  1972 ;; Tracked objects:
+  1973 ;;		On entry : 0/0
+  1974 ;;		On exit  : 0/0
+  1975 ;;		Unchanged: 0/0
+  1976 ;; Data sizes:     COMRAM   BANK0   BANK1
+  1977 ;;      Params:         6       0       0
+  1978 ;;      Locals:         2       0       0
+  1979 ;;      Temps:          0       0       0
+  1980 ;;      Totals:         8       0       0
+  1981 ;;Total ram usage:        8 bytes
+  1982 ;; Hardware stack levels used:    1
+  1983 ;; Hardware stack levels required when called:    4
+  1984 ;; This function calls:
+  1985 ;;		_vfpfcnvrt
+  1986 ;; This function is called by:
+  1987 ;;		_printf
+  1988 ;; This function uses a non-reentrant model
+  1989 ;;
+  1990                           
+  1991                           	psect	text8
+  1992  000D66                     __ptext8:
+  1993                           	opt callstack 0
+  1994  000D66                     _vfprintf:
+  1995                           	opt callstack 24
+  1996  000D66                     
+  1997                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1368: int v
+      +                          fprintf(FILE *fp, const char *fmt, va_list ap);C:\Program Files (x86)\Microchip\xc8\v2.1
+      +                          0\pic\sources\c99\common\doprnt.c: 1369: {;C:\Program Files (x86)\Microchip\xc8\v2.10\pi
+      +                          c\sources\c99\common\doprnt.c: 1371:     char *cfmt;;C:\Program Files (x86)\Microchip\xc
+      +                          8\v2.10\pic\sources\c99\common\doprnt.c: 1373:     cfmt = (char *)fmt;
+  1998  000D66  C02C  F030         	movff	vfprintf@fmt,vfprintf@cfmt
+  1999  000D6A  C02D  F031         	movff	vfprintf@fmt+1,vfprintf@cfmt+1
+  2000  000D6E                     
+  2001                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1374:     n
+      +                          out = 0;
+  2002  000D6E  0E00               	movlw	0
+  2003  000D70  6E5E               	movwf	(_nout+1)^0,c
+  2004  000D72  0E00               	movlw	0
+  2005  000D74  6E5D               	movwf	_nout^0,c
+  2006                           
+  2007                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1375:     w
+      +                          hile (*cfmt) {
+  2008  000D76  EFCF  F006         	goto	l1318
+  2009  000D7A                     l1316:
+  2010                           
+  2011                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1376:      
+      +                             nout += vfpfcnvrt(fp, &cfmt, ap);
+  2012  000D7A  C02A  F020         	movff	vfprintf@fp,vfpfcnvrt@fp
+  2013  000D7E  C02B  F021         	movff	vfprintf@fp+1,vfpfcnvrt@fp+1
+  2014  000D82  0E30               	movlw	low vfprintf@cfmt
+  2015  000D84  6E22               	movwf	vfpfcnvrt@fmt^0,c
+  2016  000D86  0E00               	movlw	high vfprintf@cfmt
+  2017  000D88  6E23               	movwf	(vfpfcnvrt@fmt+1)^0,c
+  2018  000D8A  C02E  F024         	movff	vfprintf@ap,vfpfcnvrt@ap
+  2019  000D8E  C02F  F025         	movff	vfprintf@ap+1,vfpfcnvrt@ap+1
+  2020  000D92  EC6D  F004         	call	_vfpfcnvrt	;wreg free
+  2021  000D96  5020               	movf	?_vfpfcnvrt^0,w,c
+  2022  000D98  265D               	addwf	_nout^0,f,c
+  2023  000D9A  5021               	movf	(?_vfpfcnvrt+1)^0,w,c
+  2024  000D9C  225E               	addwfc	(_nout+1)^0,f,c
+  2025  000D9E                     l1318:
+  2026                           
+  2027                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1375:     w
+      +                          hile (*cfmt) {
+  2028  000D9E  C030  FFF6         	movff	vfprintf@cfmt,tblptrl
+  2029  000DA2  C031  FFF7         	movff	vfprintf@cfmt+1,tblptrh
+  2030  000DA6                     	if	0	;tblptru may be non-zero
+  2031  000DA6                     	endif
+  2032  000DA6                     	if	0	;tblptru may be non-zero
+  2033  000DA6                     	endif
+  2034  000DA6  0008               	tblrd		*
+  2035  000DA8  50F5               	movf	tablat,w,c
+  2036  000DAA  0900               	iorlw	0
+  2037  000DAC  A4D8               	btfss	status,2,c
+  2038  000DAE  EFDB  F006         	goto	u581
+  2039  000DB2  EFDD  F006         	goto	u580
+  2040  000DB6                     u581:
+  2041  000DB6  EFBD  F006         	goto	l1316
+  2042  000DBA                     u580:
+  2043  000DBA                     
+  2044                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1378:     r
+      +                          eturn nout;
+  2045  000DBA  C05D  F02A         	movff	_nout,?_vfprintf
+  2046  000DBE  C05E  F02B         	movff	_nout+1,?_vfprintf+1
+  2047  000DC2  0012               	return		;funcret
+  2048  000DC4                     __end_of_vfprintf:
+  2049                           	opt callstack 0
+  2050                           
+  2051 ;; *************** function _vfpfcnvrt *****************
+  2052 ;; Defined at:
+  2053 ;;		line 670 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c"
+  2054 ;; Parameters:    Size  Location     Type
+  2055 ;;  fp              2   31[COMRAM] PTR struct _IO_FILE
+  2056 ;;		 -> NULL(0), 
+  2057 ;;  fmt             2   33[COMRAM] PTR PTR unsigned char 
+  2058 ;;		 -> vfprintf@cfmt(2), 
+  2059 ;;  ap              2   35[COMRAM] PTR PTR void 
+  2060 ;;		 -> printf@ap(2), 
+  2061 ;; Auto vars:     Size  Location     Type
+  2062 ;;  llu             8    0        unsigned long long 
+  2063 ;;  ll              8    0        long long 
+  2064 ;;  f               4    0        long long 
+  2065 ;;  vp              3    0        PTR void 
+  2066 ;;  ct              3    0        unsigned char [3]
+  2067 ;;  cp              2   39[COMRAM] PTR unsigned char 
+  2068 ;;		 -> ?_printf(2), swappy(23), database.users(115), database(121), 
+  2069 ;;		 -> STR_9(7), 
+  2070 ;;  i               2    0        int 
+  2071 ;;  done            2    0        int 
+  2072 ;;  c               1    0        unsigned char 
+  2073 ;; Return value:  Size  Location     Type
+  2074 ;;                  2   31[COMRAM] int 
+  2075 ;; Registers used:
+  2076 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+  2077 ;; Tracked objects:
+  2078 ;;		On entry : 0/0
+  2079 ;;		On exit  : 0/0
+  2080 ;;		Unchanged: 0/0
+  2081 ;; Data sizes:     COMRAM   BANK0   BANK1
+  2082 ;;      Params:         6       0       0
+  2083 ;;      Locals:         2       0       0
+  2084 ;;      Temps:          2       0       0
+  2085 ;;      Totals:        10       0       0
+  2086 ;;Total ram usage:       10 bytes
+  2087 ;; Hardware stack levels used:    1
+  2088 ;; Hardware stack levels required when called:    3
+  2089 ;; This function calls:
+  2090 ;;		_fputc
+  2091 ;;		_stoa
+  2092 ;; This function is called by:
+  2093 ;;		_vfprintf
+  2094 ;; This function uses a non-reentrant model
+  2095 ;;
+  2096                           
+  2097                           	psect	text9
+  2098  0008DA                     __ptext9:
+  2099                           	opt callstack 0
+  2100  0008DA                     _vfpfcnvrt:
+  2101                           	opt callstack 24
+  2102  0008DA                     
+  2103                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 670: static
+      +                           int vfpfcnvrt(FILE *fp, char *fmt[], va_list ap);C:\Program Files (x86)\Microchip\xc8\v
+      +                          2.10\pic\sources\c99\common\doprnt.c: 671: {;C:\Program Files (x86)\Microchip\xc8\v2.10\
+      +                          pic\sources\c99\common\doprnt.c: 672:     char c, *cp, ct[3];;C:\Program Files (x86)\Mic
+      +                          rochip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 673:     int done, i;;C:\Program Files
+      +                           (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 674:     long long ll;
+  2104  0008DA  C022  FFD9         	movff	vfpfcnvrt@fmt,fsr2l
+  2105  0008DE  C023  FFDA         	movff	vfpfcnvrt@fmt+1,fsr2h
+  2106  0008E2  CFDE FFF6          	movff	postinc2,tblptrl
+  2107  0008E6  CFDD FFF7          	movff	postdec2,tblptrh
+  2108  0008EA                     	if	0	;tblptru may be non-zero
+  2109  0008EA                     	endif
+  2110  0008EA                     	if	0	;tblptru may be non-zero
+  2111  0008EA                     	endif
+  2112  0008EA  0008               	tblrd		*
+  2113  0008EC  50F5               	movf	tablat,w,c
+  2114  0008EE  0A25               	xorlw	37
+  2115  0008F0  A4D8               	btfss	status,2,c
+  2116  0008F2  EF7D  F004         	goto	u551
+  2117  0008F6  EF7F  F004         	goto	u550
+  2118  0008FA                     u551:
+  2119  0008FA  EF03  F005         	goto	l1304
+  2120  0008FE                     u550:
+  2121  0008FE                     
+  2122                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 681:       
+      +                            ++*fmt;
+  2123  0008FE  C022  FFD9         	movff	vfpfcnvrt@fmt,fsr2l
+  2124  000902  C023  FFDA         	movff	vfpfcnvrt@fmt+1,fsr2h
+  2125  000906  2ADE               	incf	postinc2,f,c
+  2126  000908  0E00               	movlw	0
+  2127  00090A  22DD               	addwfc	postdec2,f,c
+  2128  00090C                     
+  2129                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 683:       
+      +                            flags = width = 0;
+  2130  00090C  0E00               	movlw	0
+  2131  00090E  6E60               	movwf	(_width+1)^0,c
+  2132  000910  0E00               	movlw	0
+  2133  000912  6E5F               	movwf	_width^0,c
+  2134  000914  C05F  F063         	movff	_width,_flags
+  2135  000918  C060  F064         	movff	_width+1,_flags+1
+  2136  00091C                     
+  2137                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 684:       
+      +                            prec = -1;
+  2138  00091C  6861               	setf	_prec^0,c
+  2139  00091E  6862               	setf	(_prec+1)^0,c
+  2140  000920                     
+  2141                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1149:      
+      +                             if (*fmt[0] == 's') {
+  2142  000920  C022  FFD9         	movff	vfpfcnvrt@fmt,fsr2l
+  2143  000924  C023  FFDA         	movff	vfpfcnvrt@fmt+1,fsr2h
+  2144  000928  CFDE FFF6          	movff	postinc2,tblptrl
+  2145  00092C  CFDD FFF7          	movff	postdec2,tblptrh
+  2146  000930                     	if	0	;tblptru may be non-zero
+  2147  000930                     	endif
+  2148  000930                     	if	0	;tblptru may be non-zero
+  2149  000930                     	endif
+  2150  000930  0008               	tblrd		*
+  2151  000932  50F5               	movf	tablat,w,c
+  2152  000934  0A73               	xorlw	115
+  2153  000936  A4D8               	btfss	status,2,c
+  2154  000938  EFA0  F004         	goto	u561
+  2155  00093C  EFA2  F004         	goto	u560
+  2156  000940                     u561:
+  2157  000940  EFCD  F004         	goto	l1288
+  2158  000944                     u560:
+  2159  000944                     
+  2160                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1151:      
+      +                                 ++*fmt;
+  2161  000944  C022  FFD9         	movff	vfpfcnvrt@fmt,fsr2l
+  2162  000948  C023  FFDA         	movff	vfpfcnvrt@fmt+1,fsr2h
+  2163  00094C  2ADE               	incf	postinc2,f,c
+  2164  00094E  0E00               	movlw	0
+  2165  000950  22DD               	addwfc	postdec2,f,c
+  2166                           
+  2167                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1152:      
+      +                                 cp = (*(char * *)__va_arg(*(char * **)ap, (char *)0));
+  2168  000952  C024  FFD9         	movff	vfpfcnvrt@ap,fsr2l
+  2169  000956  C025  FFDA         	movff	vfpfcnvrt@ap+1,fsr2h
+  2170  00095A  CFDF F026          	movff	indf2,??_vfpfcnvrt
+  2171  00095E  0E02               	movlw	2
+  2172  000960  26DE               	addwf	postinc2,f,c
+  2173  000962  CFDF F027          	movff	indf2,??_vfpfcnvrt+1
+  2174  000966  0E00               	movlw	0
+  2175  000968  22DD               	addwfc	postdec2,f,c
+  2176  00096A  C026  FFD9         	movff	??_vfpfcnvrt,fsr2l
+  2177  00096E  C027  FFDA         	movff	??_vfpfcnvrt+1,fsr2h
+  2178  000972  CFDE F028          	movff	postinc2,vfpfcnvrt@cp
+  2179  000976  CFDD F029          	movff	postdec2,vfpfcnvrt@cp+1
+  2180  00097A                     
+  2181                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1154:      
+      +                                 return stoa(fp, cp);
+  2182  00097A  C020  F00A         	movff	vfpfcnvrt@fp,stoa@fp
+  2183  00097E  C021  F00B         	movff	vfpfcnvrt@fp+1,stoa@fp+1
+  2184  000982  C028  F00C         	movff	vfpfcnvrt@cp,stoa@s
+  2185  000986  C029  F00D         	movff	vfpfcnvrt@cp+1,stoa@s+1
+  2186  00098A  ECA1  F003         	call	_stoa	;wreg free
+  2187  00098E  C00A  F020         	movff	?_stoa,?_vfpfcnvrt
+  2188  000992  C00B  F021         	movff	?_stoa+1,?_vfpfcnvrt+1
+  2189  000996  EF1E  F005         	goto	l123
+  2190  00099A                     l1288:
+  2191                           
+  2192                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1350:      
+      +                             if ((*fmt)[0] == '%') {
+  2193  00099A  C022  FFD9         	movff	vfpfcnvrt@fmt,fsr2l
+  2194  00099E  C023  FFDA         	movff	vfpfcnvrt@fmt+1,fsr2h
+  2195  0009A2  CFDE FFF6          	movff	postinc2,tblptrl
+  2196  0009A6  CFDD FFF7          	movff	postdec2,tblptrh
+  2197  0009AA                     	if	0	;tblptru may be non-zero
+  2198  0009AA                     	endif
+  2199  0009AA                     	if	0	;tblptru may be non-zero
+  2200  0009AA                     	endif
+  2201  0009AA  0008               	tblrd		*
+  2202  0009AC  50F5               	movf	tablat,w,c
+  2203  0009AE  0A25               	xorlw	37
+  2204  0009B0  A4D8               	btfss	status,2,c
+  2205  0009B2  EFDD  F004         	goto	u571
+  2206  0009B6  EFDF  F004         	goto	u570
+  2207  0009BA                     u571:
+  2208  0009BA  EFF6  F004         	goto	l1298
+  2209  0009BE                     u570:
+  2210  0009BE                     
+  2211                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1351:      
+      +                                 ++*fmt;
+  2212  0009BE  C022  FFD9         	movff	vfpfcnvrt@fmt,fsr2l
+  2213  0009C2  C023  FFDA         	movff	vfpfcnvrt@fmt+1,fsr2h
+  2214  0009C6  2ADE               	incf	postinc2,f,c
+  2215  0009C8  0E00               	movlw	0
+  2216  0009CA  22DD               	addwfc	postdec2,f,c
+  2217  0009CC                     
+  2218                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1352:      
+      +                                 fputc((int)'%', fp);
+  2219  0009CC  0E00               	movlw	0
+  2220  0009CE  6E02               	movwf	(fputc@c+1)^0,c
+  2221  0009D0  0E25               	movlw	37
+  2222  0009D2  6E01               	movwf	fputc@c^0,c
+  2223  0009D4  C020  F003         	movff	vfpfcnvrt@fp,fputc@fp
+  2224  0009D8  C021  F004         	movff	vfpfcnvrt@fp+1,fputc@fp+1
+  2225  0009DC  ECF8  F005         	call	_fputc	;wreg free
+  2226  0009E0                     l1294:
+  2227                           
+  2228                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1353:      
+      +                                 return 1;
+  2229  0009E0  0E00               	movlw	0
+  2230  0009E2  6E21               	movwf	(?_vfpfcnvrt+1)^0,c
+  2231  0009E4  0E01               	movlw	1
+  2232  0009E6  6E20               	movwf	?_vfpfcnvrt^0,c
+  2233  0009E8  EF1E  F005         	goto	l123
+  2234  0009EC                     l1298:
+  2235                           
+  2236                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1357:      
+      +                             ++*fmt;
+  2237  0009EC  C022  FFD9         	movff	vfpfcnvrt@fmt,fsr2l
+  2238  0009F0  C023  FFDA         	movff	vfpfcnvrt@fmt+1,fsr2h
+  2239  0009F4  2ADE               	incf	postinc2,f,c
+  2240  0009F6  0E00               	movlw	0
+  2241  0009F8  22DD               	addwfc	postdec2,f,c
+  2242  0009FA                     
+  2243                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1358:      
+      +                             return 0;
+  2244  0009FA  0E00               	movlw	0
+  2245  0009FC  6E21               	movwf	(?_vfpfcnvrt+1)^0,c
+  2246  0009FE  0E00               	movlw	0
+  2247  000A00  6E20               	movwf	?_vfpfcnvrt^0,c
+  2248  000A02  EF1E  F005         	goto	l123
+  2249  000A06                     l1304:
+  2250                           
+  2251                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1362:     f
+      +                          putc((int)(*fmt)[0], fp);
+  2252  000A06  C022  FFD9         	movff	vfpfcnvrt@fmt,fsr2l
+  2253  000A0A  C023  FFDA         	movff	vfpfcnvrt@fmt+1,fsr2h
+  2254  000A0E  CFDE FFF6          	movff	postinc2,tblptrl
+  2255  000A12  CFDD FFF7          	movff	postdec2,tblptrh
+  2256  000A16                     	if	0	;tblptru may be non-zero
+  2257  000A16                     	endif
+  2258  000A16                     	if	0	;tblptru may be non-zero
+  2259  000A16                     	endif
+  2260  000A16  0008               	tblrd		*
+  2261  000A18  50F5               	movf	tablat,w,c
+  2262  000A1A  6E01               	movwf	fputc@c^0,c
+  2263  000A1C  6A02               	clrf	(fputc@c+1)^0,c
+  2264  000A1E  C020  F003         	movff	vfpfcnvrt@fp,fputc@fp
+  2265  000A22  C021  F004         	movff	vfpfcnvrt@fp+1,fputc@fp+1
+  2266  000A26  ECF8  F005         	call	_fputc	;wreg free
+  2267  000A2A                     
+  2268                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 1363:     +
+      +                          +*fmt;
+  2269  000A2A  C022  FFD9         	movff	vfpfcnvrt@fmt,fsr2l
+  2270  000A2E  C023  FFDA         	movff	vfpfcnvrt@fmt+1,fsr2h
+  2271  000A32  2ADE               	incf	postinc2,f,c
+  2272  000A34  0E00               	movlw	0
+  2273  000A36  22DD               	addwfc	postdec2,f,c
+  2274  000A38  EFF0  F004         	goto	l1294
+  2275  000A3C                     l123:
+  2276  000A3C  0012               	return		;funcret
+  2277  000A3E                     __end_of_vfpfcnvrt:
+  2278                           	opt callstack 0
+  2279                           
+  2280 ;; *************** function _stoa *****************
+  2281 ;; Defined at:
+  2282 ;;		line 546 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c"
+  2283 ;; Parameters:    Size  Location     Type
+  2284 ;;  fp              2    9[COMRAM] PTR struct _IO_FILE
+  2285 ;;		 -> NULL(0), 
+  2286 ;;  s               2   11[COMRAM] PTR unsigned char 
+  2287 ;;		 -> ?_printf(2), swappy(23), database.users(115), database(121), 
+  2288 ;;		 -> STR_9(7), 
+  2289 ;; Auto vars:     Size  Location     Type
+  2290 ;;  nuls            7   14[COMRAM] unsigned char [7]
+  2291 ;;  l               2   29[COMRAM] int 
+  2292 ;;  p               2   27[COMRAM] int 
+  2293 ;;  cp              2   25[COMRAM] PTR unsigned char 
+  2294 ;;		 -> ?_printf(2), stoa@nuls(7), swappy(23), database.users(115), 
+  2295 ;;		 -> database(121), STR_9(7), 
+  2296 ;;  w               2   23[COMRAM] int 
+  2297 ;;  i               2   21[COMRAM] int 
+  2298 ;; Return value:  Size  Location     Type
+  2299 ;;                  2    9[COMRAM] int 
+  2300 ;; Registers used:
+  2301 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+  2302 ;; Tracked objects:
+  2303 ;;		On entry : 0/0
+  2304 ;;		On exit  : 0/0
+  2305 ;;		Unchanged: 0/0
+  2306 ;; Data sizes:     COMRAM   BANK0   BANK1
+  2307 ;;      Params:         4       0       0
+  2308 ;;      Locals:        17       0       0
+  2309 ;;      Temps:          1       0       0
+  2310 ;;      Totals:        22       0       0
+  2311 ;;Total ram usage:       22 bytes
+  2312 ;; Hardware stack levels used:    1
+  2313 ;; Hardware stack levels required when called:    2
+  2314 ;; This function calls:
+  2315 ;;		_fputc
+  2316 ;;		_strlen
+  2317 ;; This function is called by:
+  2318 ;;		_vfpfcnvrt
+  2319 ;; This function uses a non-reentrant model
+  2320 ;;
+  2321                           
+  2322                           	psect	text10
+  2323  000742                     __ptext10:
+  2324                           	opt callstack 0
+  2325  000742                     _stoa:
+  2326                           	opt callstack 24
+  2327  000742                     
+  2328                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 546: static
+      +                           int stoa(FILE *fp, char *s);C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\
+      +                          common\doprnt.c: 547: {;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\commo
+      +                          n\doprnt.c: 548:     char *cp, nuls[] = "(null)";
+  2329  000742  EE20  F0F9         	lfsr	2,stoa@F1131
+  2330  000746  EE10  F00F         	lfsr	1,stoa@nuls
+  2331  00074A  0E06               	movlw	6
+  2332  00074C                     u451:
+  2333  00074C  CFDB FFE3          	movff	plusw2,plusw1
+  2334  000750  06E8               	decf	wreg,f,c
+  2335  000752  E2FC               	bc	u451
+  2336  000754                     
+  2337                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 549:     in
+      +                          t i, l, p, w;;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c
+      +                          : 552:     cp = s;
+  2338  000754  C00C  F01A         	movff	stoa@s,stoa@cp
+  2339  000758  C00D  F01B         	movff	stoa@s+1,stoa@cp+1
+  2340  00075C                     
+  2341                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 553:     if
+      +                           (!cp) {
+  2342  00075C  501A               	movf	stoa@cp^0,w,c
+  2343  00075E  101B               	iorwf	(stoa@cp+1)^0,w,c
+  2344  000760  A4D8               	btfss	status,2,c
+  2345  000762  EFB5  F003         	goto	u461
+  2346  000766  EFB7  F003         	goto	u460
+  2347  00076A                     u461:
+  2348  00076A  EFBB  F003         	goto	l1238
+  2349  00076E                     u460:
+  2350  00076E                     
+  2351                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 554:       
+      +                            cp = nuls;
+  2352  00076E  0E0F               	movlw	low stoa@nuls
+  2353  000770  6E1A               	movwf	stoa@cp^0,c
+  2354  000772  0E00               	movlw	high stoa@nuls
+  2355  000774  6E1B               	movwf	(stoa@cp+1)^0,c
+  2356  000776                     l1238:
+  2357                           
+  2358                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 558:     l 
+      +                          = strlen(cp);
+  2359  000776  C01A  F001         	movff	stoa@cp,strlen@s
+  2360  00077A  C01B  F002         	movff	stoa@cp+1,strlen@s+1
+  2361  00077E  EC37  F007         	call	_strlen	;wreg free
+  2362  000782  C001  F01E         	movff	?_strlen,stoa@l
+  2363  000786  C002  F01F         	movff	?_strlen+1,stoa@l+1
+  2364  00078A                     
+  2365                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 559:     p 
+      +                          = prec;
+  2366  00078A  C061  F01C         	movff	_prec,stoa@p
+  2367  00078E  C062  F01D         	movff	_prec+1,stoa@p+1
+  2368  000792                     
+  2369                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 560:     l 
+      +                          = (!(p < 0) && (p < l)) ? p : l;
+  2370  000792  BE1D               	btfsc	(stoa@p+1)^0,7,c
+  2371  000794  EFCE  F003         	goto	u471
+  2372  000798  EFD0  F003         	goto	u470
+  2373  00079C                     u471:
+  2374  00079C  EFE5  F003         	goto	l104
+  2375  0007A0                     u470:
+  2376  0007A0  501E               	movf	stoa@l^0,w,c
+  2377  0007A2  5C1C               	subwf	stoa@p^0,w,c
+  2378  0007A4  501D               	movf	(stoa@p+1)^0,w,c
+  2379  0007A6  0A80               	xorlw	128
+  2380  0007A8  6E0E               	movwf	??_stoa^0,c
+  2381  0007AA  501F               	movf	(stoa@l+1)^0,w,c
+  2382  0007AC  0A80               	xorlw	128
+  2383  0007AE  580E               	subwfb	??_stoa^0,w,c
+  2384  0007B0  A0D8               	btfss	status,0,c
+  2385  0007B2  EFDD  F003         	goto	u481
+  2386  0007B6  EFDF  F003         	goto	u480
+  2387  0007BA                     u481:
+  2388  0007BA  EFE1  F003         	goto	l102
+  2389  0007BE                     u480:
+  2390  0007BE  EFE5  F003         	goto	l104
+  2391  0007C2                     l102:
+  2392  0007C2  C01C  F01E         	movff	stoa@p,stoa@l
+  2393  0007C6  C01D  F01F         	movff	stoa@p+1,stoa@l+1
+  2394  0007CA                     l104:
+  2395                           
+  2396                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 561:     p 
+      +                          = l;
+  2397  0007CA  C01E  F01C         	movff	stoa@l,stoa@p
+  2398  0007CE  C01F  F01D         	movff	stoa@l+1,stoa@p+1
+  2399                           
+  2400                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 562:     w 
+      +                          = width;
+  2401  0007D2  C05F  F018         	movff	_width,stoa@w
+  2402  0007D6  C060  F019         	movff	_width+1,stoa@w+1
+  2403                           
+  2404                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 565:     if
+      +                           (!(flags & (1 << 0))) {
+  2405  0007DA  B063               	btfsc	_flags^0,0,c
+  2406  0007DC  EFF2  F003         	goto	u491
+  2407  0007E0  EFF4  F003         	goto	u490
+  2408  0007E4                     u491:
+  2409  0007E4  EF11  F004         	goto	l1254
+  2410  0007E8                     u490:
+  2411  0007E8  EF02  F004         	goto	l1252
+  2412  0007EC                     l1248:
+  2413                           
+  2414                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 567:       
+      +                                fputc(' ', fp);
+  2415  0007EC  0E00               	movlw	0
+  2416  0007EE  6E02               	movwf	(fputc@c+1)^0,c
+  2417  0007F0  0E20               	movlw	32
+  2418  0007F2  6E01               	movwf	fputc@c^0,c
+  2419  0007F4  C00A  F003         	movff	stoa@fp,fputc@fp
+  2420  0007F8  C00B  F004         	movff	stoa@fp+1,fputc@fp+1
+  2421  0007FC  ECF8  F005         	call	_fputc	;wreg free
+  2422  000800                     
+  2423                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 568:       
+      +                                ++l;
+  2424  000800  4A1E               	infsnz	stoa@l^0,f,c
+  2425  000802  2A1F               	incf	(stoa@l+1)^0,f,c
+  2426  000804                     l1252:
+  2427                           
+  2428                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 566:       
+      +                            while (l < w) {
+  2429  000804  5018               	movf	stoa@w^0,w,c
+  2430  000806  5C1E               	subwf	stoa@l^0,w,c
+  2431  000808  501F               	movf	(stoa@l+1)^0,w,c
+  2432  00080A  0A80               	xorlw	128
+  2433  00080C  6E0E               	movwf	??_stoa^0,c
+  2434  00080E  5019               	movf	(stoa@w+1)^0,w,c
+  2435  000810  0A80               	xorlw	128
+  2436  000812  580E               	subwfb	??_stoa^0,w,c
+  2437  000814  A0D8               	btfss	status,0,c
+  2438  000816  EF0F  F004         	goto	u501
+  2439  00081A  EF11  F004         	goto	u500
+  2440  00081E                     u501:
+  2441  00081E  EFF6  F003         	goto	l1248
+  2442  000822                     u500:
+  2443  000822                     l1254:
+  2444                           
+  2445                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 573:     i 
+      +                          = 0;
+  2446  000822  0E00               	movlw	0
+  2447  000824  6E17               	movwf	(stoa@i+1)^0,c
+  2448  000826  0E00               	movlw	0
+  2449  000828  6E16               	movwf	stoa@i^0,c
+  2450                           
+  2451                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 574:     wh
+      +                          ile (i < p) {
+  2452  00082A  EF35  F004         	goto	l1262
+  2453  00082E                     l1256:
+  2454                           
+  2455                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 575:       
+      +                            fputc(*cp, fp);
+  2456  00082E  C01A  FFF6         	movff	stoa@cp,tblptrl
+  2457  000832  C01B  FFF7         	movff	stoa@cp+1,tblptrh
+  2458  000836  6AF8               	clrf	tblptru,c
+  2459  000838  0E01               	movlw	(high __ramtop+-1)
+  2460  00083A  64F7               	cpfsgt	tblptrh,c
+  2461  00083C  D003               	bra	u517
+  2462  00083E  0008               	tblrd		*
+  2463  000840  50F5               	movf	tablat,w,c
+  2464  000842  D005               	bra	u510
+  2465  000844                     u517:
+  2466  000844  CFF6 FFE9          	movff	tblptrl,fsr0l
+  2467  000848  CFF7 FFEA          	movff	tblptrh,fsr0h
+  2468  00084C  50EF               	movf	indf0,w,c
+  2469  00084E                     u510:
+  2470  00084E  6E0E               	movwf	??_stoa^0,c
+  2471  000850  500E               	movf	??_stoa^0,w,c
+  2472  000852  6E01               	movwf	fputc@c^0,c
+  2473  000854  6A02               	clrf	(fputc@c+1)^0,c
+  2474  000856  C00A  F003         	movff	stoa@fp,fputc@fp
+  2475  00085A  C00B  F004         	movff	stoa@fp+1,fputc@fp+1
+  2476  00085E  ECF8  F005         	call	_fputc	;wreg free
+  2477  000862                     
+  2478                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 576:       
+      +                            ++cp;
+  2479  000862  4A1A               	infsnz	stoa@cp^0,f,c
+  2480  000864  2A1B               	incf	(stoa@cp+1)^0,f,c
+  2481  000866                     
+  2482                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 577:       
+      +                            ++i;
+  2483  000866  4A16               	infsnz	stoa@i^0,f,c
+  2484  000868  2A17               	incf	(stoa@i+1)^0,f,c
+  2485  00086A                     l1262:
+  2486                           
+  2487                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 574:     wh
+      +                          ile (i < p) {
+  2488  00086A  501C               	movf	stoa@p^0,w,c
+  2489  00086C  5C16               	subwf	stoa@i^0,w,c
+  2490  00086E  5017               	movf	(stoa@i+1)^0,w,c
+  2491  000870  0A80               	xorlw	128
+  2492  000872  6E0E               	movwf	??_stoa^0,c
+  2493  000874  501D               	movf	(stoa@p+1)^0,w,c
+  2494  000876  0A80               	xorlw	128
+  2495  000878  580E               	subwfb	??_stoa^0,w,c
+  2496  00087A  A0D8               	btfss	status,0,c
+  2497  00087C  EF42  F004         	goto	u521
+  2498  000880  EF44  F004         	goto	u520
+  2499  000884                     u521:
+  2500  000884  EF17  F004         	goto	l1256
+  2501  000888                     u520:
+  2502  000888                     
+  2503                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 581:     if
+      +                           (flags & (1 << 0)) {
+  2504  000888  A063               	btfss	_flags^0,0,c
+  2505  00088A  EF49  F004         	goto	u531
+  2506  00088E  EF4B  F004         	goto	u530
+  2507  000892                     u531:
+  2508  000892  EF68  F004         	goto	l114
+  2509  000896                     u530:
+  2510  000896  EF59  F004         	goto	l1270
+  2511  00089A                     l1266:
+  2512                           
+  2513                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 583:       
+      +                                fputc(' ', fp);
+  2514  00089A  0E00               	movlw	0
+  2515  00089C  6E02               	movwf	(fputc@c+1)^0,c
+  2516  00089E  0E20               	movlw	32
+  2517  0008A0  6E01               	movwf	fputc@c^0,c
+  2518  0008A2  C00A  F003         	movff	stoa@fp,fputc@fp
+  2519  0008A6  C00B  F004         	movff	stoa@fp+1,fputc@fp+1
+  2520  0008AA  ECF8  F005         	call	_fputc	;wreg free
+  2521  0008AE                     
+  2522                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 584:       
+      +                                ++l;
+  2523  0008AE  4A1E               	infsnz	stoa@l^0,f,c
+  2524  0008B0  2A1F               	incf	(stoa@l+1)^0,f,c
+  2525  0008B2                     l1270:
+  2526                           
+  2527                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 582:       
+      +                            while (l < w) {
+  2528  0008B2  5018               	movf	stoa@w^0,w,c
+  2529  0008B4  5C1E               	subwf	stoa@l^0,w,c
+  2530  0008B6  501F               	movf	(stoa@l+1)^0,w,c
+  2531  0008B8  0A80               	xorlw	128
+  2532  0008BA  6E0E               	movwf	??_stoa^0,c
+  2533  0008BC  5019               	movf	(stoa@w+1)^0,w,c
+  2534  0008BE  0A80               	xorlw	128
+  2535  0008C0  580E               	subwfb	??_stoa^0,w,c
+  2536  0008C2  A0D8               	btfss	status,0,c
+  2537  0008C4  EF66  F004         	goto	u541
+  2538  0008C8  EF68  F004         	goto	u540
+  2539  0008CC                     u541:
+  2540  0008CC  EF4D  F004         	goto	l1266
+  2541  0008D0                     u540:
+  2542  0008D0                     l114:
+  2543                           
+  2544                           ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c: 588:     re
+      +                          turn l;
+  2545  0008D0  C01E  F00A         	movff	stoa@l,?_stoa
+  2546  0008D4  C01F  F00B         	movff	stoa@l+1,?_stoa+1
+  2547  0008D8  0012               	return		;funcret
+  2548  0008DA                     __end_of_stoa:
+  2549                           	opt callstack 0
+  2550                           
+  2551 ;; *************** function _strlen *****************
+  2552 ;; Defined at:
+  2553 ;;		line 5 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\strlen.c"
+  2554 ;; Parameters:    Size  Location     Type
+  2555 ;;  s               2    0[COMRAM] PTR const unsigned char 
+  2556 ;;		 -> ?_printf(2), stoa@nuls(7), swappy(23), database.users(115), 
+  2557 ;;		 -> database(121), STR_9(7), 
+  2558 ;; Auto vars:     Size  Location     Type
+  2559 ;;  a               2    2[COMRAM] PTR const unsigned char 
+  2560 ;;		 -> ?_printf(2), stoa@nuls(7), swappy(23), database.users(115), 
+  2561 ;;		 -> database(121), STR_9(7), 
+  2562 ;; Return value:  Size  Location     Type
+  2563 ;;                  2    0[COMRAM] unsigned int 
+  2564 ;; Registers used:
+  2565 ;;		wreg, fsr0l, fsr0h, status,2, status,0, tblptrl, tblptrh, tblptru
+  2566 ;; Tracked objects:
+  2567 ;;		On entry : 0/0
+  2568 ;;		On exit  : 0/0
+  2569 ;;		Unchanged: 0/0
+  2570 ;; Data sizes:     COMRAM   BANK0   BANK1
+  2571 ;;      Params:         2       0       0
+  2572 ;;      Locals:         2       0       0
+  2573 ;;      Temps:          0       0       0
+  2574 ;;      Totals:         4       0       0
+  2575 ;;Total ram usage:        4 bytes
+  2576 ;; Hardware stack levels used:    1
+  2577 ;; This function calls:
+  2578 ;;		Nothing
+  2579 ;; This function is called by:
+  2580 ;;		_stoa
+  2581 ;; This function uses a non-reentrant model
+  2582 ;;
+  2583                           
+  2584                           	psect	text11
+  2585  000E6E                     __ptext11:
+  2586                           	opt callstack 0
+  2587  000E6E                     _strlen:
+  2588                           	opt callstack 25
+  2589  000E6E  C001  F003         	movff	strlen@s,strlen@a
+  2590  000E72  C002  F004         	movff	strlen@s+1,strlen@a+1
+  2591  000E76  EF3F  F007         	goto	l1224
+  2592  000E7A                     l1222:
+  2593  000E7A  4A01               	infsnz	strlen@s^0,f,c
+  2594  000E7C  2A02               	incf	(strlen@s+1)^0,f,c
+  2595  000E7E                     l1224:
+  2596  000E7E  C001  FFF6         	movff	strlen@s,tblptrl
+  2597  000E82  C002  FFF7         	movff	strlen@s+1,tblptrh
+  2598  000E86  6AF8               	clrf	tblptru,c
+  2599  000E88  0E01               	movlw	(high __ramtop+-1)
+  2600  000E8A  64F7               	cpfsgt	tblptrh,c
+  2601  000E8C  D003               	bra	u437
+  2602  000E8E  0008               	tblrd		*
+  2603  000E90  50F5               	movf	tablat,w,c
+  2604  000E92  D005               	bra	u430
+  2605  000E94                     u437:
+  2606  000E94  CFF6 FFE9          	movff	tblptrl,fsr0l
+  2607  000E98  CFF7 FFEA          	movff	tblptrh,fsr0h
+  2608  000E9C  50EF               	movf	indf0,w,c
+  2609  000E9E                     u430:
+  2610  000E9E  0900               	iorlw	0
+  2611  000EA0  A4D8               	btfss	status,2,c
+  2612  000EA2  EF55  F007         	goto	u441
+  2613  000EA6  EF57  F007         	goto	u440
+  2614  000EAA                     u441:
+  2615  000EAA  EF3D  F007         	goto	l1222
+  2616  000EAE                     u440:
+  2617  000EAE  5003               	movf	strlen@a^0,w,c
+  2618  000EB0  5C01               	subwf	strlen@s^0,w,c
+  2619  000EB2  6E01               	movwf	?_strlen^0,c
+  2620  000EB4  5004               	movf	(strlen@a+1)^0,w,c
+  2621  000EB6  5802               	subwfb	(strlen@s+1)^0,w,c
+  2622  000EB8  6E02               	movwf	(?_strlen+1)^0,c
+  2623  000EBA  0012               	return		;funcret
+  2624  000EBC                     __end_of_strlen:
+  2625                           	opt callstack 0
+  2626                           
+  2627 ;; *************** function _fputc *****************
+  2628 ;; Defined at:
+  2629 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\nf_fputc.c"
+  2630 ;; Parameters:    Size  Location     Type
+  2631 ;;  c               2    0[COMRAM] int 
+  2632 ;;  fp              2    2[COMRAM] PTR struct _IO_FILE
+  2633 ;;		 -> NULL(0), 
+  2634 ;; Auto vars:     Size  Location     Type
+  2635 ;;		None
+  2636 ;; Return value:  Size  Location     Type
+  2637 ;;                  2    0[COMRAM] int 
+  2638 ;; Registers used:
+  2639 ;;		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, cstack
+  2640 ;; Tracked objects:
+  2641 ;;		On entry : 0/0
+  2642 ;;		On exit  : 0/0
+  2643 ;;		Unchanged: 0/0
+  2644 ;; Data sizes:     COMRAM   BANK0   BANK1
+  2645 ;;      Params:         4       0       0
+  2646 ;;      Locals:         0       0       0
+  2647 ;;      Temps:          5       0       0
+  2648 ;;      Totals:         9       0       0
+  2649 ;;Total ram usage:        9 bytes
+  2650 ;; Hardware stack levels used:    1
+  2651 ;; Hardware stack levels required when called:    1
+  2652 ;; This function calls:
+  2653 ;;		_putch
+  2654 ;; This function is called by:
+  2655 ;;		_stoa
+  2656 ;;		_vfpfcnvrt
+  2657 ;; This function uses a non-reentrant model
+  2658 ;;
+  2659                           
+  2660                           	psect	text12
+  2661  000BF0                     __ptext12:
+  2662                           	opt callstack 0
+  2663  000BF0                     _fputc:
+  2664                           	opt callstack 24
+  2665  000BF0  5003               	movf	fputc@fp^0,w,c
+  2666  000BF2  1004               	iorwf	(fputc@fp+1)^0,w,c
+  2667  000BF4  B4D8               	btfsc	status,2,c
+  2668  000BF6  EFFF  F005         	goto	u391
+  2669  000BFA  EF01  F006         	goto	u390
+  2670  000BFE                     u391:
+  2671  000BFE  EF0A  F006         	goto	l1210
+  2672  000C02                     u390:
+  2673  000C02  5003               	movf	fputc@fp^0,w,c
+  2674  000C04  1004               	iorwf	(fputc@fp+1)^0,w,c
+  2675  000C06  A4D8               	btfss	status,2,c
+  2676  000C08  EF08  F006         	goto	u401
+  2677  000C0C  EF0A  F006         	goto	u400
+  2678  000C10                     u401:
+  2679  000C10  EF0F  F006         	goto	l1212
+  2680  000C14                     u400:
+  2681  000C14                     l1210:
+  2682  000C14  5001               	movf	fputc@c^0,w,c
+  2683  000C16  ECA8  F007         	call	_putch
+  2684  000C1A  EF42  F006         	goto	l816
+  2685  000C1E                     l1212:
+  2686  000C1E  EE20 F004          	lfsr	2,4
+  2687  000C22  5003               	movf	fputc@fp^0,w,c
+  2688  000C24  26D9               	addwf	fsr2l,f,c
+  2689  000C26  5004               	movf	(fputc@fp+1)^0,w,c
+  2690  000C28  22DA               	addwfc	fsr2h,f,c
+  2691  000C2A  50DE               	movf	postinc2,w,c
+  2692  000C2C  10DE               	iorwf	postinc2,w,c
+  2693  000C2E  B4D8               	btfsc	status,2,c
+  2694  000C30  EF1C  F006         	goto	u411
+  2695  000C34  EF1E  F006         	goto	u410
+  2696  000C38                     u411:
+  2697  000C38  EF39  F006         	goto	l1216
+  2698  000C3C                     u410:
+  2699  000C3C  EE20 F004          	lfsr	2,4
+  2700  000C40  5003               	movf	fputc@fp^0,w,c
+  2701  000C42  26D9               	addwf	fsr2l,f,c
+  2702  000C44  5004               	movf	(fputc@fp+1)^0,w,c
+  2703  000C46  22DA               	addwfc	fsr2h,f,c
+  2704  000C48  EE10 F002          	lfsr	1,2
+  2705  000C4C  5003               	movf	fputc@fp^0,w,c
+  2706  000C4E  26E1               	addwf	fsr1l,f,c
+  2707  000C50  5004               	movf	(fputc@fp+1)^0,w,c
+  2708  000C52  22E2               	addwfc	fsr1h,f,c
+  2709  000C54  50DE               	movf	postinc2,w,c
+  2710  000C56  5CE6               	subwf	postinc1,w,c
+  2711  000C58  50E6               	movf	postinc1,w,c
+  2712  000C5A  0A80               	xorlw	128
+  2713  000C5C  6E09               	movwf	(??_fputc+4)^0,c
+  2714  000C5E  50DE               	movf	postinc2,w,c
+  2715  000C60  0A80               	xorlw	128
+  2716  000C62  5809               	subwfb	(??_fputc+4)^0,w,c
+  2717  000C64  B0D8               	btfsc	status,0,c
+  2718  000C66  EF37  F006         	goto	u421
+  2719  000C6A  EF39  F006         	goto	u420
+  2720  000C6E                     u421:
+  2721  000C6E  EF42  F006         	goto	l816
+  2722  000C72                     u420:
+  2723  000C72                     l1216:
+  2724  000C72  EE20 F002          	lfsr	2,2
+  2725  000C76  5003               	movf	fputc@fp^0,w,c
+  2726  000C78  26D9               	addwf	fsr2l,f,c
+  2727  000C7A  5004               	movf	(fputc@fp+1)^0,w,c
+  2728  000C7C  22DA               	addwfc	fsr2h,f,c
+  2729  000C7E  2ADE               	incf	postinc2,f,c
+  2730  000C80  0E00               	movlw	0
+  2731  000C82  22DD               	addwfc	postdec2,f,c
+  2732  000C84                     l816:
+  2733  000C84  0012               	return		;funcret
+  2734  000C86                     __end_of_fputc:
+  2735                           	opt callstack 0
+  2736                           
+  2737 ;; *************** function _putch *****************
+  2738 ;; Defined at:
+  2739 ;;		line 7 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\putch.c"
+  2740 ;; Parameters:    Size  Location     Type
+  2741 ;;  c               1    wreg     unsigned char 
+  2742 ;; Auto vars:     Size  Location     Type
+  2743 ;;  c               1    0[COMRAM] unsigned char 
+  2744 ;; Return value:  Size  Location     Type
+  2745 ;;                  1    wreg      void 
+  2746 ;; Registers used:
+  2747 ;;		wreg
+  2748 ;; Tracked objects:
+  2749 ;;		On entry : 0/0
+  2750 ;;		On exit  : 0/0
+  2751 ;;		Unchanged: 0/0
+  2752 ;; Data sizes:     COMRAM   BANK0   BANK1
+  2753 ;;      Params:         0       0       0
+  2754 ;;      Locals:         0       0       0
+  2755 ;;      Temps:          0       0       0
+  2756 ;;      Totals:         0       0       0
+  2757 ;;Total ram usage:        0 bytes
+  2758 ;; Hardware stack levels used:    1
+  2759 ;; This function calls:
+  2760 ;;		Nothing
+  2761 ;; This function is called by:
+  2762 ;;		_fputc
+  2763 ;; This function uses a non-reentrant model
+  2764 ;;
+  2765                           
+  2766                           	psect	text13
+  2767  000F50                     __ptext13:
+  2768                           	opt callstack 0
+  2769  000F50                     _putch:
+  2770                           	opt callstack 24
+  2771  000F50  0012               	return		;funcret
+  2772  000F52                     __end_of_putch:
+  2773                           	opt callstack 0
+  2774                           
+  2775 ;; *************** function _IOTICAT_init *****************
+  2776 ;; Defined at:
+  2777 ;;		line 20 in file "ioticat.c"
+  2778 ;; Parameters:    Size  Location     Type
+  2779 ;;		None
+  2780 ;; Auto vars:     Size  Location     Type
+  2781 ;;		None
+  2782 ;; Return value:  Size  Location     Type
+  2783 ;;                  1    wreg      void 
+  2784 ;; Registers used:
+  2785 ;;		wreg, status,2
+  2786 ;; Tracked objects:
+  2787 ;;		On entry : 0/0
+  2788 ;;		On exit  : 0/0
+  2789 ;;		Unchanged: 0/0
+  2790 ;; Data sizes:     COMRAM   BANK0   BANK1
+  2791 ;;      Params:         0       0       0
+  2792 ;;      Locals:         0       0       0
+  2793 ;;      Temps:          0       0       0
+  2794 ;;      Totals:         0       0       0
+  2795 ;;Total ram usage:        0 bytes
+  2796 ;; Hardware stack levels used:    1
+  2797 ;; This function calls:
+  2798 ;;		Nothing
+  2799 ;; This function is called by:
+  2800 ;;		_main
+  2801 ;; This function uses a non-reentrant model
+  2802 ;;
+  2803                           
+  2804                           	psect	text14
+  2805  000F3C                     __ptext14:
+  2806                           	opt callstack 0
+  2807  000F3C                     _IOTICAT_init:
+  2808                           	opt callstack 30
+  2809  000F3C                     
+  2810                           ;ioticat.c: 21:     database.cuantos = 0;
+  2811  000F3C  0E00               	movlw	0
+  2812  000F3E  0100               	movlb	0	; () banked
+  2813  000F40  6FF7               	movwf	(_database+119)& (0+255),b
+  2814                           
+  2815                           ;ioticat.c: 22:     database.cuantos_in = 0;
+  2816  000F42  0E00               	movlw	0
+  2817  000F44  6FF8               	movwf	(_database+120)& (0+255),b
+  2818  000F46                     
+  2819                           ; BSR set to: 0
+  2820  000F46  0012               	return		;funcret
+  2821  000F48                     __end_of_IOTICAT_init:
+  2822                           	opt callstack 0
+  2823                           
+  2824 ;; *************** function _IOTICAT_exists *****************
+  2825 ;; Defined at:
+  2826 ;;		line 139 in file "ioticat.c"
+  2827 ;; Parameters:    Size  Location     Type
+  2828 ;;  uid             2    5[COMRAM] PTR unsigned char 
+  2829 ;;		 -> STR_10(7), 
+  2830 ;; Auto vars:     Size  Location     Type
+  2831 ;;  i               1    7[COMRAM] unsigned char 
+  2832 ;; Return value:  Size  Location     Type
+  2833 ;;                  1    wreg      unsigned char 
+  2834 ;; Registers used:
+  2835 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+  2836 ;; Tracked objects:
+  2837 ;;		On entry : 0/0
+  2838 ;;		On exit  : 0/0
+  2839 ;;		Unchanged: 0/0
+  2840 ;; Data sizes:     COMRAM   BANK0   BANK1
+  2841 ;;      Params:         2       0       0
+  2842 ;;      Locals:         1       0       0
+  2843 ;;      Temps:          0       0       0
+  2844 ;;      Totals:         3       0       0
+  2845 ;;Total ram usage:        3 bytes
+  2846 ;; Hardware stack levels used:    1
+  2847 ;; Hardware stack levels required when called:    1
+  2848 ;; This function calls:
+  2849 ;;		_strcmp
+  2850 ;; This function is called by:
+  2851 ;;		_main
+  2852 ;; This function uses a non-reentrant model
+  2853 ;;
+  2854                           
+  2855                           	psect	text15
+  2856  000C86                     __ptext15:
+  2857                           	opt callstack 0
+  2858  000C86                     _IOTICAT_exists:
+  2859                           	opt callstack 29
+  2860  000C86                     
+  2861                           ;ioticat.c: 140:     for(unsigned char i = 0; i < database.cuantos; i++){
+  2862  000C86  0E00               	movlw	0
+  2863  000C88  6E08               	movwf	IOTICAT_exists@i^0,c
+  2864  000C8A  EF6F  F006         	goto	l1462
+  2865  000C8E                     l1446:
+  2866                           
+  2867                           ; BSR set to: 0
+  2868                           ;ioticat.c: 141:         if (strcmp(database.users[i].uid, uid) == 0){
+  2869  000C8E  5008               	movf	IOTICAT_exists@i^0,w,c
+  2870  000C90  0D17               	mullw	23
+  2871  000C92  0E8B               	movlw	low (_database+11)
+  2872  000C94  24F3               	addwf	243,w,c
+  2873  000C96  6E01               	movwf	strcmp@l^0,c
+  2874  000C98  0E00               	movlw	high (_database+11)
+  2875  000C9A  20F4               	addwfc	prodh,w,c
+  2876  000C9C  6E02               	movwf	(strcmp@l+1)^0,c
+  2877  000C9E  C006  F003         	movff	IOTICAT_exists@uid,strcmp@r
+  2878  000CA2  C007  F004         	movff	IOTICAT_exists@uid+1,strcmp@r+1
+  2879  000CA6  EC7B  F006         	call	_strcmp	;wreg free
+  2880  000CAA  5001               	movf	?_strcmp^0,w,c
+  2881  000CAC  1002               	iorwf	(?_strcmp+1)^0,w,c
+  2882  000CAE  A4D8               	btfss	status,2,c
+  2883  000CB0  EF5C  F006         	goto	u701
+  2884  000CB4  EF5E  F006         	goto	u700
+  2885  000CB8                     u701:
+  2886  000CB8  EF6E  F006         	goto	l1460
+  2887  000CBC                     u700:
+  2888  000CBC                     
+  2889                           ;ioticat.c: 143:             if (i < database.cuantos_in){
+  2890  000CBC  0100               	movlb	0	; () banked
+  2891  000CBE  51F8               	movf	(_database+120)& (0+255),w,b
+  2892  000CC0  5C08               	subwf	IOTICAT_exists@i^0,w,c
+  2893  000CC2  B0D8               	btfsc	status,0,c
+  2894  000CC4  EF66  F006         	goto	u711
+  2895  000CC8  EF68  F006         	goto	u710
+  2896  000CCC                     u711:
+  2897  000CCC  EF6B  F006         	goto	l1456
+  2898  000CD0                     u710:
+  2899  000CD0                     
+  2900                           ; BSR set to: 0
+  2901                           ;ioticat.c: 144:                 return 1;
+  2902  000CD0  0E01               	movlw	1
+  2903  000CD2  EF7A  F006         	goto	l63
+  2904  000CD6                     l1456:
+  2905                           
+  2906                           ; BSR set to: 0
+  2907                           ;ioticat.c: 146:                 return 2;
+  2908  000CD6  0E02               	movlw	2
+  2909  000CD8  EF7A  F006         	goto	l63
+  2910  000CDC                     l1460:
+  2911                           
+  2912                           ;ioticat.c: 149:     }
+  2913  000CDC  2A08               	incf	IOTICAT_exists@i^0,f,c
+  2914  000CDE                     l1462:
+  2915  000CDE  0100               	movlb	0	; () banked
+  2916  000CE0  51F7               	movf	(_database+119)& (0+255),w,b
+  2917  000CE2  5C08               	subwf	IOTICAT_exists@i^0,w,c
+  2918  000CE4  A0D8               	btfss	status,0,c
+  2919  000CE6  EF77  F006         	goto	u721
+  2920  000CEA  EF79  F006         	goto	u720
+  2921  000CEE                     u721:
+  2922  000CEE  EF47  F006         	goto	l1446
+  2923  000CF2                     u720:
+  2924  000CF2                     
+  2925                           ; BSR set to: 0
+  2926                           ;ioticat.c: 151:     return 0;
+  2927  000CF2  0E00               	movlw	0
+  2928  000CF4                     l63:
+  2929                           
+  2930                           ; BSR set to: 0
+  2931  000CF4  0012               	return		;funcret
+  2932  000CF6                     __end_of_IOTICAT_exists:
+  2933                           	opt callstack 0
+  2934                           
+  2935 ;; *************** function _strcmp *****************
+  2936 ;; Defined at:
+  2937 ;;		line 3 in file "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\strcmp.c"
+  2938 ;; Parameters:    Size  Location     Type
+  2939 ;;  l               2    0[COMRAM] PTR const unsigned char 
+  2940 ;;		 -> database.users.uid(6), database.users(115), 
+  2941 ;;  r               2    2[COMRAM] PTR const unsigned char 
+  2942 ;;		 -> STR_10(7), STR_9(7), 
+  2943 ;; Auto vars:     Size  Location     Type
+  2944 ;;		None
+  2945 ;; Return value:  Size  Location     Type
+  2946 ;;                  2    0[COMRAM] int 
+  2947 ;; Registers used:
+  2948 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru
+  2949 ;; Tracked objects:
+  2950 ;;		On entry : 0/0
+  2951 ;;		On exit  : 0/0
+  2952 ;;		Unchanged: 0/0
+  2953 ;; Data sizes:     COMRAM   BANK0   BANK1
+  2954 ;;      Params:         4       0       0
+  2955 ;;      Locals:         0       0       0
+  2956 ;;      Temps:          1       0       0
+  2957 ;;      Totals:         5       0       0
+  2958 ;;Total ram usage:        5 bytes
+  2959 ;; Hardware stack levels used:    1
+  2960 ;; This function calls:
+  2961 ;;		Nothing
+  2962 ;; This function is called by:
+  2963 ;;		_IOTICAT_login
+  2964 ;;		_IOTICAT_exists
+  2965 ;; This function uses a non-reentrant model
+  2966 ;;
+  2967                           
+  2968                           	psect	text16
+  2969  000CF6                     __ptext16:
+  2970                           	opt callstack 0
+  2971  000CF6                     _strcmp:
+  2972                           	opt callstack 29
+  2973  000CF6  EF81  F006         	goto	l1378
+  2974  000CFA                     l1376:
+  2975  000CFA  4A01               	infsnz	strcmp@l^0,f,c
+  2976  000CFC  2A02               	incf	(strcmp@l+1)^0,f,c
+  2977  000CFE  4A03               	infsnz	strcmp@r^0,f,c
+  2978  000D00  2A04               	incf	(strcmp@r+1)^0,f,c
+  2979  000D02                     l1378:
+  2980  000D02  C001  FFD9         	movff	strcmp@l,fsr2l
+  2981  000D06  C002  FFDA         	movff	strcmp@l+1,fsr2h
+  2982  000D0A  50DF               	movf	indf2,w,c
+  2983  000D0C  6E05               	movwf	??_strcmp^0,c
+  2984  000D0E  C003  FFF6         	movff	strcmp@r,tblptrl
+  2985  000D12  C004  FFF7         	movff	strcmp@r+1,tblptrh
+  2986  000D16                     	if	0	;tblptru may be non-zero
+  2987  000D16                     	endif
+  2988  000D16                     	if	0	;tblptru may be non-zero
+  2989  000D16                     	endif
+  2990  000D16  0008               	tblrd		*
+  2991  000D18  50F5               	movf	tablat,w,c
+  2992  000D1A  1805               	xorwf	??_strcmp^0,w,c
+  2993  000D1C  A4D8               	btfss	status,2,c
+  2994  000D1E  EF93  F006         	goto	u611
+  2995  000D22  EF95  F006         	goto	u610
+  2996  000D26                     u611:
+  2997  000D26  EFA1  F006         	goto	l1382
+  2998  000D2A                     u610:
+  2999  000D2A  C001  FFD9         	movff	strcmp@l,fsr2l
+  3000  000D2E  C002  FFDA         	movff	strcmp@l+1,fsr2h
+  3001  000D32  50DF               	movf	indf2,w,c
+  3002  000D34  A4D8               	btfss	status,2,c
+  3003  000D36  EF9F  F006         	goto	u621
+  3004  000D3A  EFA1  F006         	goto	u620
+  3005  000D3E                     u621:
+  3006  000D3E  EF7D  F006         	goto	l1376
+  3007  000D42                     u620:
+  3008  000D42                     l1382:
+  3009  000D42  C001  FFD9         	movff	strcmp@l,fsr2l
+  3010  000D46  C002  FFDA         	movff	strcmp@l+1,fsr2h
+  3011  000D4A  50DF               	movf	indf2,w,c
+  3012  000D4C  6E05               	movwf	??_strcmp^0,c
+  3013  000D4E  C003  FFF6         	movff	strcmp@r,tblptrl
+  3014  000D52  C004  FFF7         	movff	strcmp@r+1,tblptrh
+  3015  000D56                     	if	0	;tblptru may be non-zero
+  3016  000D56                     	endif
+  3017  000D56                     	if	0	;tblptru may be non-zero
+  3018  000D56                     	endif
+  3019  000D56  0008               	tblrd		*
+  3020  000D58  50F5               	movf	tablat,w,c
+  3021  000D5A  5C05               	subwf	??_strcmp^0,w,c
+  3022  000D5C  6E01               	movwf	?_strcmp^0,c
+  3023  000D5E  6A02               	clrf	(?_strcmp+1)^0,c
+  3024  000D60  A0D8               	btfss	status,0,c
+  3025  000D62  0602               	decf	(?_strcmp+1)^0,f,c
+  3026  000D64  0012               	return		;funcret
+  3027  000D66                     __end_of_strcmp:
+  3028                           	opt callstack 0
+  3029                           
+  3030                           	psect	rparam
+  3031  0000                     tosu	equ	0xFFF
+  3032                           tosh	equ	0xFFE
+  3033                           tosl	equ	0xFFD
+  3034                           stkptr	equ	0xFFC
+  3035                           pclatu	equ	0xFFB
+  3036                           pclath	equ	0xFFA
+  3037                           pcl	equ	0xFF9
+  3038                           tblptru	equ	0xFF8
+  3039                           tblptrh	equ	0xFF7
+  3040                           tblptrl	equ	0xFF6
+  3041                           tablat	equ	0xFF5
+  3042                           prodh	equ	0xFF4
+  3043                           prodl	equ	0xFF3
+  3044                           indf0	equ	0xFEF
+  3045                           postinc0	equ	0xFEE
+  3046                           postdec0	equ	0xFED
+  3047                           preinc0	equ	0xFEC
+  3048                           plusw0	equ	0xFEB
+  3049                           fsr0h	equ	0xFEA
+  3050                           fsr0l	equ	0xFE9
+  3051                           wreg	equ	0xFE8
+  3052                           indf1	equ	0xFE7
+  3053                           postinc1	equ	0xFE6
+  3054                           postdec1	equ	0xFE5
+  3055                           preinc1	equ	0xFE4
+  3056                           plusw1	equ	0xFE3
+  3057                           fsr1h	equ	0xFE2
+  3058                           fsr1l	equ	0xFE1
+  3059                           bsr	equ	0xFE0
+  3060                           indf2	equ	0xFDF
+  3061                           postinc2	equ	0xFDE
+  3062                           postdec2	equ	0xFDD
+  3063                           preinc2	equ	0xFDC
+  3064                           plusw2	equ	0xFDB
+  3065                           fsr2h	equ	0xFDA
+  3066                           fsr2l	equ	0xFD9
+  3067                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     207
+    Constant    0
+    Data        7
+    BSS         184
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          127     92     123
+    BANK0           128      0     128
+    BANK1           256      0      32
+
+Pointer List with Targets:
+
+    IOTICAT_show$910	PTR unsigned char [6] size(2) Largest target is 121
+		 -> database(BANK0[121]), 
+
+    IOTICAT_show$909	PTR unsigned char [11] size(2) Largest target is 121
+		 -> database(BANK0[121]), 
+
+    strlen@s	PTR const unsigned char  size(2) Largest target is 7
+		 -> ?_printf(COMRAM[2]), stoa@nuls(COMRAM[7]), swappy(COMRAM[23]), database.users(BANK0[115]), 
+		 -> database(BANK0[121]), STR_9(CODE[7]), 
+
+    strlen@a	PTR const unsigned char  size(2) Largest target is 7
+		 -> ?_printf(COMRAM[2]), stoa@nuls(COMRAM[7]), swappy(COMRAM[23]), database.users(BANK0[115]), 
+		 -> database(BANK0[121]), STR_9(CODE[7]), 
+
+    strcpy@dest	PTR unsigned char  size(2) Largest target is 121
+		 -> swappy(COMRAM[23]), database.users(BANK0[115]), database(BANK0[121]), main@user(COMRAM[23]), 
+
+    strcpy@d	PTR unsigned char  size(2) Largest target is 121
+		 -> swappy(COMRAM[23]), database.users(BANK0[115]), database(BANK0[121]), main@user(COMRAM[23]), 
+
+    strcpy@src	PTR const unsigned char  size(2) Largest target is 23
+		 -> swappy.uid(COMRAM[6]), swappy.name(COMRAM[11]), swappy(COMRAM[23]), database.users.uid(BANK0[6]), 
+		 -> database.users.name(BANK0[11]), database.users(BANK0[115]), STR_8(CODE[7]), STR_7(CODE[7]), 
+		 -> STR_6(CODE[7]), STR_5(CODE[6]), STR_4(CODE[7]), STR_3(CODE[11]), 
+		 -> STR_2(CODE[7]), STR_1(CODE[5]), 
+
+    strcpy@s	PTR const unsigned char  size(2) Largest target is 23
+		 -> swappy.uid(COMRAM[6]), swappy.name(COMRAM[11]), swappy(COMRAM[23]), database.users.uid(BANK0[6]), 
+		 -> database.users.name(BANK0[11]), database.users(BANK0[115]), STR_8(CODE[7]), STR_7(CODE[7]), 
+		 -> STR_6(CODE[7]), STR_5(CODE[6]), STR_4(CODE[7]), STR_3(CODE[11]), 
+		 -> STR_2(CODE[7]), STR_1(CODE[5]), 
+
+    strcmp@r	PTR const unsigned char  size(2) Largest target is 7
+		 -> STR_10(CODE[7]), STR_9(CODE[7]), 
+
+    strcmp@l	PTR const unsigned char  size(2) Largest target is 0
+		 -> database.users.uid(BANK0[6]), database.users(BANK0[115]), 
+
+    printf@fmt	PTR const unsigned char  size(2) Largest target is 41
+		 -> STR_18(CODE[19]), STR_17(CODE[29]), STR_16(CODE[19]), STR_15(CODE[26]), 
+		 -> STR_14(CODE[41]), STR_13(CODE[12]), STR_12(CODE[11]), STR_11(CODE[12]), 
+
+    printf@ap	PTR void [1] size(2) Largest target is 2
+		 -> ?_printf(COMRAM[2]), 
+
+    S674_IO_FILE$buffer	PTR unsigned char  size(2) Largest target is 0
+
+    fputc@fp.buffer	PTR unsigned char  size(2) Largest target is 0
+
+    fputc@fp	PTR struct _IO_FILE size(2) Largest target is 0
+		 -> NULL(NULL[0]), 
+
+    vfprintf@ap	PTR PTR void  size(2) Largest target is 2
+		 -> printf@ap(COMRAM[2]), 
+
+    vfprintf@fp	PTR struct _IO_FILE size(2) Largest target is 0
+		 -> NULL(NULL[0]), 
+
+    vfprintf@fmt	PTR const unsigned char  size(2) Largest target is 41
+		 -> STR_18(CODE[19]), STR_17(CODE[29]), STR_16(CODE[19]), STR_15(CODE[26]), 
+		 -> STR_14(CODE[41]), STR_13(CODE[12]), STR_12(CODE[11]), STR_11(CODE[12]), 
+
+    vfprintf@cfmt	PTR unsigned char  size(2) Largest target is 41
+		 -> STR_18(CODE[19]), STR_17(CODE[29]), STR_16(CODE[19]), STR_15(CODE[26]), 
+		 -> STR_14(CODE[41]), STR_13(CODE[12]), STR_12(CODE[11]), STR_11(CODE[12]), 
+
+    vfpfcnvrt@fp	PTR struct _IO_FILE size(2) Largest target is 0
+		 -> NULL(NULL[0]), 
+
+    vfpfcnvrt@ap	PTR PTR void  size(2) Largest target is 2
+		 -> printf@ap(COMRAM[2]), 
+
+    vfpfcnvrt@cp	PTR unsigned char  size(2) Largest target is 2
+		 -> ?_printf(COMRAM[2]), swappy(COMRAM[23]), database.users(BANK0[115]), database(BANK0[121]), 
+		 -> STR_9(CODE[7]), 
+
+    vfpfcnvrt@fmt	PTR PTR unsigned char  size(2) Largest target is 2
+		 -> vfprintf@cfmt(COMRAM[2]), 
+
+    stoa@fp	PTR struct _IO_FILE size(2) Largest target is 0
+		 -> NULL(NULL[0]), 
+
+    stoa@s	PTR unsigned char  size(2) Largest target is 2
+		 -> ?_printf(COMRAM[2]), swappy(COMRAM[23]), database.users(BANK0[115]), database(BANK0[121]), 
+		 -> STR_9(CODE[7]), 
+
+    stoa@cp	PTR unsigned char  size(2) Largest target is 7
+		 -> ?_printf(COMRAM[2]), stoa@nuls(COMRAM[7]), swappy(COMRAM[23]), database.users(BANK0[115]), 
+		 -> database(BANK0[121]), STR_9(CODE[7]), 
+
+    IOTICAT_exists@uid	PTR unsigned char  size(2) Largest target is 7
+		 -> STR_10(CODE[7]), 
+
+    IOTICAT_login@uid	PTR const unsigned char  size(2) Largest target is 7
+		 -> STR_9(CODE[7]), 
+
+    sp__strcpy	PTR unsigned char  size(2) Largest target is 121
+		 -> swappy(COMRAM[23]), database.users(BANK0[115]), database(BANK0[121]), main@user(COMRAM[23]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_IOTICAT_show
+    _IOTICAT_show->_printf
+    _IOTICAT_login->_swap
+    _swap->_printf
+    _printf->_vfprintf
+    _vfprintf->_vfpfcnvrt
+    _vfpfcnvrt->_stoa
+    _stoa->_fputc
+    _IOTICAT_exists->_strcmp
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                26    26      0   22886
+                                             66 COMRAM    26    26      0
+                     _IOTICAT_exists
+                       _IOTICAT_init
+                      _IOTICAT_login
+                   _IOTICAT_register
+                       _IOTICAT_show
+                             _strcpy
+ ---------------------------------------------------------------------------------
+ (1) _IOTICAT_show                                         7     7      0    5681
+                                             59 COMRAM     7     7      0
+                             ___wmul
+                             _printf
+ ---------------------------------------------------------------------------------
+ (2) ___wmul                                               6     2      4     813
+                                              0 COMRAM     6     2      4
+ ---------------------------------------------------------------------------------
+ (1) _IOTICAT_register                                    23     0     23     326
+                                              0 COMRAM    23     0     23
+ ---------------------------------------------------------------------------------
+ (1) _IOTICAT_login                                        3     1      2   13138
+                                             61 COMRAM     3     1      2
+                             _printf
+                             _strcmp
+                               _swap
+ ---------------------------------------------------------------------------------
+ (2) _swap                                                 2     1      1    7780
+                                             59 COMRAM     2     1      1
+                             _printf
+                             _strcpy
+ ---------------------------------------------------------------------------------
+ (1) _strcpy                                              10     6      4    2224
+                                              0 COMRAM    10     6      4
+ ---------------------------------------------------------------------------------
+ (2) _printf                                              10     4      6    4732
+                                             49 COMRAM    10     4      6
+                             ___wmul (ARG)
+                           _vfprintf
+ ---------------------------------------------------------------------------------
+ (3) _vfprintf                                             8     2      6    4070
+                                             41 COMRAM     8     2      6
+                          _vfpfcnvrt
+ ---------------------------------------------------------------------------------
+ (4) _vfpfcnvrt                                           41    35      6    3717
+                                             31 COMRAM    10     4      6
+                              _fputc
+                               _stoa
+ ---------------------------------------------------------------------------------
+ (5) _stoa                                                22    18      4    2008
+                                              9 COMRAM    22    18      4
+                              _fputc
+                             _strlen
+ ---------------------------------------------------------------------------------
+ (6) _strlen                                               4     2      2     229
+                                              0 COMRAM     4     2      2
+ ---------------------------------------------------------------------------------
+ (6) _fputc                                                9     5      4    1172
+                                              0 COMRAM     9     5      4
+                              _putch
+ ---------------------------------------------------------------------------------
+ (7) _putch                                                1     1      0       0
+ ---------------------------------------------------------------------------------
+ (1) _IOTICAT_init                                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _IOTICAT_exists                                       3     1      2     582
+                                              5 COMRAM     3     1      2
+                             _strcmp
+ ---------------------------------------------------------------------------------
+ (2) _strcmp                                               5     1      4     416
+                                              0 COMRAM     5     1      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 7
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _IOTICAT_exists
+     _strcmp
+   _IOTICAT_init
+   _IOTICAT_login
+     _printf
+       ___wmul (ARG)
+       _vfprintf (ARG)
+         _vfpfcnvrt
+           _fputc
+             _putch
+           _stoa
+             _fputc
+               _putch
+             _strlen
+     _strcmp
+     _swap
+       _printf
+         ___wmul (ARG)
+         _vfprintf (ARG)
+           _vfpfcnvrt
+             _fputc
+               _putch
+             _stoa
+               _fputc
+                 _putch
+               _strlen
+       _strcpy
+   _IOTICAT_register
+   _IOTICAT_show
+     ___wmul
+     _printf
+       ___wmul (ARG)
+       _vfprintf (ARG)
+         _vfpfcnvrt
+           _fputc
+             _putch
+           _stoa
+             _fputc
+               _putch
+             _strlen
+   _strcpy
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             1FF      0       0       8        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK1           100      0       0       5        0.0%
+BANK1              100      0      20       6       12.5%
+BITBANK0            80      0       0       3        0.0%
+BANK0               80      0      80       4      100.0%
+BITCOMRAM           7F      0       0       0        0.0%
+COMRAM              7F     5C      7B       1       96.9%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0     11B       7        0.0%
+DATA                 0      0     11B       9        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
+Symbol Table                                                                                   Fri Apr 03 11:32:28 2020
+
+                       l30 0F46                         l17 073E                         l34 0EEE  
+                       l45 0BEE                         l38 05A0                         l63 0CF4  
+                       l56 0B58        ___wmul@multiplicand 0003                        l102 07C2  
+                      l104 07CA                        l113 0888                        l114 08D0  
+                      l130 0DC2                        l123 0A3C                        l133 0F14  
+                      l118 08D8                        l129 0DBA                        l831 0F3A  
+                      l816 0C84                        l842 0D64                        l834 0F50  
+                      l854 0EBA                        l848 0E1E                        u400 0C14  
+                      u401 0C10                        u410 0C3C                        u411 0C38  
+                      u420 0C72                        u500 0822                        u421 0C6E  
+                      u501 081E                        u430 0E9E                        u510 084E  
+                      u440 0EAE                        u520 0888                        u600 0E1E  
+                      u441 0EAA                        u521 0884                        u601 0E1A  
+                      u610 0D2A                        u530 0896                        u611 0D26  
+                      u531 0892                        u451 074C                        u620 0D42  
+                      u700 0CBC                        u540 08D0                        u460 076E  
+                      u621 0D3E                        u701 0CB8                        u437 0E94  
+                      u541 08CC                        u517 0844                        u461 076A  
+                      u710 0CD0                        u390 0C02                        u470 07A0  
+                      u550 08FE                        u630 0ECE                        u711 0CCC  
+                      u391 0BFE                        u471 079C                        u551 08FA  
+                      u631 0ECA                        u720 0CF2                        u480 07BE  
+                      u560 0944                        u721 0CEE                        u481 07BA  
+                      u561 0940                        u641 0EE4                        u490 07E8  
+                      u570 09BE                        u650 0ACC                        u491 07E4  
+                      u571 09BA                        u651 0AC8                        u731 05F8  
+                      u580 0DBA                        u660 0B58                        u581 0DB6  
+                      u661 0B54                        u741 0656                        u590 0E0C  
+                      u670 0B6C                        u671 0B68                        u751 06B4  
+                      u680 0BC6                        u681 0BC2                        u761 0712  
+                      u690 0BEE                        u691 0BEA                        u597 0E02  
+                      prod 000FF3                        wreg 000FE8     __size_of_IOTICAT_login 0096  
+                     l1210 0C14                       l1212 0C1E                       l1220 0E6E  
+                     l1300 09FA                       l1214 0C3C                       l1206 0BF0  
+                     l1222 0E7A                       l1230 0742                       l1216 0C72  
+                     l1208 0C02                       l1224 0E7E                       l1240 078A  
+                     l1232 0754                       l1304 0A06                       l1312 0D66  
+                     l1320 0DC4                       l1226 0EAE                       l1250 0800  
+                     l1242 0792                       l1234 075C                       l1306 0A2A  
+                     l1314 0D6E                       l1322 0DD4                       l1330 02D4  
+                     l1410 0AA2                       l1260 0866                       l1252 0804  
+                     l1244 07A0                       l1236 076E                       l1316 0D7A  
+                     l1324 0F16                       l1340 035C                       l1332 030C  
+                     l1420 0B2E                       l1412 0AA6                       l1404 0A3E  
+                     l1500 063C                       l1270 08B2                       l1262 086A  
+                     l1254 0822                       l1238 0776                       l1318 0D9E  
+                     l1326 0F1E                       l1350 0438                       l1342 0370  
+                     l1334 0320                       l1430 0B98                       l1422 0B32  
+                     l1414 0ACC                       l1406 0A4A                       l1510 0662  
+                     l1502 0640                       l1256 082E                       l1248 07EC  
+                     l1280 0920                       l1272 08DA                       l1360 0504  
+                     l1352 045C                       l1344 03CC                       l1336 0334  
+                     l1432 0BC6                       l1440 0BDA                       l1424 0B5A  
+                     l1416 0AD8                       l1408 0A56                       l1520 069A  
+                     l1512 0676                       l1504 0644                       l1450 0CD0  
+                     l1266 089A                       l1258 0862                       l1290 09BE  
+                     l1282 0944                       l1274 08FE                       l1370 0570  
+                     l1362 0518                       l1354 0480                       l1346 03F0  
+                     l1338 0348                       l1434 0BD0                       l1426 0B6C  
+                     l1418 0AE2                       l1530 06C0                       l1522 069E  
+                     l1514 068A                       l1506 0648                       l1380 0D2A  
+                     l1460 0CDC                       l1444 0C86                       l1268 08AE  
+                     l1292 09CC                       l1284 097A                       l1276 090C  
+                     l1372 058C                       l1364 052C                       l1356 04DC  
+                     l1348 0414                       l1428 0B74                       l1540 06F8  
+                     l1532 06D4                       l1524 06A2                       l1516 068E  
+                     l1508 064C                       l1382 0D42                       l1374 0CF6  
+                     l1446 0C8E                       l1462 0CDE                       l1294 09E0  
+                     l1278 091C                       l1366 0540                       l1358 04F0  
+                     l1438 0BD8                       l1550 071E                       l1542 06FC  
+                     l1534 06E8                       l1526 06A6                       l1518 0692  
+                     l1470 05A6                       l1376 0CFA                       l1464 0CF2  
+                     l1456 0CD6                       l1448 0CBC                       l1392 0F3C  
+                     l1288 099A                       l1368 0554                       l1552 0722  
+                     l1544 0700                       l1536 06EC                       l1528 06AA  
+                     l1480 05DE                       l1472 05BA                       l1378 0D02  
+                     l1298 09EC                       l1394 0EBC                       l1386 0EF0  
+                     l1554 072E                       l1546 0704                       l1538 06F0  
+                     l1490 0604                       l1482 05E2                       l1474 05CE  
+                     l1396 0ECE                       l1388 0F0C                       l1556 0732  
+                     l1548 0708                       l1492 0618                       l1484 05E6  
+                     l1476 05D2                       l1468 05A2                       l1398 0EEC  
+                     l1494 062C                       l1486 05EA                       l1478 05D6  
+                     l1496 0630                       l1488 05EE                       l1498 0634  
+                     STR_1 02CB                       STR_2 02A2                       STR_3 0297  
+                     STR_4 02A9                       STR_5 02C5                       STR_6 02B0  
+                     STR_7 02BE                       STR_8 02B7                       STR_9 02B0  
+                     _dbuf 0100                       _main 05A2                       _prec 0061  
+                     _nout 005D                       fsr0h 000FEA                       fsr1h 000FE2  
+                     indf0 000FEF                       fsr2h 000FDA                       fsr0l 000FE9  
+                     indf1 000FE7                       indf2 000FDF                       fsr1l 000FE1  
+                     fsr2l 000FD9                       _swap 02D2                       _stoa 0742  
+                     prodh 000FF4                       prodl 000FF3                       start 0000  
+             ___param_bank 000000    __size_of_IOTICAT_exists 0070                      ?_main 0001  
+                    STR_10 02B0                      STR_11 0274                      STR_12 028C  
+                    STR_13 0280                      STR_14 0201                      STR_15 0247  
+                    STR_16 0261                      STR_17 022A                      STR_18 0261  
+                    ?_swap 003C                      ?_stoa 000A               vfpfcnvrt@fmt 0022  
+           IOTICAT_login@i 0040              ?_IOTICAT_init 0001              ?_IOTICAT_show 0001  
+                    _flags 0063                      _fputc 0BF0                      _width 005F  
+                    _putch 0F50                      tablat 000FF5                      plusw0 000FEB  
+                    plusw1 000FE3                      plusw2 000FDB                      swap@i 003D  
+                    swap@j 003C                      stoa@i 0016                      stoa@l 001E  
+                    stoa@p 001C                      stoa@s 000C                      stoa@w 0018  
+         _IOTICAT_register 0EBC                      status 000FD8            __initialization 0E20  
+             __end_of_main 0742              _IOTICAT_login 0B5A               __end_of_swap 05A2  
+             __end_of_stoa 08DA                     ??_main 0043                     ??_swap 003D  
+                   ??_stoa 000E              __activetblptr 000002             ??_IOTICAT_init 0001  
+           ??_IOTICAT_show 003C                     ?_fputc 0001                     ?_putch 0001  
+          IOTICAT_exists@i 0008               vfprintf@cfmt 0030             ?_IOTICAT_login 003E  
+                   ___wmul 0EF0                     clear_0 0E46                     clear_1 0E52  
+                   clear_2 0E5E                     _printf 0F16                     _swappy 0065  
+                   _strcmp 0CF6                     _strcpy 0DC4                     _strlen 0E6E  
+                   fputc@c 0001               __mediumconst 0000                     tblptrh 000FF7  
+                   tblptrl 000FF6                     tblptru 000FF8                     stoa@cp 001A  
+                   stoa@fp 000A                     putch@c 0001           __end_of_vfprintf 0DC4  
+               __accesstop 0080    __end_of__initialization 0E64              ___rparam_used 000001  
+           __pcstackCOMRAM 0001               __pidataBANK0 0F48              __end_of_fputc 0C86  
+           _IOTICAT_exists 0C86              __end_of_putch 0F52                    ??_fputc 0005  
+                  ??_putch 0001                 __pbssBANK0 0080                 __pbssBANK1 0100  
+          ??_IOTICAT_login 0040       __end_of_IOTICAT_init 0F48       __end_of_IOTICAT_show 0B5A  
+   __end_of_IOTICAT_exists 0CF6                    ?___wmul 0001                    ?_printf 0032  
+ __end_of_IOTICAT_register 0EF0                    ?_strcmp 0001                    ?_strcpy 0001  
+                  ?_strlen 0001       IOTICAT_register@user 0001         __size_of_vfpfcnvrt 0164  
+         IOTICAT_login@uid 003E                    __Hparam 0000                    __Lparam 0000  
+          ?_IOTICAT_exists 0006            __size_of___wmul 0026                  ?_vfprintf 002A  
+             __psmallconst 0200                    __pcinit 0E20                    __ramtop 0200  
+                  __ptext0 05A2                    __ptext1 0A3E                    __ptext2 0EF0  
+                  __ptext3 0EBC                    __ptext4 0B5A                    __ptext5 02D2  
+                  __ptext6 0DC4                    __ptext7 0F16                    __ptext8 0D66  
+                  __ptext9 08DA            __size_of_printf 0026            __size_of_strcmp 0070  
+          __size_of_strcpy 005C            __size_of_strlen 004E       end_of_initialization 0E64  
+                  fputc@fp 0003              __Lmediumconst 0000          __end_of_vfpfcnvrt 0A3E  
+                  postdec1 000FE5                    postdec2 000FDD                    postinc0 000FEE  
+                  postinc1 000FE6                    postinc2 000FDE                 ??_vfprintf 0030  
+                  strcmp@l 0001                    strcmp@r 0003                    strcpy@d 0009  
+                  strlen@a 0003                    strcpy@s 0007                    strlen@s 0001  
+    __size_of_IOTICAT_init 000C      __size_of_IOTICAT_show 011C                vfpfcnvrt@ap 0024  
+              vfpfcnvrt@cp 0028                vfpfcnvrt@fp 0020             __end_of___wmul 0F16  
+            IOTICAT_show@i 003F             __end_of_printf 0F3C             __end_of_strcmp 0D66  
+           __end_of_strcpy 0E20             __end_of_strlen 0EBC        start_initialization 0E20  
+             _IOTICAT_init 0F3C               _IOTICAT_show 0A3E                vfprintf@fmt 002C  
+                 ??___wmul 0005                __pdataBANK0 00F9                   ??_printf 0038  
+                 ??_strcmp 0005                   ??_strcpy 0005                   ??_strlen 0003  
+        ?_IOTICAT_register 0001                __pbssCOMRAM 005D         ??_IOTICAT_register 0018  
+         ??_IOTICAT_exists 0008      __end_of_IOTICAT_login 0BF0          __size_of_vfprintf 005E  
+              __smallconst 0200             __size_of_fputc 0096             __size_of_putch 0002  
+           ___wmul@product 0005                  _vfpfcnvrt 08DA          ___wmul@multiplier 0001  
+                copy_data0 0E34          IOTICAT_exists@uid 0006                   __Hrparam 0000  
+               vfprintf@ap 002E                   __Lrparam 0000                 vfprintf@fp 002A  
+        IOTICAT_show@i_167 0041                 ?_vfpfcnvrt 0020            main@permanencia 0044  
+                 _database 0080                   __ptext10 0742                   __ptext11 0E6E  
+                 __ptext12 0BF0                   __ptext13 0F50                   __ptext14 0F3C  
+                 __ptext15 0C86                   __ptext16 0CF6                 strcpy@dest 0001  
+            __size_of_main 01A0              __size_of_swap 02D0              __size_of_stoa 0198  
+                stoa@F1131 00F9                   _vfprintf 0D66                  printf@fmt 0032  
+                 main@user 0046  __size_of_IOTICAT_register 0034                  strcpy@src 0003  
+                 printf@ap 003A                ??_vfpfcnvrt 0026                   stoa@nuls 000F  
