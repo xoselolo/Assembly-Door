@@ -6,6 +6,8 @@
                    projectFiles="true">
       <itemPath>ioticat.h</itemPath>
       <itemPath>rastreator.h</itemPath>
+      <itemPath>smsDictionary.h</itemPath>
+      <itemPath>keyboardController.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -17,6 +19,8 @@
       <itemPath>main.c</itemPath>
       <itemPath>ioticat.c</itemPath>
       <itemPath>rastreator.c</itemPath>
+      <itemPath>smsDictionary.c</itemPath>
+      <itemPath>keyboardController.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

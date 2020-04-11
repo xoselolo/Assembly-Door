@@ -119,7 +119,7 @@ unsigned char IOTICAT_allUsers(){
  * void IOTICAT_show()
  * @details: shows the content of the database
  */
-void IOTICAT_show(){
+/*void IOTICAT_show(){
     printf("\n-- WORKING EMPLOYEES --\n");
     for (int i = 0; i < database.cuantos_in; i++) {
         printf("Employee: %s - %s\n", database.users[i].name, database.users[i].uid);
@@ -129,4 +129,4 @@ void IOTICAT_show(){
     for (int i = database.cuantos_in; i < database.cuantos; i++) {
         printf("Employee: %s - %s\n", database.users[i].name, database.users[i].uid);
     }
-}
+}*/

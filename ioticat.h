@@ -104,6 +104,6 @@ unsigned char IOTICAT_allUsers();
  * void IOTICAT_show()
  * @details: shows the content of the database
  */
-void IOTICAT_show();
+//void IOTICAT_show();
 
 #endif //IOTICAT_H

@@ -18,6 +18,8 @@
  */
 void RASTREATOR_find(char user_id[6]);
 
+
+// Motor
 /**
  * RASTREATOR's motor
  */
