@@ -85,7 +85,7 @@ void SMSDICTIONARY_init(){
                 break;
             case 9:
                 dictionary[i].numValues = 1;
-                dictionary[i].values[0] = '*';
+                dictionary[i].values[0] = '*'; // Nunca accedera
                 break;
             case 10:
                 dictionary[i].numValues = 1;
@@ -93,7 +93,7 @@ void SMSDICTIONARY_init(){
                 break;
             case 11:
                 dictionary[i].numValues = 1;
-                dictionary[i].values[0] = '#';
+                dictionary[i].values[0] = '#'; // Nunca accedera
                 break;
         }
     }
@@ -102,7 +102,7 @@ void SMSDICTIONARY_init(){
 /**
  * Function called when a key on the keyboard is pressed
  * @param actualKey : key that has been pressed
- *                      between [0 - 11]
+ *                      between [1 - 12]
  * @param pressedTimes : how many times has been pressed
  * @return the char associated
  */

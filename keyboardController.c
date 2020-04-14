@@ -13,10 +13,7 @@ static char option = 0;
 static unsigned char timer_id = -1;
 static unsigned int time = 0;
 
-static char newChar = 0;
-
 static char previousKey = -1;
-static char actualKey = -1;
 static char pressedTimes = 0;
 
 /**
@@ -29,11 +26,10 @@ void KEYBOARD_CONTROLLER_init(){
     timer_id = TIMER_getTimer();
     time = 0;
 
-    newChar = 0;
-
     actualKey = -1;
     previousKey = -1;
     pressedTimes = 0;
+    toSend = -1;
 }
 
 
@@ -43,73 +39,130 @@ void KEYBOARD_CONTROLLER_init(){
 void KEYBOARD_CONTROLLER_motor(){
     switch (state){
         case 0:
-            if(option > 0){
-                newChar = 0;
-                TIMER_resetTics(timer_id);
-                previousKey = -1;
-                pressedTimes = 0;
-                state = 2;
-            } else if (newChar == 1){
-                state = 1;
-            }
-            break;
+            actualKey = KEYBOARD_getTecla();
 
-        case 1:
-            if(actualKey == 1){
-                ACCESS_CONTROLLER_option1();
-                option = 1;
-            }else if(actualKey == 2){
-                ACCESS_CONTROLLER_option2();
-                option = 2;
-            }else{
-                state = 0;
-                break;
-            }
-            newChar = pressedTimes = 0;
-            previousKey = -1;
-            TIMER_resetTics(timer_id);
-            state = 2;
-            break;
+            if(actualKey != 0){
+                KEYBOARD_keyReceived();
 
-        case 2:
-            if(option == 0){
-                TIMER_resetTics();
-                state = 0;
-            }
-            else if(newChar == 1){
-                time = TIMER_getTics(timer_id);
-                newChar = 0;
-                state = 3;
-            }
-            break;
-
-        case 3:
-            if(actualKey != previousKey || time > 500){
-                previousKey = actualKey;
-                pressedTimes = 1;
-                state = 4;
-
-            }else{
-                pressedTimes++;
-                actualKey = SMSDICTIONARY_getChar(actualKey, pressedTimes);
-                if(actualKey == -1){
-                    pressedTimes = 1;
+                if(option == 0){
+                    toSend = actualKey;
+                    state = 1;
                 }else{
-                    state = 5;
+                    time = TIMER_resetTics(timer_id);
+                    TIMER_resetTics(timer_id);
+                    state = 2;
                 }
             }
             break;
 
-        case 4:
-            actualKey = SMSDICTIONARY_getChar(actualKey, pressedTimes);
-            ACCESS_CONTROLLER_newChar(actualKey);
-            state = 2;
+        case 1:
+            sent = 0;
+            switch (actualKey){
+                case 10:
+                    type = state = 3;
+                    break;
+                case 12:
+                    type = state = 4;
+                    break;
+                default:
+                    type = 0;
+                    state = 5;
+                    break;
+            }
             break;
 
+        case 2:
+            switch (actualKey){
+                case 10:
+                    type = 3;
+                    sent = 0;
+                    state = 6;
+                    break;
+                case 12:
+                    type = 4;
+                    sent = 0;
+                    state = 7;
+                    break;
+                default:
+                    if(actualKey != previousKey){
+                        pressedTimes = 1;
+                        toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
+                        type = 1;
+                        sent = 0;
+                    }else{
+                        state = 9;
+                    }
+                    break;
+            }
+            break;
+
+        case 3:
+        case 4:
         case 5:
-            ACCESS_CONTROLLER_modifyLast(actualKey);
-            state = 2;
+            if(sent == 1) state = 0;
+            break;
+
+        case 6:
+        case 7:
+        case 8:
+        case 10:
+            if(sent == 1){
+                previousKey = actualKey;
+                state = 0;
+            }
+            break;
+
+        case 9:
+            if(time < 500){
+                pressedTimes++;
+                toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
+                state = 11;
+            }else{
+                pressedTimes = 1;
+                toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
+                type = 1;
+                sent = 0;
+                state = 10;
+            }
+            break;
+
+        case 11:
+            if(toSend == -1){
+                pressedTimes = 1;
+                toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
+            }
+            if(toSend != -1){
+                type = 2;
+                sent = 0;
+                state = 10;
+            }
+            break;
+
+        default:
+            // Error, nunca deberia entrar a este caso
+            KEYBOARD_CONTROLLER_init();
             break;
     }
 }
 
+/**
+ * gets the type:
+ *      0 - New option (1 or 2)
+ *      1 - New char added
+ *      2 - Last char modified
+ *      3 - * (main menu)
+ *      4 - # (master reset)
+ * @return the type
+ */
+char KEYBOARD_CONTROLLER_getType(){
+    return type;
+}
+
+/**
+ * sets the sent variable to 1
+ * @return the 'toSend' char
+ */
+char KEYBOARD_CONTROLLER_read(){
+    sent = 1;
+    return actualKey;
+}

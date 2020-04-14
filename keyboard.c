@@ -18,8 +18,6 @@ static char state = 0;
 static char fila = 1;
 static char columna = 0;
 
-static char tecla = 0;
-
 
 /**
  * Initializes the KEYBOARD tad
@@ -33,6 +31,7 @@ void KEYBOARD_init(){
     PORTBbits.RB9 = 0;
     TIMER_resetTics(timer_id);
     state = 0;
+    tecla = 0;
 }
 
 /**
@@ -93,15 +92,14 @@ void KEYBOARD_motor(){
             break;
 
         case 4:
-            tecla = KEYBOARD_descifraTecla();
-            state = 5;
+            if(TIMER_getTics() >= T_REBOTS){
+                state = 5;
+            }
             break;
 
         case 5:
-            if(TIMER_getTics() >= T_REBOTS){
-                KEYBOARD_CONTROLLER_newChar(tecla);
-                state = 6;
-            }
+            tecla = KEYBOARD_descifraTecla();
+            state = 6;
             break;
 
         case 6:
@@ -112,7 +110,7 @@ void KEYBOARD_motor(){
             break;
 
         case 7:
-            if(TIMER_getTics() >= T_REBOTS){
+            if(TIMER_getTics() >= T_REBOTS && tecla == 0){
                 state = 0;
             }
             break;
@@ -143,4 +141,18 @@ char KEYBOARD_descifraTecla(){
         case 4:  // fila 4
             return 9 + columna;
     }
+}
+
+/**
+ * Returns the key pressed or 0 if no there is not any pressed key
+ */
+char KEYBOARD_getTecla(){
+    return tecla;
+}
+
+/**
+ * sets tecla to 0 to indicate that has been read
+ */
+void KEYBOARD_keyReceived(){
+    tecla = 0;
 }

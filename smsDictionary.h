@@ -20,7 +20,7 @@ void SMSDICTIONARY_init();
 /**
  * Function called when a key on the keyboard is pressed
  * @param actualKey : key that has been pressed
- *                      between [0 - 11]
+ *                      between [1 - 12]
  * @param pressedTimes : how many times has been pressed
  * @return the char associated
  */
