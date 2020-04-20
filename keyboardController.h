@@ -41,4 +41,6 @@ char KEYBOARD_CONTROLLER_getType();
  */
 char KEYBOARD_CONTROLLER_read();
 
+char KEYBOARD_CONTROLLER_isReady();
+
 #endif //_KEYBOARDCONTROLLER_H

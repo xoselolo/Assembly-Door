@@ -7,6 +7,8 @@
 
 #include "keyboardController.h"
 
+static char ready = 0;
+
 static char state = 0;
 static char option = 0;
 
@@ -59,12 +61,15 @@ void KEYBOARD_CONTROLLER_motor(){
             sent = 0;
             switch (actualKey){
                 case 10:
+                    ready = 1;
                     type = state = 3;
                     break;
                 case 12:
+                    ready = 1;
                     type = state = 4;
                     break;
                 default:
+                    ready = 1;
                     type = 0;
                     state = 5;
                     break;
@@ -74,21 +79,25 @@ void KEYBOARD_CONTROLLER_motor(){
         case 2:
             switch (actualKey){
                 case 10:
+                    ready = 1;
                     type = 3;
                     sent = 0;
                     state = 6;
                     break;
                 case 12:
+                    ready = 1;
                     type = 4;
                     sent = 0;
                     state = 7;
                     break;
                 default:
                     if(actualKey != previousKey){
+                        ready = 1;
                         pressedTimes = 1;
                         toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
                         type = 1;
                         sent = 0;
+                        state = 8;
                     }else{
                         state = 9;
                     }
@@ -99,7 +108,10 @@ void KEYBOARD_CONTROLLER_motor(){
         case 3:
         case 4:
         case 5:
-            if(sent == 1) state = 0;
+            if(sent == 1){
+                ready = 0;
+                state = 0;
+            }
             break;
 
         case 6:
@@ -108,6 +120,7 @@ void KEYBOARD_CONTROLLER_motor(){
         case 10:
             if(sent == 1){
                 previousKey = actualKey;
+                ready = 0;
                 state = 0;
             }
             break;
@@ -118,6 +131,7 @@ void KEYBOARD_CONTROLLER_motor(){
                 toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
                 state = 11;
             }else{
+                ready = 1;
                 pressedTimes = 1;
                 toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
                 type = 1;
@@ -132,6 +146,7 @@ void KEYBOARD_CONTROLLER_motor(){
                 toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
             }
             if(toSend != -1){
+                ready = 1;
                 type = 2;
                 sent = 0;
                 state = 10;
@@ -165,4 +180,8 @@ char KEYBOARD_CONTROLLER_getType(){
 char KEYBOARD_CONTROLLER_read(){
     sent = 1;
     return actualKey;
+}
+
+char KEYBOARD_CONTROLLER_isReady(){
+    return ready;
 }
