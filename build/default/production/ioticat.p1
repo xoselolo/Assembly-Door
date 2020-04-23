@@ -1,366 +1,135 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"21 ./ioticat.h
-[; ;./ioticat.h: 21: typedef struct {
-[s S4 `uc -> 2 `i ]
-[n S4 . value ]
+"20 ./ioticat.h
+[; ;./ioticat.h: 20: typedef struct {
+[s S2 `uc -> 2 `i ]
+[n S2 . value ]
 "33
 [; ;./ioticat.h: 33: typedef struct{
-[s S5 `uc -> 11 `i `uc -> 6 `i `uc 1 `uc 1 `uc 1 `uc 1 `S4 1 ]
-[n S5 . name uid in_min_hour in_min_minute in_max_hour in_max_minute min_permanence_time ]
-"60
-[; ;./ioticat.h: 60: typedef struct{
-[s S6 `S5 -> 5 `i `S4 -> 2 `i `uc 1 `uc 1 ]
-[n S6 . users times cuantos cuantos_in ]
-"33 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\string.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\string.h: 33: char *strcpy (char *restrict, const char *restrict);
-[v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
-"111 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"39 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\string.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\string.h: 39: int strcmp (const char *, const char *);
-[v _strcmp `(i ~T0 @X0 0 ef2`*Cuc`*Cuc ]
-"11 ioticat.c
-[; ;ioticat.c: 11: static IoticatDatabase database;
-[v _database `S6 ~T0 @X0 1 s ]
-"12
-[; ;ioticat.c: 12: static User swappy;
-[v _swappy `S5 ~T0 @X0 1 s ]
-"20
-[; ;ioticat.c: 20: void IOTICAT_init(){
+[s S3 `uc -> 11 `i `uc -> 6 `i `uc 1 `uc 1 `uc 1 `uc 1 `S2 1 ]
+[n S3 . name uid in_min_hour in_min_minute in_max_hour in_max_minute min_permanence_time ]
+"49
+[; ;./ioticat.h: 49: typedef struct{
+[s S4 `S3 -> 230 `i `S2 -> 100 `i `uc 1 `uc 1 ]
+[n S4 . users times cuantos cuantos_in ]
+"12 ioticat.c
+[; ;ioticat.c: 12: static IoticatDatabase database;
+[v _database `S4 ~T0 @X0 1 s ]
+"14
+[; ;ioticat.c: 14: static User swappy;
+[v _swappy `S3 ~T0 @X0 1 s ]
+"22
+[; ;ioticat.c: 22: void IOTICAT_init(){
 [v _IOTICAT_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _IOTICAT_init ]
 [f ]
-"21
-[; ;ioticat.c: 21:     database.cuantos = 0;
-[e = . _database 2 -> -> 0 `i `uc ]
-"22
-[; ;ioticat.c: 22:     database.cuantos_in = 0;
-[e = . _database 3 -> -> 0 `i `uc ]
 "23
-[; ;ioticat.c: 23: }
-[e :UE 7 ]
+[; ;ioticat.c: 23:     database.cuantos = 0;
+[e = . _database 2 -> -> 0 `i `uc ]
+"24
+[; ;ioticat.c: 24:     database.cuantos_in = 0;
+[e = . _database 3 -> -> 0 `i `uc ]
+"25
+[; ;ioticat.c: 25: }
+[e :UE 5 ]
 }
-"32
-[; ;ioticat.c: 32: char IOTICAT_register(User user){
-[v _IOTICAT_register `(uc ~T0 @X0 1 ef1`S5 ]
+"34
+[; ;ioticat.c: 34: char IOTICAT_register(User user){
+[v _IOTICAT_register `(uc ~T0 @X0 1 ef1`S3 ]
 {
 [e :U _IOTICAT_register ]
-[v _user `S5 ~T0 @X0 1 r1 ]
+[v _user `S3 ~T0 @X0 1 r1 ]
 [f ]
-"33
-[; ;ioticat.c: 33:     if(database.cuantos < 5){
-[e $ ! < -> . _database 2 `i -> 5 `i 9  ]
-{
-"34
-[; ;ioticat.c: 34:         database.users[database.cuantos++] = user;
-[e = *U + &U . _database 0 * -> ++ . _database 2 -> -> 1 `i `uc `ux -> -> # *U &U . _database 0 `ui `ux _user ]
 "35
-[; ;ioticat.c: 35:         return 0;
-[e ) -> -> 0 `i `uc ]
-[e $UE 8  ]
+[; ;ioticat.c: 35:     if(database.cuantos < 230){
+[e $ ! < -> . _database 2 `i -> 230 `i 7  ]
+{
 "36
-[; ;ioticat.c: 36:     }else{
-}
-[e $U 10  ]
-[e :U 9 ]
-{
+[; ;ioticat.c: 36:         database.users[database.cuantos++] = user;
+[e = *U + &U . _database 0 * -> ++ . _database 2 -> -> 1 `i `uc `ux -> -> # *U &U . _database 0 `ui `ux _user ]
 "37
-[; ;ioticat.c: 37:         return 1;
-[e ) -> -> 1 `i `uc ]
-[e $UE 8  ]
+[; ;ioticat.c: 37:         return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 6  ]
 "38
-[; ;ioticat.c: 38:     }
+[; ;ioticat.c: 38:     }else{
 }
-[e :U 10 ]
-"39
-[; ;ioticat.c: 39: }
-[e :UE 8 ]
-}
-"46
-[; ;ioticat.c: 46: void swap(unsigned char i, unsigned char j){
-[v _swap `(v ~T0 @X0 1 ef2`uc`uc ]
+[e $U 8  ]
+[e :U 7 ]
 {
-[e :U _swap ]
+"39
+[; ;ioticat.c: 39:         return 1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 6  ]
+"40
+[; ;ioticat.c: 40:     }
+}
+[e :U 8 ]
+"41
+[; ;ioticat.c: 41: }
+[e :UE 6 ]
+}
+"48
+[; ;ioticat.c: 48: void IOTICAT_swap(unsigned char i, unsigned char j){
+[v _IOTICAT_swap `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _IOTICAT_swap ]
 [v _i `uc ~T0 @X0 1 r1 ]
 [v _j `uc ~T0 @X0 1 r2 ]
 [f ]
-"47
-[; ;ioticat.c: 47:     strcpy(swappy.name, database.users[i].name);
-[e ( _strcpy (2 , &U . _swappy 0 -> &U . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 0 `*Cuc ]
-"48
-[; ;ioticat.c: 48:     strcpy(swappy.uid, database.users[i].uid);
-[e ( _strcpy (2 , &U . _swappy 1 -> &U . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 1 `*Cuc ]
+"49
+[; ;ioticat.c: 49:     swappy = database.users[i];
+[e = _swappy *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux ]
+"50
+[; ;ioticat.c: 50:     database.users[i] = database.users[j];
+[e = *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux ]
 "51
-[; ;ioticat.c: 51:     swappy.min_permanence_time.value[0] = database.users[i].min_permanence_time.value[0];
-[e = *U + &U . . _swappy 6 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . _swappy 6 0 `ui `ux *U + &U . . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 6 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 6 0 `ui `ux ]
-"52
-[; ;ioticat.c: 52:     swappy.min_permanence_time.value[1] = database.users[i].min_permanence_time.value[1];
-[e = *U + &U . . _swappy 6 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . _swappy 6 0 `ui `ux *U + &U . . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 6 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 6 0 `ui `ux ]
-"53
-[; ;ioticat.c: 53:     swappy.in_min_hour = database.users[i].in_min_hour;
-[e = . _swappy 2 . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 2 ]
-"54
-[; ;ioticat.c: 54:     swappy.in_min_minute = database.users[i].in_min_minute;
-[e = . _swappy 3 . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 3 ]
-"55
-[; ;ioticat.c: 55:     swappy.in_max_hour = database.users[i].in_max_hour;
-[e = . _swappy 4 . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 4 ]
-"56
-[; ;ioticat.c: 56:     swappy.in_max_minute = database.users[i].in_max_minute;
-[e = . _swappy 5 . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 5 ]
-"58
-[; ;ioticat.c: 58:     strcpy(database.users[i].name, database.users[j].name);
-[e ( _strcpy (2 , &U . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 0 -> &U . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 0 `*Cuc ]
-"59
-[; ;ioticat.c: 59:     strcpy(database.users[i].uid, database.users[j].uid);
-[e ( _strcpy (2 , &U . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 1 -> &U . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 1 `*Cuc ]
-"62
-[; ;ioticat.c: 62:     database.users[i].min_permanence_time.value[0] = database.users[j].min_permanence_time.value[0];
-[e = *U + &U . . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 6 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 6 0 `ui `ux *U + &U . . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 6 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 6 0 `ui `ux ]
-"63
-[; ;ioticat.c: 63:     database.users[i].min_permanence_time.value[1] = database.users[j].min_permanence_time.value[1];
-[e = *U + &U . . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 6 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 6 0 `ui `ux *U + &U . . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 6 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 6 0 `ui `ux ]
-"64
-[; ;ioticat.c: 64:     database.users[i].in_min_hour = database.users[j].in_min_hour;
-[e = . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 2 . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 2 ]
-"65
-[; ;ioticat.c: 65:     database.users[i].in_min_minute = database.users[j].in_min_minute;
-[e = . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 3 . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 3 ]
-"66
-[; ;ioticat.c: 66:     database.users[i].in_max_hour = database.users[j].in_max_hour;
-[e = . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 4 . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 4 ]
-"67
-[; ;ioticat.c: 67:     database.users[i].in_max_minute = database.users[j].in_max_minute;
-[e = . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 5 . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 5 ]
-"69
-[; ;ioticat.c: 69:     strcpy(database.users[j].name, swappy.name);
-[e ( _strcpy (2 , &U . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 0 -> &U . _swappy 0 `*Cuc ]
-"70
-[; ;ioticat.c: 70:     strcpy(database.users[j].uid, swappy.uid);
-[e ( _strcpy (2 , &U . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 1 -> &U . _swappy 1 `*Cuc ]
-"73
-[; ;ioticat.c: 73:     database.users[j].min_permanence_time.value[0] = swappy.min_permanence_time.value[0];
-[e = *U + &U . . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 6 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 6 0 `ui `ux *U + &U . . _swappy 6 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . . _swappy 6 0 `ui `ux ]
-"74
-[; ;ioticat.c: 74:     database.users[j].min_permanence_time.value[1] = swappy.min_permanence_time.value[1];
-[e = *U + &U . . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 6 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 6 0 `ui `ux *U + &U . . _swappy 6 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . . _swappy 6 0 `ui `ux ]
-"75
-[; ;ioticat.c: 75:     database.users[j].in_min_hour = swappy.in_min_hour;
-[e = . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 2 . _swappy 2 ]
-"76
-[; ;ioticat.c: 76:     database.users[j].in_min_minute = swappy.in_min_minute;
-[e = . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 3 . _swappy 3 ]
-"77
-[; ;ioticat.c: 77:     database.users[j].in_max_hour = swappy.in_max_hour;
-[e = . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 4 . _swappy 4 ]
-"78
-[; ;ioticat.c: 78:     database.users[j].in_max_minute = swappy.in_max_minute;
-[e = . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 5 . _swappy 5 ]
-"80
-[; ;ioticat.c: 80:     printf("\nuid I: %s\n", database.users[i].uid);
-[e ( _printf , (. :s 1C &U . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 1 ]
-"81
-[; ;ioticat.c: 81:     printf("uid J: %s\n", database.users[j].uid);
-[e ( _printf , (. :s 2C &U . *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux 1 ]
-"82
-[; ;ioticat.c: 82:     printf("uid sw: %s\n", swappy.uid);
-[e ( _printf , (. :s 3C &U . _swappy 1 ]
-"83
-[; ;ioticat.c: 83: }
+[; ;ioticat.c: 51:     database.users[j] = swappy;
+[e = *U + &U . _database 0 * -> _j `ux -> -> # *U &U . _database 0 `ui `ux _swappy ]
+"91
+[; ;ioticat.c: 91: }
+[e :UE 9 ]
+}
+"98
+[; ;ioticat.c: 98: User IOTICAT_getUser(unsigned char index){
+[v _IOTICAT_getUser `(S3 ~T0 @X0 1 ef1`uc ]
+{
+[e :U _IOTICAT_getUser ]
+[v _index `uc ~T0 @X0 1 r1 ]
+[f ]
+"99
+[; ;ioticat.c: 99:     return database.users[index];
+[e ) *U + &U . _database 0 * -> _index `ux -> -> # *U &U . _database 0 `ui `ux ]
+[e $UE 10  ]
+"100
+[; ;ioticat.c: 100: }
+[e :UE 10 ]
+}
+"106
+[; ;ioticat.c: 106: unsigned char IOTICAT_workingUsers(){
+[v _IOTICAT_workingUsers `(uc ~T0 @X0 1 ef ]
+{
+[e :U _IOTICAT_workingUsers ]
+[f ]
+"107
+[; ;ioticat.c: 107:     return database.cuantos_in;
+[e ) . _database 3 ]
+[e $UE 11  ]
+"108
+[; ;ioticat.c: 108: }
 [e :UE 11 ]
 }
-"95
-[; ;ioticat.c: 95: char IOTICAT_login(const char uid[6]){
-[v _IOTICAT_login `(uc ~T0 @X0 1 ef1`*Cuc ]
+"114
+[; ;ioticat.c: 114: unsigned char IOTICAT_allUsers(){
+[v _IOTICAT_allUsers `(uc ~T0 @X0 1 ef ]
 {
-[e :U _IOTICAT_login ]
-[v _uid `*Cuc ~T0 @X0 1 r1 ]
+[e :U _IOTICAT_allUsers ]
 [f ]
-"96
-[; ;ioticat.c: 96:     if(database.cuantos_in < 2){
-[e $ ! < -> . _database 3 `i -> 2 `i 13  ]
-{
-"98
-[; ;ioticat.c: 98:         for(unsigned char i = database.cuantos_in; i < database.cuantos; i++){
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i . _database 3 ]
-[e $U 17  ]
-[e :U 14 ]
-{
-"99
-[; ;ioticat.c: 99:             printf("[INFO] ------------ Checking %s with %s\n", database.users[i].uid, uid);
-[e ( _printf , , (. :s 4C &U . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 1 _uid ]
-"100
-[; ;ioticat.c: 100:             if (strcmp(database.users[i].uid, uid) == 0){
-[e $ ! == ( _strcmp (2 , -> &U . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 1 `*Cuc _uid -> 0 `i 18  ]
-{
-"102
-[; ;ioticat.c: 102:                 swap(i, database.cuantos_in);
-[e ( _swap (2 , _i . _database 3 ]
-"103
-[; ;ioticat.c: 103:                 database.cuantos_in++;
-[e ++ . _database 3 -> -> 1 `i `uc ]
-"104
-[; ;ioticat.c: 104:                 return 0;
-[e ) -> -> 0 `i `uc ]
+"115
+[; ;ioticat.c: 115:     return database.cuantos;
+[e ) . _database 2 ]
 [e $UE 12  ]
-"105
-[; ;ioticat.c: 105:             }
-}
-[e :U 18 ]
-"106
-[; ;ioticat.c: 106:         }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 17 ]
-[e $ < -> _i `i -> . _database 2 `i 14  ]
-[e :U 15 ]
-}
-"107
-[; ;ioticat.c: 107:         return 2;
-[e ) -> -> 2 `i `uc ]
-[e $UE 12  ]
-"108
-[; ;ioticat.c: 108:     }else{
-}
-[e $U 19  ]
-[e :U 13 ]
-{
-"109
-[; ;ioticat.c: 109:         return 1;
-[e ) -> -> 1 `i `uc ]
-[e $UE 12  ]
-"110
-[; ;ioticat.c: 110:     }
-}
-[e :U 19 ]
-"111
-[; ;ioticat.c: 111: }
+"116
+[; ;ioticat.c: 116: }
 [e :UE 12 ]
 }
-"118
-[; ;ioticat.c: 118: void IOTICAT_show(){
-[v _IOTICAT_show `(v ~T0 @X0 1 ef ]
-{
-[e :U _IOTICAT_show ]
-[f ]
-"119
-[; ;ioticat.c: 119:     printf("\n-- WORKING EMPLOYEES --\n");
-[e ( _printf :s 5C ]
-"120
-[; ;ioticat.c: 120:     for (int i = 0; i < database.cuantos_in; i++) {
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 24  ]
-[e :U 21 ]
-{
-"121
-[; ;ioticat.c: 121:         printf("Employee: %s - %s\n", database.users[i].name, database.users[i].uid);
-[e ( _printf , , (. :s 6C &U . *U + &U . _database 0 * -> -> _i `ui `ux -> -> # *U &U . _database 0 `ui `ux 0 &U . *U + &U . _database 0 * -> -> _i `ui `ux -> -> # *U &U . _database 0 `ui `ux 1 ]
-"122
-[; ;ioticat.c: 122:     }
-}
-[e ++ _i -> 1 `i ]
-[e :U 24 ]
-[e $ < _i -> . _database 3 `i 21  ]
-[e :U 22 ]
-}
-"124
-[; ;ioticat.c: 124:     printf("\n-- REGISTERED EMPLOYEES --\n");
-[e ( _printf :s 7C ]
-"125
-[; ;ioticat.c: 125:     for (int i = database.cuantos_in; i < database.cuantos; i++) {
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> . _database 3 `i ]
-[e $U 28  ]
-[e :U 25 ]
-{
-"126
-[; ;ioticat.c: 126:         printf("Employee: %s - %s\n", database.users[i].name, database.users[i].uid);
-[e ( _printf , , (. :s 8C &U . *U + &U . _database 0 * -> -> _i `ui `ux -> -> # *U &U . _database 0 `ui `ux 0 &U . *U + &U . _database 0 * -> -> _i `ui `ux -> -> # *U &U . _database 0 `ui `ux 1 ]
-"127
-[; ;ioticat.c: 127:     }
-}
-[e ++ _i -> 1 `i ]
-[e :U 28 ]
-[e $ < _i -> . _database 2 `i 25  ]
-[e :U 26 ]
-}
-"128
-[; ;ioticat.c: 128: }
-[e :UE 20 ]
-}
-"139
-[; ;ioticat.c: 139: char IOTICAT_exists(char uid[6]){
-[v _IOTICAT_exists `(uc ~T0 @X0 1 ef1`*uc ]
-{
-[e :U _IOTICAT_exists ]
-[v _uid `*uc ~T0 @X0 1 r1 ]
-[f ]
-"140
-[; ;ioticat.c: 140:     for(unsigned char i = 0; i < database.cuantos; i++){
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $U 33  ]
-[e :U 30 ]
-{
-"141
-[; ;ioticat.c: 141:         if (strcmp(database.users[i].uid, uid) == 0){
-[e $ ! == ( _strcmp (2 , -> &U . *U + &U . _database 0 * -> _i `ux -> -> # *U &U . _database 0 `ui `ux 1 `*Cuc -> _uid `*Cuc -> 0 `i 34  ]
-{
-"143
-[; ;ioticat.c: 143:             if (i < database.cuantos_in){
-[e $ ! < -> _i `i -> . _database 3 `i 35  ]
-{
-"144
-[; ;ioticat.c: 144:                 return 1;
-[e ) -> -> 1 `i `uc ]
-[e $UE 29  ]
-"145
-[; ;ioticat.c: 145:             }else{
-}
-[e $U 36  ]
-[e :U 35 ]
-{
-"146
-[; ;ioticat.c: 146:                 return 2;
-[e ) -> -> 2 `i `uc ]
-[e $UE 29  ]
-"147
-[; ;ioticat.c: 147:             }
-}
-[e :U 36 ]
-"148
-[; ;ioticat.c: 148:         }
-}
-[e :U 34 ]
-"149
-[; ;ioticat.c: 149:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 33 ]
-[e $ < -> _i `i -> . _database 2 `i 30  ]
-[e :U 31 ]
-}
-"151
-[; ;ioticat.c: 151:     return 0;
-[e ) -> -> 0 `i `uc ]
-[e $UE 29  ]
-"152
-[; ;ioticat.c: 152: }
-[e :UE 29 ]
-}
-[p f _printf 8650752 ]
-[a 4C 91 73 78 70 79 93 32 45 45 45 45 45 45 45 45 45 45 45 45 32 67 104 101 99 107 105 110 103 32 37 115 32 119 105 116 104 32 37 115 10 0 ]
-[a 3C 117 105 100 32 115 119 58 32 37 115 10 0 ]
-[a 2C 117 105 100 32 74 58 32 37 115 10 0 ]
-[a 1C 10 117 105 100 32 73 58 32 37 115 10 0 ]
-[a 6C 69 109 112 108 111 121 101 101 58 32 37 115 32 45 32 37 115 10 0 ]
-[a 8C 69 109 112 108 111 121 101 101 58 32 37 115 32 45 32 37 115 10 0 ]
-[a 5C 10 45 45 32 87 79 82 75 73 78 71 32 69 77 80 76 79 89 69 69 83 32 45 45 10 0 ]
-[a 7C 10 45 45 32 82 69 71 73 83 84 69 82 69 68 32 69 77 80 76 79 89 69 69 83 32 45 45 10 0 ]

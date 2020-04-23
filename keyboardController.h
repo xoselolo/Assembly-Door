@@ -7,6 +7,7 @@
 #ifndef _KEYBOARDCONTROLLER_H
 #define _KEYBOARDCONTROLLER_H
 
+#include "keyboard.h"
 #include "smsDictionary.h"
 
 static char actualKey = -1;

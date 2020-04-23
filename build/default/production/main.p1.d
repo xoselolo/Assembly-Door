@@ -1,3 +1,8 @@
 build/default/production/main.p1:  \
 main.c  \
-ioticat.h 
+timer.h  \
+accessController.h  \
+keyboardController.h  \
+keyboard.h  \
+smsDictionary.h  \
+lcd.h 

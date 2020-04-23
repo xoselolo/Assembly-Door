@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "keyboardController.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "keyboardController.c" 2
 
 
 
@@ -14,7 +14,10 @@
 
 
 
-
+# 1 "./keyboardController.h" 1
+# 10 "./keyboardController.h"
+# 1 "./keyboard.h" 1
+# 11 "./keyboard.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4522,8 +4525,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 9 "main.c" 2
-
+# 11 "./keyboard.h" 2
 
 # 1 "./timer.h" 1
 # 22 "./timer.h"
@@ -4550,14 +4552,9 @@ void TIMER_resetTics (unsigned char timer_id);
 
 
 unsigned int TIMER_getTics (unsigned char timer_id);
-# 11 "main.c" 2
+# 12 "./keyboard.h" 2
 
-# 1 "./accessController.h" 1
-# 11 "./accessController.h"
-# 1 "./keyboardController.h" 1
-# 10 "./keyboardController.h"
-# 1 "./keyboard.h" 1
-# 14 "./keyboard.h"
+
 static char tecla = 0;
 
 
@@ -4632,32 +4629,175 @@ char KEYBOARD_CONTROLLER_getType();
 char KEYBOARD_CONTROLLER_read();
 
 char KEYBOARD_CONTROLLER_isReady();
-# 11 "./accessController.h" 2
+# 8 "keyboardController.c" 2
 
 
-void ACCESS_CONTROLLER_init();
+static char ready = 0;
 
-void ACCESS_CONTROLLER_motor();
-# 12 "main.c" 2
+static char state = 0;
+static char option = 0;
+
+static unsigned char timer_id = -1;
+static unsigned int time = 0;
+
+static char previousKey = -1;
+static char pressedTimes = 0;
 
 
-# 1 "./lcd.h" 1
-# 14 "main.c" 2
 
 
-void main(void) {
+void KEYBOARD_CONTROLLER_init(){
+    state = 0;
+    option = 0;
 
-    TIMER_init();
-    ACCESS_CONTROLLER_init();
-    KEYBOARD_CONTROLLER_init();
-    KEYBOARD_init();
-    SMSDICTIONARY_init();
+    timer_id = TIMER_getTimer();
+    time = 0;
 
-    while(1){
-        KEYBOARD_motor();
-        KEYBOARD_CONTROLLER_motor();
-        ACCESS_CONTROLLER_motor();
+    actualKey = -1;
+    previousKey = -1;
+    pressedTimes = 0;
+    toSend = -1;
+}
+
+
+
+
+
+void KEYBOARD_CONTROLLER_motor(){
+    switch (state){
+        case 0:
+            actualKey = KEYBOARD_getTecla();
+
+            if(actualKey != 0){
+                KEYBOARD_keyReceived();
+
+                if(option == 0){
+                    toSend = actualKey;
+                    state = 1;
+                }else{
+                    time = TIMER_resetTics(timer_id);
+                    TIMER_resetTics(timer_id);
+                    state = 2;
+                }
+            }
+            break;
+
+        case 1:
+            sent = 0;
+            switch (actualKey){
+                case 10:
+                    ready = 1;
+                    type = state = 3;
+                    break;
+                case 12:
+                    ready = 1;
+                    type = state = 4;
+                    break;
+                default:
+                    ready = 1;
+                    type = 0;
+                    state = 5;
+                    break;
+            }
+            break;
+
+        case 2:
+            switch (actualKey){
+                case 10:
+                    ready = 1;
+                    type = 3;
+                    sent = 0;
+                    state = 6;
+                    break;
+                case 12:
+                    ready = 1;
+                    type = 4;
+                    sent = 0;
+                    state = 7;
+                    break;
+                default:
+                    if(actualKey != previousKey){
+                        ready = 1;
+                        pressedTimes = 1;
+                        toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
+                        type = 1;
+                        sent = 0;
+                        state = 8;
+                    }else{
+                        state = 9;
+                    }
+                    break;
+            }
+            break;
+
+        case 3:
+        case 4:
+        case 5:
+            if(sent == 1){
+                ready = 0;
+                state = 0;
+            }
+            break;
+
+        case 6:
+        case 7:
+        case 8:
+        case 10:
+            if(sent == 1){
+                previousKey = actualKey;
+                ready = 0;
+                state = 0;
+            }
+            break;
+
+        case 9:
+            if(time < 500){
+                pressedTimes++;
+                toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
+                state = 11;
+            }else{
+                ready = 1;
+                pressedTimes = 1;
+                toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
+                type = 1;
+                sent = 0;
+                state = 10;
+            }
+            break;
+
+        case 11:
+            if(toSend == -1){
+                pressedTimes = 1;
+                toSend = SMSDICTIONARY_getChar(actualKey, pressedTimes);
+            }
+            if(toSend != -1){
+                ready = 1;
+                type = 2;
+                sent = 0;
+                state = 10;
+            }
+            break;
+
+        default:
+
+            KEYBOARD_CONTROLLER_init();
+            break;
     }
+}
+# 172 "keyboardController.c"
+char KEYBOARD_CONTROLLER_getType(){
+    return type;
+}
 
-    return;
+
+
+
+
+char KEYBOARD_CONTROLLER_read(){
+    sent = 1;
+    return actualKey;
+}
+
+char KEYBOARD_CONTROLLER_isReady(){
+    return ready;
 }

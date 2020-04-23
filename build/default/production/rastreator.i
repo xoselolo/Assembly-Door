@@ -1,4 +1,4 @@
-# 1 "ioticat.c"
+# 1 "rastreator.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ioticat.c" 2
+# 1 "rastreator.c" 2
 
 
 
@@ -14,9 +14,8 @@
 
 
 
-
-# 1 "./ioticat.h" 1
-# 12 "./ioticat.h"
+# 1 "./rastreator.h" 1
+# 11 "./rastreator.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\string.h" 1 3
 
 
@@ -91,15 +90,10 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 12 "./ioticat.h" 2
+# 11 "./rastreator.h" 2
 
-
-
-
-
-
-
-
+# 1 "./ioticat.h" 1
+# 20 "./ioticat.h"
 typedef struct {
     unsigned char value[2];
 }TimeInMinutes;
@@ -156,13 +150,7 @@ unsigned char IOTICAT_workingUsers();
 
 
 unsigned char IOTICAT_allUsers();
-# 9 "ioticat.c" 2
-
-
-
-static IoticatDatabase database;
-
-static User swappy;
+# 12 "./rastreator.h" 2
 
 
 
@@ -170,53 +158,83 @@ static User swappy;
 
 
 
-void IOTICAT_init(){
-    database.cuantos = 0;
-    database.cuantos_in = 0;
+void RASTREATOR_find(char user_id[6]);
+
+
+
+
+
+
+void RASTREATOR_motor();
+# 8 "rastreator.c" 2
+
+
+static char state = 0;
+
+static char work = 0;
+static char uid[6];
+
+static unsigned char allUsers = 0;
+static unsigned char workingUsers = 0;
+
+static unsigned char index = 0;
+static User user;
+
+static char result = 0;
+static unsigned char user_index = 0;
+
+void RASTREATOR_find(char user_id[6]){
+    strcpy(uid, user_id);
+    work = 1;
 }
-# 34 "ioticat.c"
-char IOTICAT_register(User user){
-    if(database.cuantos < 230){
-        database.users[database.cuantos++] = user;
-        return 0;
-    }else{
-        return 1;
+
+void RASTREATOR_motor(){
+    switch (state){
+        case 0:
+            if(work > 0){
+                index = 0;
+                workingUsers = IOTICAT_workingUsers();
+                allUsers = IOTICAT_allUsers();
+            }
+            break;
+        case 1:
+            user = IOTICAT_getUser(index);
+            if(index < workingUsers){
+                state = 2;
+            }else{
+                state = 4;
+            }
+            break;
+        case 2:
+            if(strcmp(user.uid, uid) == 0){
+                result = 1;
+                work = 0;
+                user_index = index;
+                state = 0;
+            }else{
+                index++;
+                state = 1;
+            }
+            break;
+        case 3:
+            if (index < allUsers){
+                state = 4;
+            }else{
+                result = 3;
+                work = 0;
+                state = 0;
+            }
+            break;
+        case 4:
+            if(strcmp(user.uid, uid) == 0){
+                result = 2;
+                work = 0;
+                user_index = index;
+                state = 0;
+            }else{
+                index++;
+                state = 3;
+            }
+            break;
     }
-}
-
-
-
-
-
-
-void IOTICAT_swap(unsigned char i, unsigned char j){
-    swappy = database.users[i];
-    database.users[i] = database.users[j];
-    database.users[j] = swappy;
-# 91 "ioticat.c"
-}
-
-
-
-
-
-
-User IOTICAT_getUser(unsigned char index){
-    return database.users[index];
-}
-
-
-
-
-
-unsigned char IOTICAT_workingUsers(){
-    return database.cuantos_in;
-}
-
-
-
-
-
-unsigned char IOTICAT_allUsers(){
-    return database.cuantos;
 }

@@ -1,0 +1,313 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"10 ./smsDictionary.h
+[; ;./smsDictionary.h: 10: typedef struct{
+[s S1 `uc 1 `uc -> 5 `i ]
+[n S1 . numValues values ]
+"16 smsDictionary.c
+[; ;smsDictionary.c: 16: static DictionaryEntry dictionary[12];
+[v _dictionary `S1 ~T0 @X0 -> 12 `i s ]
+"21
+[; ;smsDictionary.c: 21: void SMSDICTIONARY_init(){
+[v _SMSDICTIONARY_init `(v ~T0 @X0 1 ef ]
+{
+[e :U _SMSDICTIONARY_init ]
+[f ]
+"22
+[; ;smsDictionary.c: 22:     for (int i = 0; i < 12; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 12 `i 3  ]
+[e $U 4  ]
+[e :U 3 ]
+{
+"23
+[; ;smsDictionary.c: 23:         switch (i){
+[e $U 7  ]
+{
+"24
+[; ;smsDictionary.c: 24:             case 0:
+[e :U 8 ]
+"25
+[; ;smsDictionary.c: 25:                 dictionary[i].numValues = 1;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 1 `i `uc ]
+"26
+[; ;smsDictionary.c: 26:                 dictionary[i].values[0] = '1';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 49 `ui `uc ]
+"27
+[; ;smsDictionary.c: 27:                 break;
+[e $U 6  ]
+"28
+[; ;smsDictionary.c: 28:             case 1:
+[e :U 9 ]
+"29
+[; ;smsDictionary.c: 29:                 dictionary[i].numValues = 4;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 4 `i `uc ]
+"30
+[; ;smsDictionary.c: 30:                 dictionary[i].values[0] = 'A';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 65 `ui `uc ]
+"31
+[; ;smsDictionary.c: 31:                 dictionary[i].values[1] = 'B';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 66 `ui `uc ]
+"32
+[; ;smsDictionary.c: 32:                 dictionary[i].values[2] = 'C';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 67 `ui `uc ]
+"33
+[; ;smsDictionary.c: 33:                 dictionary[i].values[3] = '2';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 50 `ui `uc ]
+"34
+[; ;smsDictionary.c: 34:                 break;
+[e $U 6  ]
+"35
+[; ;smsDictionary.c: 35:             case 2:
+[e :U 10 ]
+"36
+[; ;smsDictionary.c: 36:                 dictionary[i].numValues = 4;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 4 `i `uc ]
+"37
+[; ;smsDictionary.c: 37:                 dictionary[i].values[0] = 'D';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 68 `ui `uc ]
+"38
+[; ;smsDictionary.c: 38:                 dictionary[i].values[1] = 'E';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 69 `ui `uc ]
+"39
+[; ;smsDictionary.c: 39:                 dictionary[i].values[2] = 'F';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 70 `ui `uc ]
+"40
+[; ;smsDictionary.c: 40:                 dictionary[i].values[3] = '3';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 51 `ui `uc ]
+"41
+[; ;smsDictionary.c: 41:                 break;
+[e $U 6  ]
+"42
+[; ;smsDictionary.c: 42:             case 3:
+[e :U 11 ]
+"43
+[; ;smsDictionary.c: 43:                 dictionary[i].numValues = 4;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 4 `i `uc ]
+"44
+[; ;smsDictionary.c: 44:                 dictionary[i].values[0] = 'G';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 71 `ui `uc ]
+"45
+[; ;smsDictionary.c: 45:                 dictionary[i].values[1] = 'H';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 72 `ui `uc ]
+"46
+[; ;smsDictionary.c: 46:                 dictionary[i].values[2] = 'I';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 73 `ui `uc ]
+"47
+[; ;smsDictionary.c: 47:                 dictionary[i].values[3] = '4';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 52 `ui `uc ]
+"48
+[; ;smsDictionary.c: 48:                 break;
+[e $U 6  ]
+"49
+[; ;smsDictionary.c: 49:             case 4:
+[e :U 12 ]
+"50
+[; ;smsDictionary.c: 50:                 dictionary[i].numValues = 4;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 4 `i `uc ]
+"51
+[; ;smsDictionary.c: 51:                 dictionary[i].values[0] = 'J';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 74 `ui `uc ]
+"52
+[; ;smsDictionary.c: 52:                 dictionary[i].values[1] = 'K';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 75 `ui `uc ]
+"53
+[; ;smsDictionary.c: 53:                 dictionary[i].values[2] = 'L';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 76 `ui `uc ]
+"54
+[; ;smsDictionary.c: 54:                 dictionary[i].values[3] = '5';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 53 `ui `uc ]
+"55
+[; ;smsDictionary.c: 55:                 break;
+[e $U 6  ]
+"56
+[; ;smsDictionary.c: 56:             case 5:
+[e :U 13 ]
+"57
+[; ;smsDictionary.c: 57:                 dictionary[i].numValues = 4;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 4 `i `uc ]
+"58
+[; ;smsDictionary.c: 58:                 dictionary[i].values[0] = 'M';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 77 `ui `uc ]
+"59
+[; ;smsDictionary.c: 59:                 dictionary[i].values[1] = 'N';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 78 `ui `uc ]
+"60
+[; ;smsDictionary.c: 60:                 dictionary[i].values[2] = 'O';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 79 `ui `uc ]
+"61
+[; ;smsDictionary.c: 61:                 dictionary[i].values[3] = '6';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 54 `ui `uc ]
+"62
+[; ;smsDictionary.c: 62:                 break;
+[e $U 6  ]
+"63
+[; ;smsDictionary.c: 63:             case 6:
+[e :U 14 ]
+"64
+[; ;smsDictionary.c: 64:                 dictionary[i].numValues = 5;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 5 `i `uc ]
+"65
+[; ;smsDictionary.c: 65:                 dictionary[i].values[0] = 'P';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 80 `ui `uc ]
+"66
+[; ;smsDictionary.c: 66:                 dictionary[i].values[1] = 'Q';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 81 `ui `uc ]
+"67
+[; ;smsDictionary.c: 67:                 dictionary[i].values[2] = 'R';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 82 `ui `uc ]
+"68
+[; ;smsDictionary.c: 68:                 dictionary[i].values[3] = 'S';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 83 `ui `uc ]
+"69
+[; ;smsDictionary.c: 69:                 dictionary[i].values[4] = '7';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 55 `ui `uc ]
+"70
+[; ;smsDictionary.c: 70:                 break;
+[e $U 6  ]
+"71
+[; ;smsDictionary.c: 71:             case 7:
+[e :U 15 ]
+"72
+[; ;smsDictionary.c: 72:                 dictionary[i].numValues = 4;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 4 `i `uc ]
+"73
+[; ;smsDictionary.c: 73:                 dictionary[i].values[0] = 'T';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 84 `ui `uc ]
+"74
+[; ;smsDictionary.c: 74:                 dictionary[i].values[1] = 'U';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 85 `ui `uc ]
+"75
+[; ;smsDictionary.c: 75:                 dictionary[i].values[2] = 'V';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 86 `ui `uc ]
+"76
+[; ;smsDictionary.c: 76:                 dictionary[i].values[3] = '8';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 56 `ui `uc ]
+"77
+[; ;smsDictionary.c: 77:                 break;
+[e $U 6  ]
+"78
+[; ;smsDictionary.c: 78:             case 8:
+[e :U 16 ]
+"79
+[; ;smsDictionary.c: 79:                 dictionary[i].numValues = 5;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 5 `i `uc ]
+"80
+[; ;smsDictionary.c: 80:                 dictionary[i].values[0] = 'W';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 87 `ui `uc ]
+"81
+[; ;smsDictionary.c: 81:                 dictionary[i].values[1] = 'X';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 88 `ui `uc ]
+"82
+[; ;smsDictionary.c: 82:                 dictionary[i].values[2] = 'Y';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 89 `ui `uc ]
+"83
+[; ;smsDictionary.c: 83:                 dictionary[i].values[3] = 'Z';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 90 `ui `uc ]
+"84
+[; ;smsDictionary.c: 84:                 dictionary[i].values[4] = '9';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 57 `ui `uc ]
+"85
+[; ;smsDictionary.c: 85:                 break;
+[e $U 6  ]
+"86
+[; ;smsDictionary.c: 86:             case 9:
+[e :U 17 ]
+"87
+[; ;smsDictionary.c: 87:                 dictionary[i].numValues = 1;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 1 `i `uc ]
+"88
+[; ;smsDictionary.c: 88:                 dictionary[i].values[0] = '*';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 42 `ui `uc ]
+"89
+[; ;smsDictionary.c: 89:                 break;
+[e $U 6  ]
+"90
+[; ;smsDictionary.c: 90:             case 10:
+[e :U 18 ]
+"91
+[; ;smsDictionary.c: 91:                 dictionary[i].numValues = 1;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 1 `i `uc ]
+"92
+[; ;smsDictionary.c: 92:                 dictionary[i].values[0] = '0';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 48 `ui `uc ]
+"93
+[; ;smsDictionary.c: 93:                 break;
+[e $U 6  ]
+"94
+[; ;smsDictionary.c: 94:             case 11:
+[e :U 19 ]
+"95
+[; ;smsDictionary.c: 95:                 dictionary[i].numValues = 1;
+[e = . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 -> -> 1 `i `uc ]
+"96
+[; ;smsDictionary.c: 96:                 dictionary[i].values[0] = '#';
+[e = *U + &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> _i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux -> -> 35 `ui `uc ]
+"97
+[; ;smsDictionary.c: 97:                 break;
+[e $U 6  ]
+"98
+[; ;smsDictionary.c: 98:         }
+}
+[e $U 6  ]
+[e :U 7 ]
+[e [\ _i , $ -> 0 `i 8
+ , $ -> 1 `i 9
+ , $ -> 2 `i 10
+ , $ -> 3 `i 11
+ , $ -> 4 `i 12
+ , $ -> 5 `i 13
+ , $ -> 6 `i 14
+ , $ -> 7 `i 15
+ , $ -> 8 `i 16
+ , $ -> 9 `i 17
+ , $ -> 10 `i 18
+ , $ -> 11 `i 19
+ 6 ]
+[e :U 6 ]
+"99
+[; ;smsDictionary.c: 99:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 12 `i 3  ]
+[e :U 4 ]
+}
+"100
+[; ;smsDictionary.c: 100: }
+[e :UE 2 ]
+}
+"109
+[; ;smsDictionary.c: 109: char SMSDICTIONARY_getChar(char actualKey, char pressedTimes){
+[v _SMSDICTIONARY_getChar `(uc ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _SMSDICTIONARY_getChar ]
+[v _actualKey `uc ~T0 @X0 1 r1 ]
+[v _pressedTimes `uc ~T0 @X0 1 r2 ]
+[f ]
+"110
+[; ;smsDictionary.c: 110:     if(pressedTimes > dictionary[actualKey - 1].numValues){
+[e $ ! > -> _pressedTimes `i -> . *U + &U _dictionary * -> -> - -> _actualKey `i -> 1 `i `ui `ux -> -> # *U &U _dictionary `ui `ux 0 `i 21  ]
+{
+"111
+[; ;smsDictionary.c: 111:         return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 20  ]
+"112
+[; ;smsDictionary.c: 112:     }else{
+}
+[e $U 22  ]
+[e :U 21 ]
+{
+"113
+[; ;smsDictionary.c: 113:         return dictionary[actualKey - 1].values[pressedTimes - 1];
+[e ) *U + &U . *U + &U _dictionary * -> -> - -> _actualKey `i -> 1 `i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 * -> -> - -> _pressedTimes `i -> 1 `i `ui `ux -> -> # *U &U . *U + &U _dictionary * -> -> - -> _actualKey `i -> 1 `i `ui `ux -> -> # *U &U _dictionary `ui `ux 1 `ui `ux ]
+[e $UE 20  ]
+"114
+[; ;smsDictionary.c: 114:     }
+}
+[e :U 22 ]
+"115
+[; ;smsDictionary.c: 115: }
+[e :UE 20 ]
+}

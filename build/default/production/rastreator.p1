@@ -1,0 +1,275 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"20 ./ioticat.h
+[; ;./ioticat.h: 20: typedef struct {
+[s S2 `uc -> 2 `i ]
+[n S2 . value ]
+"33
+[; ;./ioticat.h: 33: typedef struct{
+[s S3 `uc -> 11 `i `uc -> 6 `i `uc 1 `uc 1 `uc 1 `uc 1 `S2 1 ]
+[n S3 . name uid in_min_hour in_min_minute in_max_hour in_max_minute min_permanence_time ]
+"33 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\string.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\string.h: 33: char *strcpy (char *restrict, const char *restrict);
+[v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
+"95 ./ioticat.h
+[; ;./ioticat.h: 95: unsigned char IOTICAT_workingUsers();
+[v _IOTICAT_workingUsers `(uc ~T0 @X0 0 e? ]
+"101
+[; ;./ioticat.h: 101: unsigned char IOTICAT_allUsers();
+[v _IOTICAT_allUsers `(uc ~T0 @X0 0 e? ]
+"89
+[; ;./ioticat.h: 89: User IOTICAT_getUser(unsigned char index);
+[v _IOTICAT_getUser `(S3 ~T0 @X0 0 ef1`uc ]
+"39 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\string.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\string.h: 39: int strcmp (const char *, const char *);
+[v _strcmp `(i ~T0 @X0 0 ef2`*Cuc`*Cuc ]
+"10 rastreator.c
+[; ;rastreator.c: 10: static char state = 0;
+[v _state `uc ~T0 @X0 1 s ]
+[i _state
+-> -> 0 `i `uc
+]
+"12
+[; ;rastreator.c: 12: static char work = 0;
+[v _work `uc ~T0 @X0 1 s ]
+[i _work
+-> -> 0 `i `uc
+]
+"13
+[; ;rastreator.c: 13: static char uid[6];
+[v _uid `uc ~T0 @X0 -> 6 `i s ]
+"15
+[; ;rastreator.c: 15: static unsigned char allUsers = 0;
+[v _allUsers `uc ~T0 @X0 1 s ]
+[i _allUsers
+-> -> 0 `i `uc
+]
+"16
+[; ;rastreator.c: 16: static unsigned char workingUsers = 0;
+[v _workingUsers `uc ~T0 @X0 1 s ]
+[i _workingUsers
+-> -> 0 `i `uc
+]
+"18
+[; ;rastreator.c: 18: static unsigned char index = 0;
+[v _index `uc ~T0 @X0 1 s ]
+[i _index
+-> -> 0 `i `uc
+]
+"19
+[; ;rastreator.c: 19: static User user;
+[v _user `S3 ~T0 @X0 1 s ]
+"21
+[; ;rastreator.c: 21: static char result = 0;
+[v _result `uc ~T0 @X0 1 s ]
+[i _result
+-> -> 0 `i `uc
+]
+"22
+[; ;rastreator.c: 22: static unsigned char user_index = 0;
+[v _user_index `uc ~T0 @X0 1 s ]
+[i _user_index
+-> -> 0 `i `uc
+]
+"24
+[; ;rastreator.c: 24: void RASTREATOR_find(char user_id[6]){
+[v _RASTREATOR_find `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _RASTREATOR_find ]
+[v _user_id `*uc ~T0 @X0 1 r1 ]
+[f ]
+"25
+[; ;rastreator.c: 25:     strcpy(uid, user_id);
+[e ( _strcpy (2 , &U _uid -> _user_id `*Cuc ]
+"26
+[; ;rastreator.c: 26:     work = 1;
+[e = _work -> -> 1 `i `uc ]
+"27
+[; ;rastreator.c: 27: }
+[e :UE 5 ]
+}
+"29
+[; ;rastreator.c: 29: void RASTREATOR_motor(){
+[v _RASTREATOR_motor `(v ~T0 @X0 1 ef ]
+{
+[e :U _RASTREATOR_motor ]
+[f ]
+"30
+[; ;rastreator.c: 30:     switch (state){
+[e $U 8  ]
+{
+"31
+[; ;rastreator.c: 31:         case 0:
+[e :U 9 ]
+"32
+[; ;rastreator.c: 32:             if(work > 0){
+[e $ ! > -> _work `i -> 0 `i 10  ]
+{
+"33
+[; ;rastreator.c: 33:                 index = 0;
+[e = _index -> -> 0 `i `uc ]
+"34
+[; ;rastreator.c: 34:                 workingUsers = IOTICAT_workingUsers();
+[e = _workingUsers ( _IOTICAT_workingUsers ..  ]
+"35
+[; ;rastreator.c: 35:                 allUsers = IOTICAT_allUsers();
+[e = _allUsers ( _IOTICAT_allUsers ..  ]
+"36
+[; ;rastreator.c: 36:             }
+}
+[e :U 10 ]
+"37
+[; ;rastreator.c: 37:             break;
+[e $U 7  ]
+"38
+[; ;rastreator.c: 38:         case 1:
+[e :U 11 ]
+"39
+[; ;rastreator.c: 39:             user = IOTICAT_getUser(index);
+[e = _user ( _IOTICAT_getUser (1 _index ]
+"40
+[; ;rastreator.c: 40:             if(index < workingUsers){
+[e $ ! < -> _index `i -> _workingUsers `i 12  ]
+{
+"41
+[; ;rastreator.c: 41:                 state = 2;
+[e = _state -> -> 2 `i `uc ]
+"42
+[; ;rastreator.c: 42:             }else{
+}
+[e $U 13  ]
+[e :U 12 ]
+{
+"43
+[; ;rastreator.c: 43:                 state = 4;
+[e = _state -> -> 4 `i `uc ]
+"44
+[; ;rastreator.c: 44:             }
+}
+[e :U 13 ]
+"45
+[; ;rastreator.c: 45:             break;
+[e $U 7  ]
+"46
+[; ;rastreator.c: 46:         case 2:
+[e :U 14 ]
+"47
+[; ;rastreator.c: 47:             if(strcmp(user.uid, uid) == 0){
+[e $ ! == ( _strcmp (2 , -> &U . _user 1 `*Cuc -> &U _uid `*Cuc -> 0 `i 15  ]
+{
+"48
+[; ;rastreator.c: 48:                 result = 1;
+[e = _result -> -> 1 `i `uc ]
+"49
+[; ;rastreator.c: 49:                 work = 0;
+[e = _work -> -> 0 `i `uc ]
+"50
+[; ;rastreator.c: 50:                 user_index = index;
+[e = _user_index _index ]
+"51
+[; ;rastreator.c: 51:                 state = 0;
+[e = _state -> -> 0 `i `uc ]
+"52
+[; ;rastreator.c: 52:             }else{
+}
+[e $U 16  ]
+[e :U 15 ]
+{
+"53
+[; ;rastreator.c: 53:                 index++;
+[e ++ _index -> -> 1 `i `uc ]
+"54
+[; ;rastreator.c: 54:                 state = 1;
+[e = _state -> -> 1 `i `uc ]
+"55
+[; ;rastreator.c: 55:             }
+}
+[e :U 16 ]
+"56
+[; ;rastreator.c: 56:             break;
+[e $U 7  ]
+"57
+[; ;rastreator.c: 57:         case 3:
+[e :U 17 ]
+"58
+[; ;rastreator.c: 58:             if (index < allUsers){
+[e $ ! < -> _index `i -> _allUsers `i 18  ]
+{
+"59
+[; ;rastreator.c: 59:                 state = 4;
+[e = _state -> -> 4 `i `uc ]
+"60
+[; ;rastreator.c: 60:             }else{
+}
+[e $U 19  ]
+[e :U 18 ]
+{
+"61
+[; ;rastreator.c: 61:                 result = 3;
+[e = _result -> -> 3 `i `uc ]
+"62
+[; ;rastreator.c: 62:                 work = 0;
+[e = _work -> -> 0 `i `uc ]
+"63
+[; ;rastreator.c: 63:                 state = 0;
+[e = _state -> -> 0 `i `uc ]
+"64
+[; ;rastreator.c: 64:             }
+}
+[e :U 19 ]
+"65
+[; ;rastreator.c: 65:             break;
+[e $U 7  ]
+"66
+[; ;rastreator.c: 66:         case 4:
+[e :U 20 ]
+"67
+[; ;rastreator.c: 67:             if(strcmp(user.uid, uid) == 0){
+[e $ ! == ( _strcmp (2 , -> &U . _user 1 `*Cuc -> &U _uid `*Cuc -> 0 `i 21  ]
+{
+"68
+[; ;rastreator.c: 68:                 result = 2;
+[e = _result -> -> 2 `i `uc ]
+"69
+[; ;rastreator.c: 69:                 work = 0;
+[e = _work -> -> 0 `i `uc ]
+"70
+[; ;rastreator.c: 70:                 user_index = index;
+[e = _user_index _index ]
+"71
+[; ;rastreator.c: 71:                 state = 0;
+[e = _state -> -> 0 `i `uc ]
+"72
+[; ;rastreator.c: 72:             }else{
+}
+[e $U 22  ]
+[e :U 21 ]
+{
+"73
+[; ;rastreator.c: 73:                 index++;
+[e ++ _index -> -> 1 `i `uc ]
+"74
+[; ;rastreator.c: 74:                 state = 3;
+[e = _state -> -> 3 `i `uc ]
+"75
+[; ;rastreator.c: 75:             }
+}
+[e :U 22 ]
+"76
+[; ;rastreator.c: 76:             break;
+[e $U 7  ]
+"77
+[; ;rastreator.c: 77:     }
+}
+[e $U 7  ]
+[e :U 8 ]
+[e [\ -> _state `i , $ -> 0 `i 9
+ , $ -> 1 `i 11
+ , $ -> 2 `i 14
+ , $ -> 3 `i 17
+ , $ -> 4 `i 20
+ 7 ]
+[e :U 7 ]
+"78
+[; ;rastreator.c: 78: }
+[e :UE 6 ]
+}

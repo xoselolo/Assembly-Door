@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "keyboard.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "keyboard.c" 2
 
 
 
@@ -14,7 +14,8 @@
 
 
 
-
+# 1 "./keyboard.h" 1
+# 11 "./keyboard.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4522,8 +4523,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 9 "main.c" 2
-
+# 11 "./keyboard.h" 2
 
 # 1 "./timer.h" 1
 # 22 "./timer.h"
@@ -4550,14 +4550,9 @@ void TIMER_resetTics (unsigned char timer_id);
 
 
 unsigned int TIMER_getTics (unsigned char timer_id);
-# 11 "main.c" 2
+# 12 "./keyboard.h" 2
 
-# 1 "./accessController.h" 1
-# 11 "./accessController.h"
-# 1 "./keyboardController.h" 1
-# 10 "./keyboardController.h"
-# 1 "./keyboard.h" 1
-# 14 "./keyboard.h"
+
 static char tecla = 0;
 
 
@@ -4590,74 +4585,155 @@ char KEYBOARD_getTecla();
 
 
 void KEYBOARD_keyReceived();
-# 10 "./keyboardController.h" 2
+# 8 "keyboard.c" 2
 
-# 1 "./smsDictionary.h" 1
-# 10 "./smsDictionary.h"
-typedef struct{
-    char numValues;
-    char values[5];
-}DictionaryEntry;
+
+static unsigned const char T_ESCOMB = 2;
+static unsigned const char T_REBOTS = 16;
 
 
 
+static unsigned char timer_id;
 
-void SMSDICTIONARY_init();
-# 27 "./smsDictionary.h"
-char SMSDICTIONARY_getChar(char actualKey, char pressedTimes);
-# 11 "./keyboardController.h" 2
-
-
-static char actualKey = -1;
-static char toSend = -1;
-static char sent = 0;
-static char type = 0;
-
-
-
-
-void KEYBOARD_CONTROLLER_init();
-
-
-
-
-void KEYBOARD_CONTROLLER_motor();
-# 37 "./keyboardController.h"
-char KEYBOARD_CONTROLLER_getType();
+static char state = 0;
+static char fila = 1;
+static char columna = 0;
 
 
 
 
 
-char KEYBOARD_CONTROLLER_read();
-
-char KEYBOARD_CONTROLLER_isReady();
-# 11 "./accessController.h" 2
-
-
-void ACCESS_CONTROLLER_init();
-
-void ACCESS_CONTROLLER_motor();
-# 12 "main.c" 2
-
-
-# 1 "./lcd.h" 1
-# 14 "main.c" 2
+void KEYBOARD_init(){
+    fila = 1;
+    timer_id = TIMER_getTimer();
+    PORTBbits.RB6 = 1;
+    PORTBbits.RB7 = 0;
+    PORTBbits.RB8 = 0;
+    PORTBbits.RB9 = 0;
+    TIMER_resetTics(timer_id);
+    state = 0;
+    tecla = 0;
+}
 
 
-void main(void) {
 
-    TIMER_init();
-    ACCESS_CONTROLLER_init();
-    KEYBOARD_CONTROLLER_init();
-    KEYBOARD_init();
-    SMSDICTIONARY_init();
 
-    while(1){
-        KEYBOARD_motor();
-        KEYBOARD_CONTROLLER_motor();
-        ACCESS_CONTROLLER_motor();
+void KEYBOARD_motor(){
+    switch (state){
+        case 0:
+            columna = KEYBOARD_pressed();
+            if(columna > 0){
+                TIMER_resetTics(timer_id);
+                state = 4;
+            }else if(TIMER_getTics(timer_id) >= T_ESCOMB){
+                fila = 2;
+                PORTBbits.RB6 = 0;
+                PORTBbits.RB7 = 1;
+                state = 1;
+            }
+            break;
+
+        case 1:
+            columna = KEYBOARD_pressed();
+            if(columna > 0){
+                TIMER_resetTics(timer_id);
+                state = 4;
+            }else if(TIMER_getTics(timer_id) >= T_ESCOMB){
+                fila = 3;
+                PORTBbits.RB7 = 0;
+                PORTBbits.RB8 = 1;
+                state = 2;
+            }
+            break;
+
+        case 2:
+            columna = KEYBOARD_pressed();
+            if(columna > 0){
+                TIMER_resetTics(timer_id);
+                state = 4;
+            }else if(TIMER_getTics(timer_id) >= T_ESCOMB){
+                fila = 4;
+                PORTBbits.RB8 = 0;
+                PORTBbits.RB9 = 1;
+                state = 3;
+            }
+            break;
+
+        case 3:
+            columna = KEYBOARD_pressed();
+            if(columna > 0){
+                TIMER_resetTics(timer_id);
+                state = 4;
+            }else if(TIMER_getTics(timer_id) >= T_ESCOMB){
+                fila = 1;
+                PORTBbits.RB9 = 0;
+                PORTBbits.RB6 = 1;
+                state = 0;
+            }
+            break;
+
+        case 4:
+            if(TIMER_getTics() >= T_REBOTS){
+                state = 5;
+            }
+            break;
+
+        case 5:
+            tecla = KEYBOARD_descifraTecla();
+            state = 6;
+            break;
+
+        case 6:
+            if(KEYBOARD_pressed() == 0){
+                TIMER_resetTics(timer_id);
+                state = 7;
+            }
+            break;
+
+        case 7:
+            if(TIMER_getTics() >= T_REBOTS && tecla == 0){
+                state = 0;
+            }
+            break;
     }
+}
 
-    return;
+
+char KEYBOARD_pressed(){
+    if(PORTAbits.RA2 == 1){
+        return 1;
+    } else if (PORTAbits.RA3 == 1){
+        return 2;
+    } else if (PORTAbits.RA4 == 1){
+        return 3;
+    } else{
+        return 0;
+    }
+}
+
+char KEYBOARD_descifraTecla(){
+    switch (fila){
+        case 1:
+            return columna;
+        case 2:
+            return 3 + columna;
+        case 3:
+            return 6 + columna;
+        case 4:
+            return 9 + columna;
+    }
+}
+
+
+
+
+char KEYBOARD_getTecla(){
+    return tecla;
+}
+
+
+
+
+void KEYBOARD_keyReceived(){
+    tecla = 0;
 }

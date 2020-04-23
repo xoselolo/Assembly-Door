@@ -1,29 +1,10 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"24 ./timer.h
-[; ;./timer.h: 24: void TIMER_init (void);
-[v _TIMER_init `(v ~T0 @X0 0 ef ]
-"13 ./accessController.h
-[; ;./accessController.h: 13: void ACCESS_CONTROLLER_init();
-[v _ACCESS_CONTROLLER_init `(v ~T0 @X0 0 e? ]
-"21 ./keyboardController.h
-[; ;./keyboardController.h: 21: void KEYBOARD_CONTROLLER_init();
-[v _KEYBOARD_CONTROLLER_init `(v ~T0 @X0 0 e? ]
-"19 ./keyboard.h
-[; ;./keyboard.h: 19: void KEYBOARD_init();
-[v _KEYBOARD_init `(v ~T0 @X0 0 e? ]
-"18 ./smsDictionary.h
-[; ;./smsDictionary.h: 18: void SMSDICTIONARY_init();
-[v _SMSDICTIONARY_init `(v ~T0 @X0 0 e? ]
-"24 ./keyboard.h
-[; ;./keyboard.h: 24: void KEYBOARD_motor();
-[v _KEYBOARD_motor `(v ~T0 @X0 0 e? ]
-"26 ./keyboardController.h
-[; ;./keyboardController.h: 26: void KEYBOARD_CONTROLLER_motor();
-[v _KEYBOARD_CONTROLLER_motor `(v ~T0 @X0 0 e? ]
-"15 ./accessController.h
-[; ;./accessController.h: 15: void ACCESS_CONTROLLER_motor();
-[v _ACCESS_CONTROLLER_motor `(v ~T0 @X0 0 e? ]
+"45 ./keyboardController.h
+[; ;./keyboardController.h: 45: char KEYBOARD_CONTROLLER_isReady();
+[v _KEYBOARD_CONTROLLER_isReady `(uc ~T0 @X0 0 e? ]
+"43
+[; ;./keyboardController.h: 43: char KEYBOARD_CONTROLLER_read();
+[v _KEYBOARD_CONTROLLER_read `(uc ~T0 @X0 0 e? ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -468,51 +449,84 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _type
 -> -> 0 `i `uc
 ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"16 main.c
-[; ;main.c: 16: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
+"10 accessController.c
+[; ;accessController.c: 10: static char state = 0;
+[v _state `uc ~T0 @X0 1 s ]
+[i _state
+-> -> 0 `i `uc
+]
+"11
+[; ;accessController.c: 11: static char tecla;
+[v _tecla `uc ~T0 @X0 1 s ]
+"13
+[; ;accessController.c: 13: void ACCESS_CONTROLLER_init(){
+[v _ACCESS_CONTROLLER_init `(v ~T0 @X0 1 ef ]
 {
-[e :U _main ]
+[e :U _ACCESS_CONTROLLER_init ]
 [f ]
-"18
-[; ;main.c: 18:     TIMER_init();
-[e ( _TIMER_init ..  ]
-"19
-[; ;main.c: 19:     ACCESS_CONTROLLER_init();
-[e ( _ACCESS_CONTROLLER_init ..  ]
-"20
-[; ;main.c: 20:     KEYBOARD_CONTROLLER_init();
-[e ( _KEYBOARD_CONTROLLER_init ..  ]
-"21
-[; ;main.c: 21:     KEYBOARD_init();
-[e ( _KEYBOARD_init ..  ]
-"22
-[; ;main.c: 22:     SMSDICTIONARY_init();
-[e ( _SMSDICTIONARY_init ..  ]
-"24
-[; ;main.c: 24:     while(1){
-[e :U 283 ]
-{
-"25
-[; ;main.c: 25:         KEYBOARD_motor();
-[e ( _KEYBOARD_motor ..  ]
-"26
-[; ;main.c: 26:         KEYBOARD_CONTROLLER_motor();
-[e ( _KEYBOARD_CONTROLLER_motor ..  ]
-"27
-[; ;main.c: 27:         ACCESS_CONTROLLER_motor();
-[e ( _ACCESS_CONTROLLER_motor ..  ]
-"28
-[; ;main.c: 28:     }
+"15
+[; ;accessController.c: 15:     state = 0;
+[e = _state -> -> 0 `i `uc ]
+"16
+[; ;accessController.c: 16: }
+[e :UE 281 ]
 }
-[e :U 282 ]
+"18
+[; ;accessController.c: 18: void ACCESS_CONTROLLER_motor(){
+[v _ACCESS_CONTROLLER_motor `(v ~T0 @X0 1 ef ]
+{
+[e :U _ACCESS_CONTROLLER_motor ]
+[f ]
+"19
+[; ;accessController.c: 19:     switch(state){
+[e $U 284  ]
+{
+"20
+[; ;accessController.c: 20:         case 0:
+[e :U 285 ]
+"21
+[; ;accessController.c: 21:             if(KEYBOARD_CONTROLLER_isReady() == 1){
+[e $ ! == -> ( _KEYBOARD_CONTROLLER_isReady ..  `i -> 1 `i 286  ]
+{
+"22
+[; ;accessController.c: 22:                 state = 1;
+[e = _state -> -> 1 `i `uc ]
+"23
+[; ;accessController.c: 23:             }
+}
+[e :U 286 ]
+"24
+[; ;accessController.c: 24:             break;
+[e $U 283  ]
+"25
+[; ;accessController.c: 25:         case 1:
+[e :U 287 ]
+"26
+[; ;accessController.c: 26:             tecla = KEYBOARD_CONTROLLER_read();
+[e = _tecla ( _KEYBOARD_CONTROLLER_read ..  ]
+"27
+[; ;accessController.c: 27:             state = 2;
+[e = _state -> -> 2 `i `uc ]
+"28
+[; ;accessController.c: 28:             break;
+[e $U 283  ]
+"29
+[; ;accessController.c: 29:         case 2:
+[e :U 288 ]
+"31
+[; ;accessController.c: 31:             break;
+[e $U 283  ]
+"32
+[; ;accessController.c: 32:     }
+}
 [e $U 283  ]
 [e :U 284 ]
-"30
-[; ;main.c: 30:     return;
-[e $UE 281  ]
-"31
-[; ;main.c: 31: }
-[e :UE 281 ]
+[e [\ -> _state `i , $ -> 0 `i 285
+ , $ -> 1 `i 287
+ , $ -> 2 `i 288
+ 283 ]
+[e :U 283 ]
+"33
+[; ;accessController.c: 33: }
+[e :UE 282 ]
 }
